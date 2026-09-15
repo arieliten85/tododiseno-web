@@ -1,0 +1,2 @@
+import { CatalogBrowser } from "@/components/catalog-browser";
+export default function CatalogPage() { return <main className="mx-auto max-w-container px-5 py-12 md:py-20"><p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">Catálogo</p><h1 className="mt-3 font-heading text-5xl">Ideas para celebrar</h1><p className="mt-4 max-w-xl text-lg text-muted-foreground">Todo se adapta a tu evento, tus colores y tu historia. No hay precios fijos: cada propuesta se cotiza de forma personalizada.</p><div className="mt-10"><CatalogBrowser /></div></main> }

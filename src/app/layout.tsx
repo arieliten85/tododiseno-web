@@ -1,30 +1,13 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { defaultMetadata } from "@/config/seo.config";
-import { siteConfig } from "@/config/site.config";
-import { createRestaurantJsonLd } from "@/lib/seo/json-ld";
 import { bodyFont, headingFont } from "@/theme/fonts";
 import "./globals.css";
 
-export const metadata: Metadata = defaultMetadata;
+export const metadata: Metadata = {
+  title: { default: "Todo Diseño Souvenirs | Detalles para celebrar", template: "%s | Todo Diseño Souvenirs" },
+  description: "Souvenirs, diseño gráfico y detalles personalizados para tus momentos más importantes. Cotizá por WhatsApp en Lanús.",
+};
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: ReactNode }>) {
-  const restaurantJsonLd = createRestaurantJsonLd(siteConfig);
-
-  return (
-    <html
-      lang="es"
-      className={`${headingFont.variable} ${bodyFont.variable} h-full scroll-smooth antialiased`}
-    >
-      <body className="flex min-h-full flex-col">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(restaurantJsonLd) }}
-        />
-        {children}
-      </body>
-    </html>
-  );
+export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
+  return <html lang="es" className={`${headingFont.variable} ${bodyFont.variable} h-full scroll-smooth antialiased`}><body className="flex min-h-full flex-col">{children}</body></html>;
 }

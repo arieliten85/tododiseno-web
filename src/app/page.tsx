@@ -1,45 +1,7 @@
-import { Faq } from "@/components/sections/faq";
-import { FinalCta } from "@/components/sections/final-cta";
-import { Flavors } from "@/components/sections/flavors";
-import { Footer } from "@/components/sections/footer";
-import { Header } from "@/components/sections/header";
-import { Hero } from "@/components/sections/hero";
-import { Process } from "@/components/sections/process";
-import { Quality } from "@/components/sections/quality";
-import { layoutConfig } from "@/config/layout.config";
-import { siteConfig } from "@/config/site.config";
-import { catalogContent } from "@/content/catalog.content";
-import { faqContent } from "@/content/faq.content";
-import { homeContent } from "@/content/home.content";
+import Link from "next/link";
+import { ProductCard } from "@/components/product-card";
+import { categories, featuredProducts } from "@/content/catalog.content";
+import { whatsappHref } from "@/config/site.config";
 
-export default function Home() {
-  const socials = Object.entries(
-    siteConfig.socials as Record<string, string | undefined>,
-  ).flatMap(([label, href]) => (href ? [{ label, href }] : []));
-  const formatPrice = (price?: number) =>
-    typeof price === "number" && siteConfig.currency
-      ? new Intl.NumberFormat(siteConfig.locale, {
-          style: "currency",
-          currency: siteConfig.currency,
-        }).format(price)
-      : "Precio a confirmar";
-
-  return (
-    <>
-      <Header
-        name={siteConfig.name}
-        navigation={layoutConfig.navigation}
-        cta={layoutConfig.cta}
-      />
-      <main>
-        <Hero {...homeContent.hero} />
-        <Quality {...homeContent.quality} />
-        <Flavors {...catalogContent} formatPrice={formatPrice} />
-        <Process {...homeContent.process} />
-        <Faq {...faqContent} />
-        <FinalCta {...homeContent.finalCta} />
-      </main>
-      <Footer name={siteConfig.name} socials={socials} />
-    </>
-  );
-}
+const categoryImages = ["photo-1513151233558-d860c5398176", "photo-1464349095431-e9a21285b5f3", "photo-1558636508-e0db3814bd1d", "photo-1512909006721-3d6018887383", "photo-1549465220-1a8b9238cd48", "photo-1530103862676-de8c9debad1d"];
+export default function Home() { return <><header className="sticky top-0 z-10 border-b border-border/70 bg-background/90 backdrop-blur"><div className="mx-auto flex max-w-container items-center justify-between gap-4 px-5 py-4"><Link href="/" className="font-heading text-xl font-semibold">Todo Diseño<span className="text-primary">.</span></Link><nav className="hidden gap-6 text-sm font-semibold md:flex"><Link href="#catalogo">Catálogo</Link><Link href="#sobre-mi">Sobre mí</Link><Link href="#contacto">Contacto</Link></nav><a href={whatsappHref} className="rounded-button bg-whatsapp px-4 py-2 text-xs font-bold text-white">WhatsApp</a></div></header><main><section className="mx-auto grid max-w-container gap-8 px-5 py-12 md:grid-cols-[1fr_0.9fr] md:items-center md:py-20"><div className="flex flex-col items-start gap-5"><p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">Detalles que cuentan historias</p><h1 className="max-w-xl font-heading text-5xl leading-[0.95] md:text-7xl">Celebrá a tu manera.</h1><p className="max-w-lg text-lg leading-8 text-muted-foreground">Souvenirs y diseño gráfico personalizados para hacer de cada evento un recuerdo inolvidable.</p><div className="flex flex-wrap gap-3"><Link href="#catalogo" className="rounded-button bg-primary px-6 py-3 font-bold text-white">Ver catálogo</Link><a href={whatsappHref} className="rounded-button border border-border bg-card px-6 py-3 font-bold">Consultar por WhatsApp</a></div></div><div className="min-h-[360px] rounded-[2rem] bg-cover bg-center shadow-lg" style={{backgroundImage: "url(https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1000&q=85)"}} role="img" aria-label="Decoración colorida para una celebración" /></section><section className="bg-card py-12"><div className="mx-auto grid max-w-container gap-5 px-5 md:grid-cols-3"><div><p className="font-heading text-xl">Diseños personalizados</p><p className="mt-2 text-sm text-muted-foreground">Pensados para tu tema, nombre y fecha.</p></div><div><p className="font-heading text-xl">Atención por WhatsApp</p><p className="mt-2 text-sm text-muted-foreground">Te acompañamos desde la idea hasta el detalle.</p></div><div><p className="font-heading text-xl">Retiro en Lanús</p><p className="mt-2 text-sm text-muted-foreground">También coordinamos envíos a todo el país.</p></div></div></section><section id="catalogo" className="mx-auto max-w-container px-5 py-16"><div className="mb-8 flex items-end justify-between gap-4"><div><p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">Elegí tu inspiración</p><h2 className="mt-2 font-heading text-4xl">Nuestros favoritos</h2></div><Link href="/catalogo" className="text-sm font-bold text-primary">Ver todo →</Link></div><div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">{featuredProducts.map((product) => <ProductCard key={product.slug} product={product} />)}</div></section><section className="bg-secondary py-16"><div className="mx-auto max-w-container px-5"><h2 className="mb-8 font-heading text-4xl">Un detalle para cada momento</h2><div className="grid grid-cols-2 gap-4 md:grid-cols-3">{categories.map((category, i) => <Link key={category} href={`/catalogo?categoria=${encodeURIComponent(category)}`} className="group overflow-hidden rounded-card bg-card"><div className="aspect-square bg-cover bg-center transition-transform group-hover:scale-105" style={{backgroundImage: `url(https://images.unsplash.com/${categoryImages[i]}?auto=format&fit=crop&w=700&q=80)`}} role="img" aria-label={category} /><p className="p-4 font-heading text-lg">{category}</p></Link>)}</div></div></section><section id="sobre-mi" className="mx-auto max-w-container px-5 py-16"><div className="max-w-2xl"><p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">Sobre mí</p><h2 className="mt-2 font-heading text-4xl">Hola, soy Florencia.</h2><p className="mt-5 text-lg leading-8 text-muted-foreground">Creo detalles con intención, color y mucho cariño. Cada pedido nace de una idea única y se transforma en algo hecho especialmente para vos.</p></div></section><section id="contacto" className="mx-5 mb-16 rounded-card bg-primary px-6 py-12 text-center text-white"><h2 className="font-heading text-4xl">¿Ya imaginaste el tuyo?</h2><p className="mx-auto mt-3 max-w-lg text-white/80">Contame qué estás preparando y armamos juntas una propuesta a tu medida.</p><a href={whatsappHref} className="mt-7 inline-flex rounded-button bg-whatsapp px-7 py-3 font-bold">Consultar por WhatsApp</a></section></main><footer className="border-t border-border px-5 py-8 text-center text-sm text-muted-foreground"><p className="font-heading text-lg text-foreground">Todo Diseño Souvenirs</p><p className="mt-3">25 de Mayo 445, Lanús Oeste · Los diseños temáticos se realizan bajo pedido.</p></footer></> }
