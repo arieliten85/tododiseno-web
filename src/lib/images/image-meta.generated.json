@@ -48,8 +48,8 @@
     "mtime": 1790973928039
   },
   "/brand/categories/baby-shower.jpg": {
-    "width": 1200,
-    "height": 900,
+    "width": 976,
+    "height": 1280,
     "variants": [
       320,
       480,
@@ -60,12 +60,12 @@
       2000
     ],
     "stem": "categories/baby-shower",
-    "blur": "data:image/webp;base64,UklGRi4AAABXRUJQVlA4ICIAAABwAQCdASoQAAwAA4BaJYwCsAGIQAD+8NPUsxexU4FwAAAA",
-    "mtime": 1790973928071
+    "blur": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADQAwCdASoQABUAPu1iqU2ppaOiMAgBMB2JZgDE2BETnFy9Syxu12AA/dpQsMnnCmZA9pUoZuecekb+qvMFYV3YTA6GvPJm0+m4LQckSAzz6EEjdYozVxUMoYhKAMnRHt6AAAAA",
+    "mtime": 1790974247224
   },
   "/brand/categories/bautismo.jpg": {
-    "width": 1200,
-    "height": 900,
+    "width": 1179,
+    "height": 1208,
     "variants": [
       320,
       480,
@@ -76,12 +76,12 @@
       2000
     ],
     "stem": "categories/bautismo",
-    "blur": "data:image/webp;base64,UklGRiwAAABXRUJQVlA4ICAAAABwAQCdASoQAAwABIBaJYwCdAFAAAD+8QfGAg+QgZkAAA==",
-    "mtime": 1790973928107
+    "blur": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADwAQCdASoQABAAA4BaJZAC7AEO+LL55K4A/u1JE9o8M8CoxcfpUmUVxyTNIUmZav4C7AIZSEbWJ2UE+ZIAAA==",
+    "mtime": 1790974247216
   },
   "/brand/categories/comuniones.jpg": {
-    "width": 1200,
-    "height": 900,
+    "width": 1040,
+    "height": 1280,
     "variants": [
       320,
       480,
@@ -92,8 +92,8 @@
       2000
     ],
     "stem": "categories/comuniones",
-    "blur": "data:image/webp;base64,UklGRjAAAABXRUJQVlA4ICQAAABwAQCdASoQAAwABIBaJZACdAFAAAD+8YlFqEr3LVJkbJ3iAAA=",
-    "mtime": 1790973928135
+    "blur": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAADQAwCdASoQABQAPu1iqU2ppaOiMAgBMB2JYgCdABeir1y9q0vB/4AA/q9zwqQtA6TBeLIILl152JQlOf0JZMfYZJgrcZL5I1ZXNVxBnJQwcejrLbbrqxQAAAA=",
+    "mtime": 1790974247220
   },
   "/brand/categories/cumpleanos-tematicos.jpg": {
     "width": 1200,
@@ -112,8 +112,8 @@
     "mtime": 1790973928167
   },
   "/brand/categories/navidad.jpg": {
-    "width": 1200,
-    "height": 900,
+    "width": 1054,
+    "height": 1280,
     "variants": [
       320,
       480,
@@ -124,12 +124,12 @@
       2000
     ],
     "stem": "categories/navidad",
-    "blur": "data:image/webp;base64,UklGRi4AAABXRUJQVlA4ICIAAABQAQCdASoQAAwABIBaJQBOgCgAAP7xiUWoR5P1dbuYQAAA",
-    "mtime": 1790973928195
+    "blur": "data:image/webp;base64,UklGRrYAAABXRUJQVlA4IKoAAABQBACdASoQABQAPu1iqU2ppaOiMAgBMB2JZACdMoAlrRH7Nadm30YJXQ4AAPlLFC8/Jyz5c9EIpdGKa0Z2o7QK7MjDdqUX2klKO73bnPHiVEbp/QvmnbD0n4VwzcAbAiBvmLKM86A8XgejX4gFntTFbb1A1jsTxphbO6f++c6us1JbgssFHlyMdYEBq55Q+eI1HwYFglTovJWFSu0jpt/4JI62Xv6FVDCAAA==",
+    "mtime": 1790974247226
   },
   "/brand/categories/otros-eventos.jpg": {
-    "width": 1200,
-    "height": 900,
+    "width": 1179,
+    "height": 1152,
     "variants": [
       320,
       480,
@@ -140,8 +140,8 @@
       2000
     ],
     "stem": "categories/otros-eventos",
-    "blur": "data:image/webp;base64,UklGRioAAABXRUJQVlA4IB4AAABQAQCdASoQAAwABIBaJYwABAAAAP7xF4u3DundgAA=",
-    "mtime": 1790973928227
+    "blur": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAACwAQCdASoQABAAA4BaJYwAAugvmmfgAP7vyxkn9LfoZbinqjipnB830LyGuuHMzf/IJQsYwH7ZO8QAAAA=",
+    "mtime": 1790974247214
   },
   "/brand/hero/mesa-de-souvenirs.jpg": {
     "width": 1920,
@@ -158,6 +158,22 @@
     "stem": "hero/mesa-de-souvenirs",
     "blur": "data:image/webp;base64,UklGRi4AAABXRUJQVlA4ICIAAABwAQCdASoQAAcAA4BaJYwCdAFAAAD+8KywWnO22GCHEAAA",
     "mtime": 1790973928287
+  },
+  "/brand/logo/logo.png": {
+    "width": 544,
+    "height": 300,
+    "variants": [
+      320,
+      480,
+      640,
+      960,
+      1280,
+      1600,
+      2000
+    ],
+    "stem": "logo/logo",
+    "blur": "data:image/webp;base64,UklGRjYBAABXRUJQVlA4WAoAAAAQAAAADwAACAAAQUxQSJEAAAAAAAAAAAACACBZFAABAAAAAAAAAAEEAwA2cAcABAEAAAACAwIAAARa5ddXBQAAAgMCAAAAEV3J//7+/8teEwAAAHdpmOb//v3+/Pf+/+Scane0/9ft3snw5KHA3r6t2f+0hv+7w8O12al+gGd9lmzojF/y1rCfjop+d4GLnbzG7mABEg8ACh0eGCYeKAsDFxQAAFZQOCB+AAAAsAIAnQEqEAAJAAOAWiWwAnR/A6W4Gye71V3VfngAAOJCcu0YkvenGIDBZs79PtdyYeoSeLMueewvZpSXjVla2W/soEk4ug5iDXntAUfUNhsc6IGAQp9yq/ZY6/8X0au9tgumX7fl5/83x0tavLF1z/oZT/U3Zj/jsn+gAAAA",
+    "mtime": 1790974247211
   },
   "/brand/products/antifaces-tematicos-01.jpg": {
     "width": 1200,

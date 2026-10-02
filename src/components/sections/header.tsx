@@ -35,7 +35,7 @@ export function Header({
               alt={logo.alt}
               priority
               sizes="160px"
-              className="h-12 w-auto"
+              className="h-14 w-auto"
             />
           ) : (
             <span className="flex flex-col leading-none">

@@ -5,6 +5,7 @@ export const siteConfig = {
   brand: "Todo Diseño",
   name: "Todo Diseño Souvenirs",
   logo: {
+    src: "/brand/logo/logo.png",
     alt: "Todo Diseño Souvenirs",
   },
   locale: "es-AR",
