@@ -9,7 +9,13 @@ export const catalogPageContent = {
   filters: {
     title: "Filtrar por",
     clear: "Limpiar",
+    close: "Cerrar filtros",
+    applyOne: "Ver 1 producto",
+    applyMany: "Ver {n} productos",
+    applyNone: "Sin resultados",
     occasion: "Ocasión",
+    allOccasions: "Todas las ocasiones",
+    allAudiences: "Todos",
     audience: "Destinatario",
     note: {
       title: "Personalización",
@@ -34,10 +40,7 @@ export const catalogPageContent = {
         "Probá con otra ocasión o escribinos: también armamos propuestas a medida.",
     },
   },
-  search: {
-    label: "Buscar en el catálogo",
-    placeholder: "Buscar por nombre…",
-  },
+  search: { label: "Búsqueda" },
   pagination: { label: "Paginación", page: "Página", next: "Siguiente" },
   cta: {
     eyebrow: "CONVERSACIÓN PERSONALIZADA",

@@ -114,7 +114,13 @@ export type CatalogPageContent = {
   filters: {
     title: string;
     clear: string;
+    close: string;
+    applyOne: string;
+    applyMany: string;
+    applyNone: string;
     occasion: string;
+    allOccasions: string;
+    allAudiences: string;
     audience: string;
     note: { title: string; description: string };
   };
@@ -128,7 +134,7 @@ export type CatalogPageContent = {
     clearFilters: string;
     empty: { title: string; description: string };
   };
-  search: { label: string; placeholder: string };
+  search: { label: string };
   pagination: { label: string; page: string; next: string };
   cta: {
     eyebrow: string;
@@ -201,4 +207,22 @@ export type FooterContent = {
   hoursLabel: string;
   legal: string;
   disclaimer: string;
+};
+
+export type SearchContent = {
+  trigger: string;
+  title: string;
+  placeholder: string;
+  close: string;
+  closeShort: string;
+  clear: string;
+  submit: string;
+  categoriesTitle: string;
+  productsTitle: string;
+  viewAll: string;
+  viewCatalog: string;
+  empty: string;
+  resultsOne: string;
+  resultsMany: string;
+  hint: string;
 };

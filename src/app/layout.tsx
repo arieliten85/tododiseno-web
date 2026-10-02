@@ -6,6 +6,10 @@ import { WhatsAppFloat } from "@/components/sections/whatsapp-float";
 import { layoutConfig } from "@/config/layout.config";
 import { defaultMetadata } from "@/config/seo.config";
 import { siteConfig } from "@/config/site.config";
+import { categories } from "@/content/categories.content";
+import { searchContent } from "@/content/search.content";
+import { createSearchText } from "@/features/catalog/lib/filter-products";
+import { getProducts } from "@/features/catalog/lib/product-queries";
 import { footerContent } from "@/content/footer.content";
 import { createLocalBusinessJsonLd } from "@/lib/seo/json-ld";
 import { createWhatsAppUrl } from "@/lib/whatsapp";
@@ -19,6 +23,22 @@ export default function RootLayout({
 }: Readonly<{ children: ReactNode }>) {
   const jsonLd = createLocalBusinessJsonLd(siteConfig);
   const instagram = siteConfig.socials.instagram;
+  const searchItems = getProducts().map((product, index) => ({
+    slug: product.slug,
+    name: product.visibleName,
+    searchText: createSearchText(
+      product.visibleName,
+      product.seoName,
+      product.description,
+    ),
+    category: product.category,
+    audience: product.audience,
+    order: index,
+    categoryLabel:
+      categories.find((category) => category.id === product.category)?.label ??
+      "",
+    image: { src: product.image.src },
+  }));
 
   return (
     <html
@@ -41,7 +61,12 @@ export default function RootLayout({
           brand={siteConfig.brand}
           logo={siteConfig.logo}
           navigation={layoutConfig.navigation}
-          searchHref="/catalogo/#buscar"
+          search={{
+            items: searchItems,
+            categories: categories.map(({ id, label }) => ({ id, label })),
+            content: searchContent,
+            catalogPath: "/catalogo/",
+          }}
           instagramHref={instagram}
         />
         <main id="contenido" className="flex-1">

@@ -1,7 +1,12 @@
 import Link from "next/link";
-import { InstagramIcon, SearchIcon } from "@/components/ui/icons";
+import { InstagramIcon } from "@/components/ui/icons";
 import { Container } from "@/components/ui/container";
 import { MediaImage } from "@/components/ui/media-image";
+import type { SearchContent } from "@/content/content.types";
+import {
+  SearchDialog,
+  type SearchItem,
+} from "@/features/search/components/search-dialog";
 import { HeaderNav } from "./header-nav";
 
 type HeaderProps = {
@@ -9,7 +14,12 @@ type HeaderProps = {
   brand: string;
   logo?: { src?: string; alt: string };
   navigation: Array<{ label: string; href: string }>;
-  searchHref: string;
+  search: {
+    items: SearchItem[];
+    categories: Array<{ id: string; label: string }>;
+    content: SearchContent;
+    catalogPath: string;
+  };
   instagramHref?: string;
 };
 
@@ -18,7 +28,7 @@ export function Header({
   brand,
   logo,
   navigation,
-  searchHref,
+  search,
   instagramHref,
 }: HeaderProps) {
   return (
@@ -56,13 +66,7 @@ export function Header({
         />
 
         <div className="flex items-center gap-1">
-          <Link
-            href={searchHref}
-            aria-label="Buscar en el catálogo"
-            className="text-accent-strong hover:bg-secondary inline-flex size-11 items-center justify-center rounded-full"
-          >
-            <SearchIcon className="size-5" />
-          </Link>
+          <SearchDialog {...search} />
           {instagramHref ? (
             <a
               href={instagramHref}

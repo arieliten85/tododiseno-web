@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { CtaPanel } from "@/components/sections/cta-panel";
 import { PageHero } from "@/components/sections/page-hero";
 import { Container } from "@/components/ui/container";
@@ -10,7 +11,10 @@ import {
   type CatalogBrowserItem,
 } from "@/features/catalog/components/catalog-browser";
 import { ProductCard } from "@/features/catalog/components/product-card";
-import { createSearchText } from "@/features/catalog/lib/filter-products";
+import {
+  createSearchText,
+  PAGE_SIZE,
+} from "@/features/catalog/lib/filter-products";
 import {
   getProductPath,
   getProducts,
@@ -59,12 +63,23 @@ export default function CatalogPage() {
         description={content.description}
       />
       <Container>
-        <CatalogBrowser
-          items={items}
-          categories={categories.map(({ id, label }) => ({ id, label }))}
-          audiences={audiences}
-          content={content}
-        />
+        <Suspense
+          fallback={
+            // HTML estático (SEO y primera pintura): primera página sin filtros.
+            <ul className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+              {items.slice(0, PAGE_SIZE).map((item) => (
+                <li key={item.slug}>{item.card}</li>
+              ))}
+            </ul>
+          }
+        >
+          <CatalogBrowser
+            items={items}
+            categories={categories.map(({ id, label }) => ({ id, label }))}
+            audiences={audiences}
+            content={content}
+          />
+        </Suspense>
       </Container>
       <CtaPanel
         eyebrow={content.cta.eyebrow}

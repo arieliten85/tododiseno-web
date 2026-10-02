@@ -1,14 +1,9 @@
 "use client";
 
-import {
-  useEffect,
-  useId,
-  useMemo,
-  useRef,
-  useState,
-  type ReactNode,
-} from "react";
-import { CloseIcon, FilterIcon, SearchIcon } from "@/components/ui/icons";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { CloseIcon, FilterIcon } from "@/components/ui/icons";
+import { SelectMenu } from "@/components/ui/select-menu";
 import { cn } from "@/lib/class-names";
 import type {
   AudienceId,
@@ -16,6 +11,7 @@ import type {
   CategoryId,
 } from "@/content/content.types";
 import {
+  facetCounts,
   filterEntries,
   paginate,
   type CatalogEntry,
@@ -38,104 +34,92 @@ function toggle<T>(current: ReadonlySet<T>, value: T) {
   return next;
 }
 
-const checkboxClass =
-  "border-border accent-accent-strong size-4 shrink-0 rounded border";
+const radioClass = "accent-accent-strong size-4 shrink-0";
 
-/**
- * Filtros, buscador, orden y paginado del catálogo, todo en el navegador.
- * Las tarjetas llegan ya renderizadas desde el servidor (HTML estático y SEO);
- * acá solo se decide cuáles mostrar.
- */
-export function CatalogBrowser({
-  items,
+function FilterOption({
+  name,
+  label,
+  count,
+  checked,
+  onSelect,
+}: {
+  name: string;
+  label: string;
+  count: number;
+  checked: boolean;
+  onSelect: () => void;
+}) {
+  return (
+    <label className="flex min-h-9 cursor-pointer items-center gap-3 text-sm">
+      <input
+        type="radio"
+        name={name}
+        className={radioClass}
+        checked={checked}
+        onChange={onSelect}
+      />
+      <span className="flex-1">{label}</span>
+      <span className="text-muted-foreground text-xs tabular-nums">
+        {count}
+      </span>
+    </label>
+  );
+}
+
+type FilterGroupsProps = {
+  idPrefix: string;
+  categories: Array<{ id: CategoryId; label: string }>;
+  audiences: Array<{ id: AudienceId; label: string }>;
+  /** Como mucho una ocasión y un destinatario a la vez. */
+  selectedCategory: CategoryId | null;
+  selectedAudience: AudienceId | null;
+  categoryCounts: Partial<Record<CategoryId, number>>;
+  audienceCounts: Partial<Record<AudienceId, number>>;
+  onSelectCategory: (id: CategoryId | null) => void;
+  onSelectAudience: (id: AudienceId | null) => void;
+  content: CatalogPageContent;
+};
+
+/** Grupos de filtros: se usan en la barra lateral (escritorio) y en el panel móvil. */
+function FilterGroups({
+  idPrefix,
   categories,
   audiences,
+  selectedCategory,
+  selectedAudience,
+  categoryCounts,
+  audienceCounts,
+  onSelectCategory,
+  onSelectAudience,
   content,
-}: CatalogBrowserProps) {
-  const [query, setQuery] = useState("");
-  const [selectedCategories, setSelectedCategories] = useState<
-    ReadonlySet<CategoryId>
-  >(new Set());
-  const [selectedAudiences, setSelectedAudiences] = useState<
-    ReadonlySet<AudienceId>
-  >(new Set());
-  const [sort, setSort] = useState<CatalogSort>("relevance");
-  const [page, setPage] = useState(1);
-  const [filtersOpen, setFiltersOpen] = useState(false);
-  const searchRef = useRef<HTMLInputElement>(null);
-  const resultsRef = useRef<HTMLDivElement>(null);
-  const baseId = useId();
-
-  useEffect(() => {
-    // Sincroniza con la URL (sistema externo): ?categoria=... filtra y #buscar enfoca el buscador.
-    const params = new URLSearchParams(window.location.search);
-    const initial = categories
-      .filter((category) => params.getAll("categoria").includes(category.id))
-      .map((category) => category.id);
-    if (initial.length > 0) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setSelectedCategories(new Set(initial));
-    }
-    if (window.location.hash === "#buscar") searchRef.current?.focus();
-  }, [categories]);
-
-  const results = useMemo(
-    () =>
-      filterEntries(items, {
-        query,
-        categories: selectedCategories,
-        audiences: selectedAudiences,
-        sort,
-      }),
-    [items, query, selectedCategories, selectedAudiences, sort],
-  );
-
-  const pagination = paginate(results, page);
-  const hasFilters =
-    selectedCategories.size > 0 ||
-    selectedAudiences.size > 0 ||
-    query.trim() !== "";
-
-  const categoryLabel = (id: CategoryId) =>
-    categories.find((c) => c.id === id)?.label ?? id;
-  const audienceLabel = (id: AudienceId) =>
-    audiences.find((a) => a.id === id)?.label ?? id;
-
-  const resetFilters = () => {
-    setQuery("");
-    setSelectedCategories(new Set());
-    setSelectedAudiences(new Set());
-    setPage(1);
-  };
-
-  const goToPage = (next: number) => {
-    setPage(next);
-    resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
-  const filtersPanel = (
+}: FilterGroupsProps) {
+  const sum = (counts: Partial<Record<string, number>>) =>
+    Object.values(counts).reduce<number>((total, n) => total + (n ?? 0), 0);
+  return (
     <div className="space-y-6">
       <fieldset>
         <legend className="text-muted-foreground mb-3 text-[0.7rem] font-bold tracking-[0.2em] uppercase">
           {content.filters.occasion}
         </legend>
-        <ul className="space-y-2.5">
+        <ul className="space-y-1">
+          <li>
+            <FilterOption
+              name={`${idPrefix}-ocasion`}
+              label={content.filters.allOccasions}
+              count={sum(categoryCounts)}
+              checked={selectedCategory === null}
+              onSelect={() => onSelectCategory(null)}
+            />
+          </li>
           {categories.map((category) => (
             <li key={category.id}>
-              <label className="flex min-h-8 cursor-pointer items-center gap-3 text-sm">
-                <input
-                  type="checkbox"
-                  className={checkboxClass}
-                  checked={selectedCategories.has(category.id)}
-                  onChange={() => {
-                    setSelectedCategories((current) =>
-                      toggle(current, category.id),
-                    );
-                    setPage(1);
-                  }}
-                />
-                {category.label}
-              </label>
+              <FilterOption
+                name={`${idPrefix}-ocasion`}
+                label={category.label}
+                count={categoryCounts[category.id] ?? 0}
+                checked={selectedCategory === category.id}
+                onSelect={() => onSelectCategory(category.id)}
+              />
             </li>
           ))}
         </ul>
@@ -144,23 +128,25 @@ export function CatalogBrowser({
         <legend className="text-muted-foreground mb-3 text-[0.7rem] font-bold tracking-[0.2em] uppercase">
           {content.filters.audience}
         </legend>
-        <ul className="space-y-2.5">
+        <ul className="space-y-1">
+          <li>
+            <FilterOption
+              name={`${idPrefix}-destinatario`}
+              label={content.filters.allAudiences}
+              count={sum(audienceCounts)}
+              checked={selectedAudience === null}
+              onSelect={() => onSelectAudience(null)}
+            />
+          </li>
           {audiences.map((audience) => (
             <li key={audience.id}>
-              <label className="flex min-h-8 cursor-pointer items-center gap-3 text-sm">
-                <input
-                  type="checkbox"
-                  className={checkboxClass}
-                  checked={selectedAudiences.has(audience.id)}
-                  onChange={() => {
-                    setSelectedAudiences((current) =>
-                      toggle(current, audience.id),
-                    );
-                    setPage(1);
-                  }}
-                />
-                {audience.label}
-              </label>
+              <FilterOption
+                name={`${idPrefix}-destinatario`}
+                label={audience.label}
+                count={audienceCounts[audience.id] ?? 0}
+                checked={selectedAudience === audience.id}
+                onSelect={() => onSelectAudience(audience.id)}
+              />
             </li>
           ))}
         </ul>
@@ -175,29 +161,173 @@ export function CatalogBrowser({
       </div>
     </div>
   );
+}
+
+/**
+ * Filtros, buscador, orden y paginado del catálogo, todo en el navegador.
+ * Las tarjetas llegan ya renderizadas desde el servidor (HTML estático y SEO);
+ * acá solo se decide cuáles mostrar.
+ */
+export function CatalogBrowser({
+  items,
+  categories,
+  audiences,
+  content,
+}: CatalogBrowserProps) {
+  // La búsqueda vive en la URL (?q=) y se hace desde el buscador del header.
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const query = searchParams.get("q") ?? "";
+  const [sort, setSort] = useState<CatalogSort>("relevance");
+  // Móvil: el panel de filtros edita un borrador que se aplica con "Ver N productos".
+  const [filtersOpen, setFiltersOpen] = useState(false);
+  const [draftCategories, setDraftCategories] = useState<
+    ReadonlySet<CategoryId>
+  >(new Set());
+  const [draftAudiences, setDraftAudiences] = useState<ReadonlySet<AudienceId>>(
+    new Set(),
+  );
+  const sheetRef = useRef<HTMLDialogElement>(null);
+  const resultsRef = useRef<HTMLDivElement>(null);
+
+  // La URL es la única fuente de verdad de los filtros: ?q=&categoria=&destinatario=
+  // (se puede recargar, compartir y volver atrás sin perder lo elegido).
+  const selectedCategories = useMemo<ReadonlySet<CategoryId>>(() => {
+    const found = categories.find(
+      (c) => c.id === searchParams.get("categoria"),
+    );
+    return new Set(found ? [found.id] : []);
+  }, [searchParams, categories]);
+  const selectedAudiences = useMemo<ReadonlySet<AudienceId>>(() => {
+    const found = audiences.find(
+      (a) => a.id === searchParams.get("destinatario"),
+    );
+    return new Set(found ? [found.id] : []);
+  }, [searchParams, audiences]);
+
+  const updateUrl = (mutate: (params: URLSearchParams) => void) => {
+    const params = new URLSearchParams(searchParams.toString());
+    mutate(params);
+    const next = params.toString();
+    router.replace(next ? `${pathname}?${next}` : pathname, { scroll: false });
+  };
+  const setFacet = (
+    key: "categoria" | "destinatario",
+    values: Iterable<string>,
+  ) =>
+    updateUrl((params) => {
+      params.delete(key);
+      for (const value of values) params.append(key, value);
+    });
+
+  // La página vuelve a 1 cuando cambia cualquier filtro, la búsqueda o el orden.
+  const pageKey = `${searchParams.toString()}|${sort}`;
+  const [pageState, setPageState] = useState({ key: pageKey, page: 1 });
+  const page = pageState.key === pageKey ? pageState.page : 1;
+
+  const results = useMemo(
+    () =>
+      filterEntries(items, {
+        query,
+        categories: selectedCategories,
+        audiences: selectedAudiences,
+        sort,
+      }),
+    [items, query, selectedCategories, selectedAudiences, sort],
+  );
+
+  // Cantidad fija por opción (solo depende de la búsqueda): no cambia al elegir otras.
+  const optionCounts = useMemo(
+    () =>
+      facetCounts(items, {
+        query,
+        categories: new Set(),
+        audiences: new Set(),
+      }),
+    [items, query],
+  );
+  const draftTotal = useMemo(
+    () =>
+      filterEntries(items, {
+        query,
+        categories: draftCategories,
+        audiences: draftAudiences,
+        sort,
+      }).length,
+    [items, query, draftCategories, draftAudiences, sort],
+  );
+
+  useEffect(() => {
+    const dialog = sheetRef.current;
+    if (!dialog) return;
+    if (filtersOpen && !dialog.open) dialog.showModal();
+    if (!filtersOpen && dialog.open) dialog.close();
+  }, [filtersOpen]);
+
+  const openFilters = () => {
+    setDraftCategories(selectedCategories);
+    setDraftAudiences(selectedAudiences);
+    setFiltersOpen(true);
+  };
+
+  const applyFilters = () => {
+    updateUrl((params) => {
+      params.delete("categoria");
+      params.delete("destinatario");
+      for (const id of draftCategories) params.append("categoria", id);
+      for (const id of draftAudiences) params.append("destinatario", id);
+    });
+    setFiltersOpen(false);
+    resultsRef.current?.scrollIntoView({ block: "start" });
+  };
+
+  const pagination = paginate(results, page);
+  const hasFilters =
+    selectedCategories.size > 0 ||
+    selectedAudiences.size > 0 ||
+    query.trim() !== "";
+
+  const categoryLabel = (id: CategoryId) =>
+    categories.find((c) => c.id === id)?.label ?? id;
+  const audienceLabel = (id: AudienceId) =>
+    audiences.find((a) => a.id === id)?.label ?? id;
+
+  const clearQuery = () => updateUrl((params) => params.delete("q"));
+
+  const resetFilters = () =>
+    updateUrl((params) => {
+      params.delete("q");
+      params.delete("categoria");
+      params.delete("destinatario");
+    });
+
+  const goToPage = (next: number) => {
+    setPageState({ key: pageKey, page: next });
+    resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   return (
     <div className="grid gap-8 lg:grid-cols-[16rem_1fr]">
-      <aside aria-label={content.filters.title}>
-        <button
-          type="button"
-          className="bg-surface border-border mb-4 inline-flex min-h-11 w-full items-center justify-between gap-2 rounded-full border px-5 text-sm font-semibold lg:hidden"
-          aria-expanded={filtersOpen}
-          aria-controls={`${baseId}-filters`}
-          onClick={() => setFiltersOpen((value) => !value)}
-        >
-          <span className="flex items-center gap-2">
-            <FilterIcon className="size-4" />
-            {content.filters.title}
+      <button
+        type="button"
+        className="bg-surface border-border inline-flex min-h-11 w-full items-center justify-between gap-2 rounded-full border px-5 text-sm font-semibold lg:hidden"
+        aria-haspopup="dialog"
+        onClick={openFilters}
+      >
+        <span className="flex items-center gap-2">
+          <FilterIcon className="size-4" />
+          {content.filters.title}
+        </span>
+        {selectedCategories.size + selectedAudiences.size > 0 ? (
+          <span className="bg-primary text-primary-foreground inline-flex size-6 items-center justify-center rounded-full text-xs">
+            {selectedCategories.size + selectedAudiences.size}
           </span>
-        </button>
-        <div
-          id={`${baseId}-filters`}
-          className={cn(
-            "bg-surface border-border rounded-card border p-5 shadow-sm lg:sticky lg:top-28 lg:block",
-            filtersOpen ? "block" : "hidden",
-          )}
-        >
+        ) : null}
+      </button>
+
+      <aside aria-label={content.filters.title} className="hidden lg:block">
+        <div className="bg-surface border-border rounded-card sticky top-28 border p-5 shadow-sm">
           <div className="mb-5 flex items-center justify-between">
             <h2 className="font-heading flex items-center gap-2 text-lg font-semibold">
               <FilterIcon className="text-accent-strong size-4" />
@@ -213,9 +343,93 @@ export function CatalogBrowser({
               </button>
             ) : null}
           </div>
-          {filtersPanel}
+          <FilterGroups
+            idPrefix="lateral"
+            categories={categories}
+            audiences={audiences}
+            selectedCategory={[...selectedCategories][0] ?? null}
+            selectedAudience={[...selectedAudiences][0] ?? null}
+            categoryCounts={optionCounts.categories}
+            audienceCounts={optionCounts.audiences}
+            onSelectCategory={(id) => setFacet("categoria", id ? [id] : [])}
+            onSelectAudience={(id) => setFacet("destinatario", id ? [id] : [])}
+            content={content}
+          />
         </div>
       </aside>
+
+      <dialog
+        ref={sheetRef}
+        aria-label={content.filters.title}
+        onClose={() => setFiltersOpen(false)}
+        onClick={(event) => {
+          if (event.target === sheetRef.current) setFiltersOpen(false);
+        }}
+        className="bg-background text-foreground m-0 hidden h-dvh max-h-none w-dvw max-w-none flex-col p-0 backdrop:bg-black/40 open:flex lg:hidden!"
+      >
+        <div className="border-border flex items-center justify-between border-b px-5 py-3">
+          <h2 className="font-heading flex items-center gap-2 text-lg font-semibold">
+            <FilterIcon className="text-accent-strong size-4" />
+            {content.filters.title}
+          </h2>
+          <button
+            type="button"
+            aria-label={content.filters.close}
+            onClick={() => setFiltersOpen(false)}
+            className="hover:bg-secondary inline-flex size-11 items-center justify-center rounded-full"
+          >
+            <CloseIcon className="size-5" />
+          </button>
+        </div>
+        <div className="flex-1 overflow-y-auto overscroll-contain px-5 py-5">
+          <FilterGroups
+            idPrefix="panel"
+            categories={categories}
+            audiences={audiences}
+            selectedCategory={[...draftCategories][0] ?? null}
+            selectedAudience={[...draftAudiences][0] ?? null}
+            categoryCounts={optionCounts.categories}
+            audienceCounts={optionCounts.audiences}
+            onSelectCategory={(id) =>
+              setDraftCategories(new Set(id ? [id] : []))
+            }
+            onSelectAudience={(id) =>
+              setDraftAudiences(new Set(id ? [id] : []))
+            }
+            content={content}
+          />
+        </div>
+        <div className="border-border flex items-center gap-3 border-t px-5 py-3">
+          {draftCategories.size + draftAudiences.size > 0 ? (
+            <button
+              type="button"
+              onClick={() => {
+                // Limpiar es inmediato: vacía el borrador y la URL, así no queda estado viejo.
+                setDraftCategories(new Set());
+                setDraftAudiences(new Set());
+                updateUrl((params) => {
+                  params.delete("categoria");
+                  params.delete("destinatario");
+                });
+              }}
+              className="text-accent-strong min-h-11 px-2 text-sm font-semibold underline underline-offset-4"
+            >
+              {content.filters.clear}
+            </button>
+          ) : null}
+          <button
+            type="button"
+            onClick={applyFilters}
+            className="bg-primary text-primary-foreground inline-flex min-h-11 flex-1 items-center justify-center rounded-full px-6 text-sm font-semibold"
+          >
+            {draftTotal === 0
+              ? content.filters.applyNone
+              : draftTotal === 1
+                ? content.filters.applyOne
+                : `${content.filters.applyMany.replace("{n}", String(draftTotal))}`}
+          </button>
+        </div>
+      </dialog>
 
       <div ref={resultsRef} className="scroll-mt-28">
         <div className="bg-surface border-border rounded-card mb-4 flex flex-wrap items-center justify-between gap-4 border px-5 py-3 shadow-sm">
@@ -225,38 +439,17 @@ export function CatalogBrowser({
               : `${results.length} ${content.results.countMany}`}
           </p>
           <div className="flex flex-wrap items-center gap-3">
-            <label className="relative">
-              <span className="sr-only">{content.search.label}</span>
-              <SearchIcon className="text-muted-foreground pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2" />
-              <input
-                ref={searchRef}
-                id="buscar"
-                type="search"
-                value={query}
-                placeholder={content.search.placeholder}
-                onChange={(event) => {
-                  setQuery(event.target.value);
-                  setPage(1);
-                }}
-                className="border-border bg-background placeholder:text-muted-foreground min-h-10 w-48 rounded-full border pr-4 pl-9 text-sm"
-              />
-            </label>
-            <label className="flex items-center gap-2 text-sm">
-              <span className="text-muted-foreground">
+            <div className="flex items-center gap-2 text-sm">
+              <span className="text-muted-foreground whitespace-nowrap">
                 {content.results.sortLabel}
               </span>
-              <select
+              <SelectMenu
+                label={content.results.sortLabel}
                 value={sort}
-                onChange={(event) => setSort(event.target.value as CatalogSort)}
-                className="bg-secondary min-h-10 rounded-full border-0 px-4 text-sm font-medium"
-              >
-                {content.results.sortOptions.map((option) => (
-                  <option key={option.id} value={option.id}>
-                    {option.label}
-                  </option>
-                ))}
-              </select>
-            </label>
+                options={content.results.sortOptions}
+                onChange={setSort}
+              />
+            </div>
           </div>
         </div>
 
@@ -265,13 +458,23 @@ export function CatalogBrowser({
             <span className="text-muted-foreground">
               {content.results.activeFilters}
             </span>
+            {query.trim() ? (
+              <button
+                type="button"
+                onClick={clearQuery}
+                className="bg-secondary text-secondary-foreground inline-flex min-h-8 items-center gap-1.5 rounded-full px-3 font-semibold"
+                aria-label={`${content.results.removeFilter} ${content.search.label}: ${query}`}
+              >
+                {content.search.label}: “{query}”
+                <CloseIcon className="size-3" />
+              </button>
+            ) : null}
             {[...selectedCategories].map((id) => (
               <button
                 key={id}
                 type="button"
                 onClick={() => {
-                  setSelectedCategories((current) => toggle(current, id));
-                  setPage(1);
+                  setFacet("categoria", toggle(selectedCategories, id));
                 }}
                 className="bg-secondary text-secondary-foreground inline-flex min-h-8 items-center gap-1.5 rounded-full px-3 font-semibold"
                 aria-label={`${content.results.removeFilter} ${categoryLabel(id)}`}
@@ -285,8 +488,7 @@ export function CatalogBrowser({
                 key={id}
                 type="button"
                 onClick={() => {
-                  setSelectedAudiences((current) => toggle(current, id));
-                  setPage(1);
+                  setFacet("destinatario", toggle(selectedAudiences, id));
                 }}
                 className="bg-secondary text-secondary-foreground inline-flex min-h-8 items-center gap-1.5 rounded-full px-3 font-semibold"
                 aria-label={`${content.results.removeFilter} ${audienceLabel(id)}`}
