@@ -1,6 +1,6 @@
 ---
 name: frontend-quality
-description: Review Simple Sushi frontend quality before finishing changes.
+description: Review Todo Diseño frontend quality before finishing changes.
 ---
 
 # Frontend quality

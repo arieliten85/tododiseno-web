@@ -1,18 +1,31 @@
 export type SiteContact = {
   email?: string;
-  phone?: string;
+  /** Número para mostrar, tal como se lee en pantalla. */
+  phoneDisplay?: string;
+  /** Número internacional sin signos, para enlaces wa.me. */
   whatsapp?: string;
+  /** Usuario de Instagram para mostrar, con arroba. */
+  instagramHandle?: string;
 };
 
 export type SiteSocials = Partial<
   Record<"instagram" | "facebook" | "tiktok" | "x", string>
 >;
 
+export type BusinessHours = {
+  /** Etiqueta del tramo, por ejemplo "Lun a jue". */
+  days: string;
+  /** Franjas horarias del tramo, por ejemplo "10:00 a 12:00". */
+  ranges: string[];
+};
+
 export type BusinessInfo = {
   legalName?: string;
   address?: string;
-  openingHours?: string[];
-  servesCuisine?: string;
+  /** Zona usada en textos cortos, por ejemplo "Lanús Oeste". */
+  area?: string;
+  hours: BusinessHours[];
+  mapQuery?: string;
 };
 
 export type SiteConfig = {
@@ -24,7 +37,6 @@ export type SiteConfig = {
   };
   url?: string;
   locale: "es" | "es-AR" | "es-UY" | "es-CL" | "es-MX";
-  currency?: "ARS" | "UYU" | "CLP" | "MXN" | "USD";
   contact: SiteContact;
   socials: SiteSocials;
   business: BusinessInfo;
@@ -36,7 +48,10 @@ export type SeoConfig = {
   keywords: string[];
 };
 
+export type NavigationItem = { label: string; href: string };
+
 export type LayoutConfig = {
-  navigation: Array<{ label: string; href: string }>;
+  navigation: NavigationItem[];
+  footerNavigation: NavigationItem[];
   cta: { label: string; href: string };
 };

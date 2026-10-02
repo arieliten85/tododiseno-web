@@ -1,6 +1,6 @@
-# Simple Sushi architecture
+# Todo Diseño architecture
 
-Simple Sushi is a reusable Next.js starter for small production websites. It is not a page builder, CMS, multi-tenant platform, marketplace, or backend application.
+Todo Diseño is a Next.js static site built from a reusable starter for small production websites. It is not a page builder, CMS, multi-tenant platform, marketplace, or backend application.
 
 Core idea:
 

@@ -4,27 +4,34 @@ import { siteConfig } from "./site.config";
 import { siteUrl } from "./url.config";
 
 export const seoConfig = {
-  title: "Sushi fresco para pedidos simples",
+  title: "Souvenirs, deco e impresos personalizados en Lanús",
   description:
-    "Sitio inicial para una tienda local de sushi con contenido editable, SEO server-rendered y estructura lista para personalizar.",
-  keywords: ["sushi", "tienda local", "pedidos"],
+    "Diseñamos e imprimimos souvenirs, decoración y detalles personalizados para comuniones, bautismos, cumpleaños temáticos, baby showers y Navidad. Local en Lanús Oeste y envíos a todo el país.",
+  keywords: [
+    "souvenirs personalizados",
+    "cumpleaños temáticos",
+    "souvenirs comunión",
+    "souvenirs bautismo",
+    "baby shower",
+    "diseño e impresión",
+    "Lanús",
+  ],
 } satisfies SeoConfig;
 
 export const defaultMetadata = {
   ...(siteUrl ? { metadataBase: new URL(siteUrl) } : {}),
   title: {
-    default: seoConfig.title,
+    default: `${siteConfig.name} | ${seoConfig.title}`,
     template: `%s | ${siteConfig.name}`,
   },
   description: seoConfig.description,
   keywords: seoConfig.keywords,
-  ...(siteUrl ? { alternates: { canonical: "/" } } : {}),
   openGraph: {
     title: seoConfig.title,
     description: seoConfig.description,
     ...(siteUrl ? { url: siteUrl } : {}),
     siteName: siteConfig.name,
-    locale: siteConfig.locale,
+    locale: "es_AR",
     type: "website",
   },
   twitter: {

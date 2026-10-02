@@ -1,6 +1,6 @@
 ---
 name: nextjs-best-practices
-description: Apply Simple Sushi Next.js App Router standards.
+description: Apply Todo Diseño Next.js App Router standards.
 ---
 
 # Next.js best practices

@@ -17,3 +17,31 @@ body {
   outline: 3px solid var(--accent);
   outline-offset: 3px;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Festón de papel: borde ondulado decorativo sobre el footer. */
+.scallop-top::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: -0.7rem;
+  height: 0.75rem;
+  background-image: radial-gradient(
+    circle at 50% 100%,
+    var(--muted) 0.45rem,
+    transparent 0.5rem
+  );
+  background-size: 1.5rem 0.75rem;
+  background-repeat: repeat-x;
+  pointer-events: none;
+}

@@ -1,7 +1,7 @@
 export const ogTheme = {
   colors: {
-    background: "#fffaf5",
-    foreground: "#1f1a17",
-    accent: "#b84a3a",
+    background: "#fdf8f3",
+    foreground: "#2e241e",
+    accent: "#c98a83",
   },
 } as const;

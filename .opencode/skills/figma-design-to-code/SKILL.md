@@ -1,6 +1,6 @@
 ---
 name: figma-design-to-code
-description: Convert future Figma sections into Simple Sushi code safely.
+description: Convert future Figma sections into Todo Diseño code safely.
 ---
 
 # Figma design to code

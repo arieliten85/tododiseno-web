@@ -1,13 +1,19 @@
-import { Inter, Playfair_Display } from "next/font/google";
+import localFont from "next/font/local";
 
-export const headingFont = Playfair_Display({
-  subsets: ["latin"],
+// Fuentes autoalojadas (variables, subconjunto latino): el build no depende de
+// Google Fonts y no hay pedidos externos desde el navegador.
+export const headingFont = localFont({
+  src: "./fonts/playfair-display-latin-wght-normal.woff2",
   variable: "--font-heading-family",
+  weight: "400 900",
   display: "swap",
+  fallback: ["Georgia", "serif"],
 });
 
-export const bodyFont = Inter({
-  subsets: ["latin"],
+export const bodyFont = localFont({
+  src: "./fonts/quicksand-latin-wght-normal.woff2",
   variable: "--font-body-family",
+  weight: "300 700",
   display: "swap",
+  fallback: ["system-ui", "sans-serif"],
 });

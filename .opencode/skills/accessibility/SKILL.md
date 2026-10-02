@@ -1,6 +1,6 @@
 ---
 name: accessibility
-description: Check Simple Sushi frontend accessibility basics.
+description: Check Todo Diseño frontend accessibility basics.
 ---
 
 # Accessibility

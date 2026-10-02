@@ -1,45 +1,95 @@
-import { Faq } from "@/components/sections/faq";
-import { FinalCta } from "@/components/sections/final-cta";
-import { Flavors } from "@/components/sections/flavors";
-import { Footer } from "@/components/sections/footer";
-import { Header } from "@/components/sections/header";
+import type { Metadata } from "next";
+import { CategoryGrid } from "@/components/sections/category-grid";
+import { CtaPanel } from "@/components/sections/cta-panel";
 import { Hero } from "@/components/sections/hero";
-import { Process } from "@/components/sections/process";
-import { Quality } from "@/components/sections/quality";
-import { layoutConfig } from "@/config/layout.config";
+import { Testimonials } from "@/components/sections/testimonials";
+import { ValuesStrip } from "@/components/sections/values-strip";
+import { Container } from "@/components/ui/container";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { seoConfig } from "@/config/seo.config";
 import { siteConfig } from "@/config/site.config";
-import { catalogContent } from "@/content/catalog.content";
-import { faqContent } from "@/content/faq.content";
+import { categories } from "@/content/categories.content";
 import { homeContent } from "@/content/home.content";
+import { ProductCard } from "@/features/catalog/components/product-card";
+import {
+  getFeaturedProducts,
+  getProductPath,
+} from "@/features/catalog/lib/product-queries";
+import { createWhatsAppUrl } from "@/lib/whatsapp";
+
+export const metadata: Metadata = {
+  title: { absolute: `${siteConfig.name} | ${seoConfig.title}` },
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
-  const socials = Object.entries(
-    siteConfig.socials as Record<string, string | undefined>,
-  ).flatMap(([label, href]) => (href ? [{ label, href }] : []));
-  const formatPrice = (price?: number) =>
-    typeof price === "number" && siteConfig.currency
-      ? new Intl.NumberFormat(siteConfig.locale, {
-          style: "currency",
-          currency: siteConfig.currency,
-        }).format(price)
-      : "Precio a confirmar";
+  const featured = getFeaturedProducts();
+  const {
+    hero,
+    categories: categoriesIntro,
+    featured: featuredIntro,
+    values,
+    testimonials,
+    cta,
+  } = homeContent;
 
   return (
     <>
-      <Header
-        name={siteConfig.name}
-        navigation={layoutConfig.navigation}
-        cta={layoutConfig.cta}
+      <Hero {...hero} />
+
+      <CategoryGrid
+        {...categoriesIntro}
+        eyebrowLabel="Catálogo"
+        items={categories.map((category) => ({
+          id: category.id,
+          label: category.label,
+          href: `/catalogo/?categoria=${category.id}`,
+          image: category.image,
+        }))}
       />
-      <main>
-        <Hero {...homeContent.hero} />
-        <Quality {...homeContent.quality} />
-        <Flavors {...catalogContent} formatPrice={formatPrice} />
-        <Process {...homeContent.process} />
-        <Faq {...faqContent} />
-        <FinalCta {...homeContent.finalCta} />
-      </main>
-      <Footer name={siteConfig.name} socials={socials} />
+
+      <section className="bg-secondary/60 py-section-md">
+        <Container>
+          <SectionHeading
+            eyebrow={featuredIntro.eyebrow}
+            title={featuredIntro.title}
+            description={featuredIntro.description}
+          />
+          <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {featured.map((product) => (
+              <li key={product.slug}>
+                <ProductCard
+                  href={getProductPath(product.slug)}
+                  name={product.visibleName}
+                  image={product.image}
+                  actionLabel={featuredIntro.cardAction}
+                />
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </section>
+
+      <ValuesStrip items={values} />
+      <Testimonials {...testimonials} />
+      <CtaPanel
+        eyebrow={cta.eyebrow}
+        title={cta.title}
+        description={cta.description}
+        chips={cta.chips}
+        action={{
+          label: cta.action.label,
+          href: createWhatsAppUrl(
+            siteConfig.contact.whatsapp,
+            cta.action.message,
+          ),
+        }}
+        secondaryAction={cta.secondaryAction}
+        reassurance={cta.reassurance}
+        badge={cta.badge}
+        image={cta.image}
+        imageSide="left"
+      />
     </>
   );
 }

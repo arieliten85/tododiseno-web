@@ -42,3 +42,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# imágenes optimizadas (se regeneran con `bun run images`)
+/public/_img/

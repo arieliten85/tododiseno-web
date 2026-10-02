@@ -1,11 +1,14 @@
 {
-  "name": "simple-sushi",
+  "name": "todo-diseno-web",
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "images": "bun scripts/optimize-images.mjs",
+    "predev": "bun run images",
     "dev": "next dev",
+    "prebuild": "bun run images",
     "build": "next build",
-    "start": "next start",
+    "start": "bunx serve out",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",

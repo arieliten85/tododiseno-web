@@ -2,9 +2,16 @@ import type { LayoutConfig } from "./config.types";
 
 export const layoutConfig = {
   navigation: [
-    { label: "Calidad", href: "#calidad" },
-    { label: "Sabores", href: "#sabores" },
-    { label: "FAQ", href: "#faq" },
+    { label: "Inicio", href: "/" },
+    { label: "Catálogo", href: "/catalogo" },
+    { label: "Sobre mí", href: "/sobre-mi" },
+    { label: "Contacto", href: "/contacto" },
   ],
-  cta: { label: "Ver opciones", href: "#sabores" },
+  footerNavigation: [
+    { label: "Inicio", href: "/" },
+    { label: "Catálogo", href: "/catalogo" },
+    { label: "Sobre mí", href: "/sobre-mi" },
+    { label: "Contacto", href: "/contacto" },
+  ],
+  cta: { label: "Ver catálogo", href: "/catalogo" },
 } satisfies LayoutConfig;

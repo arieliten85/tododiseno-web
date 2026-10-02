@@ -2,64 +2,93 @@ import type { HomeContent } from "./content.types";
 
 export const homeContent = {
   hero: {
-    eyebrow: "Una experiencia clara y profesional",
-    title: "Una base flexible para presentar tu negocio.",
+    eyebrow: "DETALLES PARA MOMENTOS ESPECIALES",
+    title: "Cada detalle, pensado para tu celebración",
     description:
-      "Una estructura pensada para adaptarse a diferentes marcas, contenidos y estilos sin tener que reconstruir la interfaz.",
-    primaryAction: { label: "Conocer más", href: "#contenido" },
-    secondaryAction: { label: "Cómo funciona", href: "#proceso" },
+      "Souvenirs, deco e impresos personalizados para comuniones, cumpleaños infantiles, bautismos y baby showers. Diseños hechos a medida en Lanús, con impresión de alta calidad.",
+    action: { label: "Ver catálogo", href: "/catalogo" },
+    image: {
+      src: "/brand/hero/mesa-de-souvenirs.jpg",
+      alt: "Mesa con cajitas y souvenirs personalizados en tonos rosados",
+    },
   },
-
-  quality: {
-    eyebrow: "Propuesta",
-    title: "Una estructura preparada para comunicar valor desde el primer vistazo.",
+  categories: {
+    eyebrow: "TEMÁTICAS ESPECIALES",
+    title: "Encontrá lo que buscás",
     description:
-      "Cada sección puede adaptarse al contenido, identidad y necesidades de cada negocio.",
+      "Diseñamos piezas adaptadas al estilo y la atmósfera de cada ocasión.",
+  },
+  featured: {
+    eyebrow: "LOS MÁS ELEGIDOS",
+    title: "Trabajos recientes",
+    description: "Algunos de los pedidos que salieron del local últimamente.",
+    cardAction: "Ver detalles",
+  },
+  values: [
+    {
+      icon: "design",
+      title: "Diseños personalizados",
+      description:
+        "Cada pieza se adapta al nombre, la temática y los colores de tu evento.",
+    },
+    {
+      icon: "chat",
+      title: "Atención por WhatsApp",
+      description:
+        "Te acompañamos en todo el proceso, desde la idea hasta la entrega.",
+    },
+    {
+      icon: "pin",
+      title: "Retiro en Lanús o envío",
+      description:
+        "Retirás sin costo en el local, o enviamos por encomienda a todo el país.",
+    },
+  ],
+  testimonials: {
+    eyebrow: "EXPERIENCIAS REALES",
+    title: "Lo que dicen nuestras clientas",
+    description:
+      "La mayor satisfacción es acompañar momentos que quedan en la memoria para siempre.",
     items: [
       {
-        title: "Contenido flexible",
-        description:
-          "Los textos y datos pueden actualizarse sin modificar la estructura visual.",
+        id: "testimonio-01",
+        image: {
+          src: "/brand/testimonials/testimonio-01.jpg",
+          alt: "Captura de un mensaje de una clienta agradeciendo su pedido",
+        },
       },
       {
-        title: "Identidad adaptable",
-        description:
-          "Colores, tipografías, imágenes y estilos pueden personalizarse para cada marca.",
+        id: "testimonio-02",
+        image: {
+          src: "/brand/testimonials/testimonio-02.jpg",
+          alt: "Captura de un mensaje de una clienta contenta con sus souvenirs",
+        },
       },
       {
-        title: "Base consistente",
-        description:
-          "La estructura mantiene una experiencia clara, ordenada y fácil de recorrer.",
+        id: "testimonio-03",
+        image: {
+          src: "/brand/testimonials/testimonio-03.jpg",
+          alt: "Captura de una conversación de una clienta sobre su celebración",
+        },
       },
     ],
   },
-
-  process: {
-    eyebrow: "Proceso",
-    title: "Una base lista para adaptarse a cada proyecto.",
-    items: [
-      {
-        title: "Definir identidad",
-        description:
-          "Configura la marca, el estilo visual y la información principal.",
-      },
-      {
-        title: "Cargar contenido",
-        description:
-          "Personaliza textos, imágenes, secciones y llamadas a la acción.",
-      },
-      {
-        title: "Publicar y evolucionar",
-        description:
-          "La estructura queda preparada para crecer según las necesidades del proyecto.",
-      },
-    ],
-  },
-
-  finalCta: {
-    title: "Una base preparada para tu próxima idea.",
-    description:
-      "Personaliza la identidad, el contenido y los recursos visuales para adaptar la experiencia a cada negocio.",
-    action: { label: "Explorar contenido", href: "#contenido" },
+  cta: {
+    eyebrow: "PEDIDOS PERSONALIZADOS",
+    title: "¿Tenés una idea en mente?",
+    description: "Contanos cómo te imaginás tu evento y lo armamos juntos.",
+    chips: ["Asesoramiento personalizado", "Boceto y coordinación previa"],
+    action: {
+      label: "Escribinos por WhatsApp",
+      message:
+        "Hola Florencia! Estoy preparando un evento y quiero consultarte por una idea.",
+    },
+    secondaryAction: { label: "Ver catálogo", href: "/catalogo" },
+    reassurance: "Respondemos por WhatsApp en el día.",
+    badge: "Local en Lanús Oeste",
+    image: {
+      src: "/brand/about/vidriera-del-local.jpg",
+      alt: "Vidriera del local con souvenirs y decoraciones armadas",
+    },
   },
 } satisfies HomeContent;

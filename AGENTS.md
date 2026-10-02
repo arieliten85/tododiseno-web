@@ -8,7 +8,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 <!-- END:nextjs-agent-rules -->
 
-# Simple Sushi repository rules
+# Todo Diseño repository rules
 
 La estructura y los componentes son código.
 La identidad del negocio es configuración.
