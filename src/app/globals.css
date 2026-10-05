@@ -29,19 +29,31 @@ body {
   }
 }
 
-/* Festón de papel: borde ondulado decorativo sobre el footer. */
-.scallop-top::before {
-  content: "";
-  position: absolute;
-  inset-inline: 0;
-  top: -0.7rem;
-  height: 0.75rem;
-  background-image: radial-gradient(
-    circle at 50% 100%,
-    var(--muted) 0.45rem,
-    transparent 0.5rem
+/*
+ * Velo del hero: funde la foto con el crema para que el texto se lea siempre.
+ * Mobile: velo parejo sobre toda la foto, con el texto centrado.
+ * Escritorio: la foto es el fondo y el velo es opaco a la izquierda (texto).
+ */
+.hero-veil {
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--veil) 78%, transparent) 0%,
+    color-mix(in srgb, var(--veil) 60%, transparent) 50%,
+    color-mix(in srgb, var(--veil) 70%, transparent) 100%
   );
-  background-size: 1.5rem 0.75rem;
-  background-repeat: repeat-x;
-  pointer-events: none;
+}
+
+@media (min-width: 64rem) {
+  .hero-veil {
+    background: linear-gradient(
+      to right,
+      var(--veil) 0%,
+      var(--veil) 32%,
+      color-mix(in srgb, var(--veil) 85%, transparent) 45%,
+      color-mix(in srgb, var(--veil) 72%, transparent) 60%,
+      color-mix(in srgb, var(--veil) 55%, transparent) 75%,
+      color-mix(in srgb, var(--veil) 40%, transparent) 90%,
+      color-mix(in srgb, var(--veil) 38%, transparent) 100%
+    );
+  }
 }

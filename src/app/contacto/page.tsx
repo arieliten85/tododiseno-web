@@ -46,6 +46,7 @@ export default function ContactPage() {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
+        ornament="heart"
       />
       <Container className="pb-section-md">
         <div className="grid gap-8 lg:grid-cols-[26rem_1fr]">

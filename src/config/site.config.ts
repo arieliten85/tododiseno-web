@@ -31,4 +31,8 @@ export const siteConfig = {
       { days: "Sáb", ranges: ["11:00 a 13:00"] },
     ],
   },
+  credit: {
+    name: "Ariel Ferencak",
+    url: "https://ariel-ferencak.netlify.app/",
+  },
 } satisfies SiteConfig;

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CardSprig } from "@/components/ui/card-sprig";
 import { ArrowRightIcon } from "@/components/ui/icons";
 import { MediaImage } from "@/components/ui/media-image";
 
@@ -36,6 +37,7 @@ export function ProductCard({
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
       </Link>
+      <CardSprig className="top-5 right-5 sm:top-5 sm:right-5" />
       <div className="border-border mt-3 flex flex-1 flex-col items-center gap-4 border-t border-dashed px-2 pt-4 pb-2 text-center">
         <h3 className="font-heading text-foreground text-lg leading-snug font-semibold text-balance">
           <Link

@@ -93,6 +93,7 @@ export default function RootLayout({
               ? { href: facebook, label: siteConfig.contact.facebookLabel }
               : undefined
           }
+          credit={siteConfig.credit}
           content={footerContent}
         />
         <WhatsAppFloat

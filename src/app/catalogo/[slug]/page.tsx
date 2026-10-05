@@ -175,6 +175,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <section className="py-section-md">
         <Container>
           <SectionHeading
+            ornament="heart"
             title={content.related.title}
             description={content.related.description}
           />

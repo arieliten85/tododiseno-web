@@ -87,8 +87,8 @@ export const homeContent = {
     reassurance: "Respondemos por WhatsApp en el día.",
     badge: "Local en Lanús Oeste",
     image: {
-      src: "/brand/about/vidriera-del-local.jpg",
-      alt: "Vidriera del local con souvenirs y decoraciones armadas",
+      src: "/brand/about/florencia-en-el-local.jpg",
+      alt: "Estantes del local con souvenirs, cajitas y decoraciones armadas",
     },
   },
 } satisfies HomeContent;

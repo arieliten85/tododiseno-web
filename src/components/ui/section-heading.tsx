@@ -1,5 +1,5 @@
 import { cn } from "@/lib/class-names";
-import { Ornament } from "./ornament";
+import { Ornament, type OrnamentVariant } from "./ornament";
 
 type SectionHeadingProps = {
   eyebrow?: string;
@@ -7,7 +7,8 @@ type SectionHeadingProps = {
   description?: string;
   align?: "left" | "center";
   as?: "h1" | "h2";
-  ornament?: boolean;
+  /** Divisor bajo el título: florcita o corazón; `false` lo oculta. */
+  ornament?: OrnamentVariant | false;
 };
 
 export function SectionHeading({
@@ -16,7 +17,7 @@ export function SectionHeading({
   description,
   align = "center",
   as: Tag = "h2",
-  ornament = true,
+  ornament = "flower",
 }: SectionHeadingProps) {
   const centered = align === "center";
 
@@ -33,7 +34,10 @@ export function SectionHeading({
         {title}
       </Tag>
       {ornament ? (
-        <Ornament className={cn("mt-4", centered && "mx-auto")} />
+        <Ornament
+          variant={ornament}
+          className={cn("mt-4", centered && "mx-auto")}
+        />
       ) : null}
       {description ? (
         <p className="text-muted-foreground mt-4 text-base leading-7 text-pretty sm:text-lg">

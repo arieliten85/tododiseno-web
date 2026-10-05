@@ -1,6 +1,12 @@
 import Link from "next/link";
+import type { ReactNode } from "react";
 
-export type BreadcrumbItem = { label: string; href?: string };
+export type BreadcrumbItem = {
+  label: string;
+  href?: string;
+  /** Ícono decorativo antes de la etiqueta (por ejemplo, la casita de Inicio). */
+  icon?: ReactNode;
+};
 
 export function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
   return (
@@ -16,8 +22,9 @@ export function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
               {item.href && !isLast ? (
                 <Link
                   href={item.href}
-                  className="hover:text-foreground underline-offset-4 hover:underline"
+                  className="hover:text-foreground inline-flex items-center gap-1.5 underline-offset-4 hover:underline"
                 >
+                  {item.icon}
                   {item.label}
                 </Link>
               ) : (

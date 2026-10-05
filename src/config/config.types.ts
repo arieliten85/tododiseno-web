@@ -30,6 +30,13 @@ export type BusinessInfo = {
   mapQuery?: string;
 };
 
+export type SiteCredit = {
+  /** Nombre de quien diseñó y desarrolló el sitio. */
+  name: string;
+  /** Portfolio o sitio propio. Sin URL, el nombre se muestra sin enlace. */
+  url?: string;
+};
+
 export type SiteConfig = {
   brand: string;
   name: string;
@@ -42,6 +49,8 @@ export type SiteConfig = {
   contact: SiteContact;
   socials: SiteSocials;
   business: BusinessInfo;
+  /** Crédito discreto del pie de página. Quitarlo oculta la línea. */
+  credit?: SiteCredit;
 };
 
 export type SeoConfig = {

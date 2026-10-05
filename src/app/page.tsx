@@ -51,6 +51,7 @@ export default function Home() {
       <section className="bg-secondary/60 py-section-md">
         <Container>
           <SectionHeading
+            ornament="heart"
             eyebrow={featuredIntro.eyebrow}
             title={featuredIntro.title}
             description={featuredIntro.description}

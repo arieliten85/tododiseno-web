@@ -172,8 +172,8 @@ export function SearchDialog({
           onClick={close}
           onMouseMove={() => setActiveIndex(index)}
           className={cn(
-            "flex min-h-12 items-center gap-3 rounded-xl px-3 py-2 text-sm",
-            active ? "bg-secondary" : "hover:bg-secondary",
+            "group flex min-h-12 items-center gap-3 rounded-xl px-3 py-2 text-sm transition-colors",
+            active ? "bg-secondary" : "hover:bg-secondary/70",
             option.kind === "all" && "text-accent-strong font-semibold",
           )}
         >
@@ -194,8 +194,15 @@ export function SearchDialog({
               </span>
             ) : null}
           </span>
-          {option.kind === "all" ? (
-            <ArrowRightIcon className="size-4 shrink-0" />
+          {option.kind !== "product" ? (
+            <ArrowRightIcon
+              className={cn(
+                "text-accent-strong size-4 shrink-0 transition-all",
+                option.kind === "all" || active
+                  ? "opacity-100"
+                  : "-translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100",
+              )}
+            />
           ) : null}
         </Link>
       </li>
@@ -228,8 +235,8 @@ export function SearchDialog({
           if (event.target === dialogRef.current) close();
         }}
         className={cn(
-          "bg-background text-foreground m-0 hidden h-dvh max-h-none w-dvw max-w-none flex-col p-0 backdrop:bg-black/40 open:flex",
-          "md:top-16 md:right-auto md:bottom-auto md:left-1/2 md:h-auto md:max-h-[75dvh] md:w-[40rem] md:-translate-x-1/2 md:rounded-2xl md:shadow-xl",
+          "bg-surface text-foreground backdrop:bg-foreground/35 m-0 hidden h-dvh max-h-none w-dvw max-w-none flex-col p-0 backdrop:backdrop-blur-[3px] open:flex",
+          "md:border-border md:top-20 md:right-auto md:bottom-auto md:left-1/2 md:h-auto md:max-h-[75dvh] md:w-[40rem] md:-translate-x-1/2 md:rounded-3xl md:border md:shadow-lg",
         )}
       >
         <form
@@ -238,61 +245,63 @@ export function SearchDialog({
             event.preventDefault();
             submit();
           }}
-          className="border-border focus-within:border-accent-strong flex items-center gap-2 border-b px-4 py-3"
+          className="border-border bg-background/60 flex items-center gap-2 border-b px-4 py-4 md:px-5"
         >
-          <SearchIcon
-            className="text-muted-foreground size-5 shrink-0"
-            aria-hidden="true"
-          />
-          <input
-            ref={inputRef}
-            type="text"
-            autoFocus
-            autoComplete="off"
-            autoCapitalize="none"
-            spellCheck={false}
-            enterKeyHint="search"
-            role="combobox"
-            aria-label={content.title}
-            aria-expanded={options.length > 0}
-            aria-controls={listId}
-            aria-activedescendant={activeId}
-            aria-autocomplete="list"
-            placeholder={content.placeholder}
-            value={query}
-            onChange={(event) => {
-              setQuery(event.target.value);
-              setActiveIndex(-1);
-            }}
-            onKeyDown={onKeyDown}
-            className="placeholder:text-muted-foreground min-h-11 min-w-0 flex-1 bg-transparent text-base outline-none focus-visible:outline-none"
-          />
-          {query ? (
-            <button
-              type="button"
-              aria-label={content.clear}
-              onClick={() => {
-                setQuery("");
+          <div className="bg-surface border-border focus-within:border-accent-strong focus-within:ring-accent/30 flex min-w-0 flex-1 items-center gap-2.5 rounded-full border px-4 shadow-sm transition-[border-color,box-shadow] focus-within:ring-4">
+            <SearchIcon
+              className="text-accent-strong size-5 shrink-0"
+              aria-hidden="true"
+            />
+            <input
+              ref={inputRef}
+              type="text"
+              autoFocus
+              autoComplete="off"
+              autoCapitalize="none"
+              spellCheck={false}
+              enterKeyHint="search"
+              role="combobox"
+              aria-label={content.title}
+              aria-expanded={options.length > 0}
+              aria-controls={listId}
+              aria-activedescendant={activeId}
+              aria-autocomplete="list"
+              placeholder={content.placeholder}
+              value={query}
+              onChange={(event) => {
+                setQuery(event.target.value);
                 setActiveIndex(-1);
-                inputRef.current?.focus();
               }}
-              className="text-muted-foreground hover:bg-secondary inline-flex size-9 items-center justify-center rounded-full"
-            >
-              <CloseIcon className="size-4" />
-            </button>
-          ) : null}
+              onKeyDown={onKeyDown}
+              className="placeholder:text-muted-foreground min-h-12 min-w-0 flex-1 bg-transparent text-base outline-none!"
+            />
+            {query ? (
+              <button
+                type="button"
+                aria-label={content.clear}
+                onClick={() => {
+                  setQuery("");
+                  setActiveIndex(-1);
+                  inputRef.current?.focus();
+                }}
+                className="text-muted-foreground hover:bg-secondary -mr-2 inline-flex size-8 shrink-0 items-center justify-center rounded-full"
+              >
+                <CloseIcon className="size-4" />
+              </button>
+            ) : null}
+          </div>
           <button
             type="button"
             onClick={close}
             aria-label={content.close}
-            className="text-foreground hover:bg-secondary inline-flex min-h-11 items-center rounded-full px-3 text-sm font-semibold"
+            className="text-foreground hover:bg-secondary inline-flex min-h-11 shrink-0 items-center justify-center rounded-full px-3 text-sm font-semibold md:size-11 md:px-0"
           >
             <span className="md:hidden">{content.closeShort}</span>
             <CloseIcon className="hidden size-5 md:block" />
           </button>
         </form>
 
-        <div className="flex-1 overflow-y-auto overscroll-contain p-3">
+        <div className="flex-1 overflow-y-auto overscroll-contain p-3 md:p-4">
           <p role="status" aria-live="polite" className="sr-only">
             {searching
               ? total === 1
@@ -318,7 +327,7 @@ export function SearchDialog({
             <ul id={listId} role="listbox" aria-label={content.title}>
               {categoryOptions.length > 0 ? (
                 <li role="presentation">
-                  <p className="text-muted-foreground px-3 pt-1 pb-2 text-[0.7rem] font-bold tracking-[0.2em] uppercase">
+                  <p className="text-accent-strong px-3 pt-1 pb-2 text-[0.7rem] font-bold tracking-[0.2em] uppercase">
                     {content.categoriesTitle}
                   </p>
                   <ul role="presentation">
@@ -328,7 +337,7 @@ export function SearchDialog({
               ) : null}
               {productOptions.length > 0 ? (
                 <li role="presentation">
-                  <p className="text-muted-foreground px-3 pt-3 pb-2 text-[0.7rem] font-bold tracking-[0.2em] uppercase">
+                  <p className="text-accent-strong px-3 pt-3 pb-2 text-[0.7rem] font-bold tracking-[0.2em] uppercase">
                     {content.productsTitle}
                   </p>
                   <ul role="presentation">

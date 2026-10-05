@@ -4,10 +4,10 @@
  */
 :root {
   --primary: #e8b4ae;
-  --primary-foreground: #2e241e;
+  --primary-foreground: #ffffff;
   --secondary: #fbe9e4;
   --secondary-foreground: #6b3f3a;
-  --background: #fdf8f3;
+  --background: #ffffff;
   --foreground: #2e241e;
   --surface: #ffffff;
   --surface-foreground: #2e241e;
@@ -20,8 +20,14 @@
   --card: #ffffff;
   --card-foreground: #2e241e;
   --detail: #9ca986;
+  /* Crema rosado del hero y tinta de los adornos (según Figma). */
+  --veil: #fff7f3;
+  --ornament: #7d5550;
+  /* Dorado suave: solo adornos (corazones, líneas finas). Fondo de bandas onduladas. */
+  --gold: #d4a857;
+  --band: #fcf1ec;
   --whatsapp: #25d366;
-  --whatsapp-foreground: #0b2e1a;
+  --whatsapp-foreground: #ffffff;
 
   --radius-token-sm: 0.5rem;
   --radius-token-md: 0.875rem;
@@ -60,6 +66,10 @@
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-detail: var(--detail);
+  --color-veil: var(--veil);
+  --color-ornament: var(--ornament);
+  --color-gold: var(--gold);
+  --color-band: var(--band);
   --color-whatsapp: var(--whatsapp);
   --color-whatsapp-foreground: var(--whatsapp-foreground);
   --font-heading: var(--font-heading-family);

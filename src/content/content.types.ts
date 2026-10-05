@@ -169,9 +169,14 @@ export type AboutContent = {
   breadcrumb: string;
   eyebrow: string;
   title: string;
-  paragraphs: string[];
+  tagline: string;
+  /** "Soy" + nombre resaltado (con corazón) + resto del texto. */
+  intro: { before: string; name: string; after: string };
+  commitment: {
+    title: string;
+    items: Array<{ icon: "design" | "finish" | "chat"; text: string }>;
+  };
   image: ImageContent;
-  action: { label: string; message: string };
 };
 
 export type ContactContent = {
@@ -208,6 +213,10 @@ export type FooterContent = {
   hoursLabel: string;
   legal: string;
   disclaimer: string;
+  /** Texto previo al nombre del crédito, por ejemplo "Diseño y desarrollo web por". */
+  credit: string;
+  /** Aviso para lectores de pantalla en enlaces que abren pestaña nueva. */
+  creditNewTab: string;
 };
 
 export type SearchContent = {

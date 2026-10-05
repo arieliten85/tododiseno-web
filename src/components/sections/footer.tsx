@@ -9,6 +9,7 @@ import {
   PinIcon,
 } from "@/components/ui/icons";
 import { MediaImage } from "@/components/ui/media-image";
+import { BuntingEdge } from "@/components/ui/ornaments";
 
 type FooterProps = {
   name: string;
@@ -21,6 +22,7 @@ type FooterProps = {
   hours: Array<{ days: string; ranges: string[] }>;
   instagram?: { label: string; href: string };
   facebook?: { label: string; href: string };
+  credit?: { name: string; url?: string };
   content: {
     navigationTitle: string;
     contactTitle: string;
@@ -28,6 +30,8 @@ type FooterProps = {
     hoursLabel: string;
     legal: string;
     disclaimer: string;
+    credit: string;
+    creditNewTab: string;
   };
 };
 
@@ -42,13 +46,15 @@ export function Footer({
   hours,
   instagram,
   facebook,
+  credit,
   content,
 }: FooterProps) {
   const itemClass = "flex items-start gap-3";
   const iconClass = "text-accent-strong mt-0.5 size-4 shrink-0";
 
   return (
-    <footer className="bg-muted scallop-top relative mt-24 pt-14">
+    <footer className="bg-muted relative mt-24 pt-14">
+      <BuntingEdge className="pointer-events-none absolute inset-x-0 top-0 opacity-40" />
       <Container>
         <div className="grid gap-10 pb-10 sm:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1.5fr_1fr]">
           <div>
@@ -173,9 +179,26 @@ export function Footer({
           <p>
             © {new Date().getFullYear()} {name}. {content.legal}
           </p>
-          <p className="max-w-content-medium mx-auto text-pretty">
-            {content.disclaimer}
-          </p>
+          {credit ? (
+            <p className="text-muted-foreground/80 pt-1 text-[0.7rem] tracking-wide">
+              {content.credit}{" "}
+              {credit.url ? (
+                <a
+                  href={credit.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-foreground/70 hover:text-accent-strong font-semibold underline decoration-dotted underline-offset-4 transition-colors"
+                >
+                  {credit.name}
+                  <span className="sr-only"> {content.creditNewTab}</span>
+                </a>
+              ) : (
+                <span className="text-foreground/70 font-semibold">
+                  {credit.name}
+                </span>
+              )}
+            </p>
+          ) : null}
         </div>
       </Container>
     </footer>
