@@ -365,7 +365,7 @@ export function CatalogBrowser({
         onClick={(event) => {
           if (event.target === sheetRef.current) setFiltersOpen(false);
         }}
-        className="bg-background text-foreground m-0 hidden h-dvh max-h-none w-dvw max-w-none flex-col p-0 backdrop:bg-black/40 open:flex lg:hidden!"
+        className="bg-background text-foreground backdrop:bg-overlay/40 m-0 hidden h-dvh max-h-none w-dvw max-w-none flex-col p-0 open:flex lg:hidden!"
       >
         <div className="border-border flex items-center justify-between border-b px-5 py-3">
           <h2 className="font-heading flex items-center gap-2 text-lg font-semibold">

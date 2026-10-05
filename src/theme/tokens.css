@@ -28,6 +28,8 @@
   --band: #fcf1ec;
   --whatsapp: #25d366;
   --whatsapp-foreground: #ffffff;
+  /* Fondo de los diálogos modales (se usa con opacidad). */
+  --overlay: #000000;
 
   --radius-token-sm: 0.5rem;
   --radius-token-md: 0.875rem;
@@ -72,6 +74,7 @@
   --color-band: var(--band);
   --color-whatsapp: var(--whatsapp);
   --color-whatsapp-foreground: var(--whatsapp-foreground);
+  --color-overlay: var(--overlay);
   --font-heading: var(--font-heading-family);
   --font-body: var(--font-body-family);
   --radius-sm: var(--radius-token-sm);
