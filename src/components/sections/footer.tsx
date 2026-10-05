@@ -112,7 +112,8 @@ export function Footer({
                 <li className={itemClass}>
                   <PhoneIcon className={iconClass} />
                   <span>
-                    {content.socialLabels.whatsapp}: {phone}
+                    {`${content.socialLabels.whatsapp}: `}
+                    {phone}
                   </span>
                 </li>
               ) : null}
@@ -161,7 +162,8 @@ export function Footer({
                   className="flex items-center gap-3 text-sm hover:underline"
                 >
                   <InstagramIcon className="text-accent-strong size-4" />
-                  {content.socialLabels.instagram}: {instagram.label}
+                  {`${content.socialLabels.instagram}: `}
+                  {instagram.label}
                   <span className="sr-only"> {content.newTab}</span>
                 </a>
               ) : null}
@@ -173,7 +175,8 @@ export function Footer({
                   className="flex items-center gap-3 text-sm hover:underline"
                 >
                   <FacebookIcon className="text-accent-strong size-4" />
-                  {content.socialLabels.facebook}: {facebook.label}
+                  {`${content.socialLabels.facebook}: `}
+                  {facebook.label}
                   <span className="sr-only"> {content.newTab}</span>
                 </a>
               ) : null}
