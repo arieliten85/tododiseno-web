@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import {
   ClockIcon,
+  FacebookIcon,
   InstagramIcon,
   MailIcon,
   PinIcon,
@@ -88,6 +89,32 @@ export default function ContactPage() {
                         className="font-semibold underline-offset-4 hover:underline"
                       >
                         {contact.instagramHandle}
+                        <span className="sr-only">
+                          {" "}
+                          (se abre en una pestaña nueva)
+                        </span>
+                      </a>
+                    </dd>
+                  </div>
+                </div>
+              ) : null}
+              {socials.facebook ? (
+                <div className={rowClass}>
+                  <span className={iconWrap}>
+                    <FacebookIcon className="size-4" />
+                  </span>
+                  <div>
+                    <dt className={labelClass}>
+                      {content.card.labels.facebook}
+                    </dt>
+                    <dd>
+                      <a
+                        href={socials.facebook}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-semibold underline-offset-4 hover:underline"
+                      >
+                        {contact.facebookLabel}
                         <span className="sr-only">
                           {" "}
                           (se abre en una pestaña nueva)

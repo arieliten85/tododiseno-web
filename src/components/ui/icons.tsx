@@ -35,6 +35,11 @@ export const InstagramIcon = (p: IconProps) => (
     <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" />
   </Icon>
 );
+export const FacebookIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <path d="M14 8h2.5V4.5H14A3.5 3.5 0 0 0 10.5 8v2.5H8V14h2.5v6.5H14V14h2.5l.5-3.5H14V8z" />
+  </Icon>
+);
 export const WhatsAppIcon = (p: IconProps) => (
   <Icon {...p}>
     <path d="M3 21l1.6-4.7A8.5 8.5 0 1 1 8 19.6L3 21z" />

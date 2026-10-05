@@ -23,6 +23,7 @@ export default function RootLayout({
 }: Readonly<{ children: ReactNode }>) {
   const jsonLd = createLocalBusinessJsonLd(siteConfig);
   const instagram = siteConfig.socials.instagram;
+  const facebook = siteConfig.socials.facebook;
   const searchItems = getProducts().map((product, index) => ({
     slug: product.slug,
     name: product.visibleName,
@@ -68,6 +69,7 @@ export default function RootLayout({
             catalogPath: "/catalogo/",
           }}
           instagramHref={instagram}
+          facebookHref={facebook}
         />
         <main id="contenido" className="flex-1">
           {children}
@@ -84,6 +86,11 @@ export default function RootLayout({
           instagram={
             instagram && siteConfig.contact.instagramHandle
               ? { href: instagram, label: siteConfig.contact.instagramHandle }
+              : undefined
+          }
+          facebook={
+            facebook && siteConfig.contact.facebookLabel
+              ? { href: facebook, label: siteConfig.contact.facebookLabel }
               : undefined
           }
           content={footerContent}

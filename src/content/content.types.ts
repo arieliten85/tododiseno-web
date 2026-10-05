@@ -187,6 +187,7 @@ export type ContactContent = {
     labels: {
       whatsapp: string;
       instagram: string;
+      facebook: string;
       email: string;
       address: string;
       hours: string;

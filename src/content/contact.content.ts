@@ -17,6 +17,7 @@ export const contactContent = {
     labels: {
       whatsapp: "WhatsApp",
       instagram: "Instagram",
+      facebook: "Facebook",
       email: "Mail",
       address: "Dirección",
       hours: "Horarios de atención",

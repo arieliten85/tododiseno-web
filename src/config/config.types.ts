@@ -6,6 +6,8 @@ export type SiteContact = {
   whatsapp?: string;
   /** Usuario de Instagram para mostrar, con arroba. */
   instagramHandle?: string;
+  /** Nombre de la página de Facebook para mostrar. */
+  facebookLabel?: string;
 };
 
 export type SiteSocials = Partial<

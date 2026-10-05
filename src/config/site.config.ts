@@ -15,9 +15,11 @@ export const siteConfig = {
     phoneDisplay: "11-6145-2420",
     whatsapp: "5491161452420",
     instagramHandle: "@tododisenosouvenir",
+    facebookLabel: "Todo Diseño",
   },
   socials: {
     instagram: "https://www.instagram.com/tododisenosouvenir/",
+    facebook: "https://www.facebook.com/tododisenio/",
   },
   business: {
     address: "25 de Mayo 445, Lanús Oeste, Buenos Aires",

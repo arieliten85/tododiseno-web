@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import {
   ClockIcon,
+  FacebookIcon,
   InstagramIcon,
   MailIcon,
   PhoneIcon,
@@ -19,6 +20,7 @@ type FooterProps = {
   address?: string;
   hours: Array<{ days: string; ranges: string[] }>;
   instagram?: { label: string; href: string };
+  facebook?: { label: string; href: string };
   content: {
     navigationTitle: string;
     contactTitle: string;
@@ -39,6 +41,7 @@ export function Footer({
   address,
   hours,
   instagram,
+  facebook,
   content,
 }: FooterProps) {
   const itemClass = "flex items-start gap-3";
@@ -127,21 +130,41 @@ export function Footer({
             </ul>
           </div>
 
-          {instagram ? (
-            <div>
+          {instagram || facebook ? (
+            <div className="space-y-3">
               <p className="text-muted-foreground mb-4 text-xs font-bold tracking-[0.2em]">
                 {content.socialTitle}
               </p>
-              <a
-                href={instagram.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 text-sm hover:underline"
-              >
-                <InstagramIcon className="text-accent-strong size-4" />
-                Instagram: {instagram.label}
-                <span className="sr-only"> (se abre en una pestaña nueva)</span>
-              </a>
+              {instagram ? (
+                <a
+                  href={instagram.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-sm hover:underline"
+                >
+                  <InstagramIcon className="text-accent-strong size-4" />
+                  Instagram: {instagram.label}
+                  <span className="sr-only">
+                    {" "}
+                    (se abre en una pestaña nueva)
+                  </span>
+                </a>
+              ) : null}
+              {facebook ? (
+                <a
+                  href={facebook.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-sm hover:underline"
+                >
+                  <FacebookIcon className="text-accent-strong size-4" />
+                  Facebook: {facebook.label}
+                  <span className="sr-only">
+                    {" "}
+                    (se abre en una pestaña nueva)
+                  </span>
+                </a>
+              ) : null}
             </div>
           ) : null}
         </div>

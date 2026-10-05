@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { InstagramIcon } from "@/components/ui/icons";
+import { FacebookIcon, InstagramIcon } from "@/components/ui/icons";
 import { Container } from "@/components/ui/container";
 import { MediaImage } from "@/components/ui/media-image";
 import type { SearchContent } from "@/content/content.types";
@@ -21,6 +21,7 @@ type HeaderProps = {
     catalogPath: string;
   };
   instagramHref?: string;
+  facebookHref?: string;
 };
 
 export function Header({
@@ -30,6 +31,7 @@ export function Header({
   navigation,
   search,
   instagramHref,
+  facebookHref,
 }: HeaderProps) {
   return (
     <header className="bg-background/95 border-border sticky top-0 z-40 border-b shadow-sm backdrop-blur">
@@ -67,6 +69,17 @@ export function Header({
 
         <div className="flex items-center gap-1">
           <SearchDialog {...search} />
+          {facebookHref ? (
+            <a
+              href={facebookHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook (se abre en una pestaña nueva)"
+              className="text-accent-strong hover:bg-secondary inline-flex size-11 items-center justify-center rounded-full"
+            >
+              <FacebookIcon className="size-5" />
+            </a>
+          ) : null}
           {instagramHref ? (
             <a
               href={instagramHref}
