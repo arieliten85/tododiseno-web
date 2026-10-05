@@ -18,9 +18,15 @@ type ConsultCardProps = {
     hint: string;
     badge: string;
     quantityLabel: string;
+    /** Plantilla con {min} y {unit}. */
+    minimum: string;
+    decrease: string;
+    increase: string;
     action: string;
+    /** Aviso para lectores de pantalla: el enlace abre pestaña nueva. */
+    newTab: string;
+    message: { intro: string; quantity: string; closing: string };
   };
-  minimumLabel: string;
 };
 
 /** Único control de la página de producto: la cantidad. Lo demás se coordina por WhatsApp. */
@@ -32,7 +38,6 @@ export function ConsultCard({
   min,
   step,
   content,
-  minimumLabel,
 }: ConsultCardProps) {
   const [quantity, setQuantity] = useState(min);
   const quantityId = useId();
@@ -47,8 +52,12 @@ export function ConsultCard({
       quantity,
       unit,
       url: productUrl,
+      copy: content.message,
     }),
   );
+  const minimumLabel = content.minimum
+    .replace("{min}", String(min))
+    .replace("{unit}", unit);
 
   return (
     <section
@@ -83,7 +92,7 @@ export function ConsultCard({
             type="button"
             onClick={decrease}
             disabled={quantity <= min}
-            aria-label="Menos"
+            aria-label={content.decrease}
             className="hover:bg-secondary inline-flex size-10 items-center justify-center rounded-md disabled:opacity-40"
           >
             <MinusIcon className="size-4" />
@@ -97,7 +106,7 @@ export function ConsultCard({
           <button
             type="button"
             onClick={increase}
-            aria-label="Más"
+            aria-label={content.increase}
             className="hover:bg-secondary inline-flex size-10 items-center justify-center rounded-md"
           >
             <PlusIcon className="size-4" />
@@ -115,7 +124,7 @@ export function ConsultCard({
       >
         <WhatsAppIcon className="size-5" />
         {content.action}
-        <span className="sr-only"> (se abre en una pestaña nueva)</span>
+        <span className="sr-only"> {content.newTab}</span>
       </a>
     </section>
   );

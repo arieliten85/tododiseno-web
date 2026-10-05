@@ -40,6 +40,8 @@ export type SiteCredit = {
 export type SiteConfig = {
   brand: string;
   name: string;
+  /** Bajada del logo de texto, cuando no hay imagen de logo. */
+  tagline?: string;
   logo?: {
     src?: string;
     alt: string;

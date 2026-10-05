@@ -14,12 +14,11 @@ import {
 } from "@/components/ui/icons";
 import { siteConfig } from "@/config/site.config";
 import { contactContent as content } from "@/content/contact.content";
+import { sharedContent } from "@/content/shared.content";
 import { createWhatsAppUrl } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {
-  title: "Contacto",
-  description:
-    "Escribinos por WhatsApp o visitá el local en Lanús Oeste. Retiro sin cargo y envíos a todo el país.",
+  ...content.metadata,
   alternates: { canonical: "/contacto/" },
 };
 
@@ -39,8 +38,9 @@ export default function ContactPage() {
   return (
     <>
       <PageHero
+        breadcrumbLabel={sharedContent.breadcrumb.label}
         breadcrumb={[
-          { label: "Inicio", href: "/" },
+          { label: sharedContent.breadcrumb.home, href: "/" },
           { label: content.breadcrumb },
         ]}
         eyebrow={content.eyebrow}
@@ -90,10 +90,7 @@ export default function ContactPage() {
                         className="font-semibold underline-offset-4 hover:underline"
                       >
                         {contact.instagramHandle}
-                        <span className="sr-only">
-                          {" "}
-                          (se abre en una pestaña nueva)
-                        </span>
+                        <span className="sr-only"> {content.newTab}</span>
                       </a>
                     </dd>
                   </div>
@@ -116,10 +113,7 @@ export default function ContactPage() {
                         className="font-semibold underline-offset-4 hover:underline"
                       >
                         {contact.facebookLabel}
-                        <span className="sr-only">
-                          {" "}
-                          (se abre en una pestaña nueva)
-                        </span>
+                        <span className="sr-only"> {content.newTab}</span>
                       </a>
                     </dd>
                   </div>
@@ -160,7 +154,7 @@ export default function ContactPage() {
                     <ul>
                       {business.hours.map((row) => (
                         <li key={row.days}>
-                          {row.days}: {row.ranges.join(" y ")}
+                          {row.days}: {row.ranges.join(content.rangeSeparator)}
                         </li>
                       ))}
                     </ul>
@@ -203,10 +197,7 @@ export default function ContactPage() {
                   className="text-accent-strong font-semibold underline underline-offset-4"
                 >
                   {content.map.directions}
-                  <span className="sr-only">
-                    {" "}
-                    (se abre en una pestaña nueva)
-                  </span>
+                  <span className="sr-only"> {content.newTab}</span>
                 </a>
               </div>
             </div>

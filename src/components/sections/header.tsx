@@ -2,7 +2,7 @@ import Link from "next/link";
 import { FacebookIcon, InstagramIcon } from "@/components/ui/icons";
 import { Container } from "@/components/ui/container";
 import { MediaImage } from "@/components/ui/media-image";
-import type { SearchContent } from "@/content/content.types";
+import type { HeaderContent, SearchContent } from "@/content/content.types";
 import {
   SearchDialog,
   type SearchItem,
@@ -12,6 +12,8 @@ import { HeaderNav } from "./header-nav";
 type HeaderProps = {
   name: string;
   brand: string;
+  /** Bajada del logo de texto (solo sin imagen de logo). */
+  tagline?: string;
   logo?: { src?: string; alt: string };
   navigation: Array<{ label: string; href: string }>;
   search: {
@@ -22,16 +24,19 @@ type HeaderProps = {
   };
   instagramHref?: string;
   facebookHref?: string;
+  content: HeaderContent;
 };
 
 export function Header({
   name,
   brand,
+  tagline,
   logo,
   navigation,
   search,
   instagramHref,
   facebookHref,
+  content,
 }: HeaderProps) {
   return (
     <header className="bg-background/95 border-border sticky top-0 z-40 border-b shadow-sm backdrop-blur">
@@ -39,7 +44,7 @@ export function Header({
         <Link
           href="/"
           className="flex items-center"
-          aria-label={`${name} — ir al inicio`}
+          aria-label={`${name} — ${content.homeLink}`}
         >
           {logo?.src ? (
             <MediaImage
@@ -54,17 +59,21 @@ export function Header({
               <span className="font-heading text-accent-strong text-2xl font-semibold">
                 {brand.toLowerCase()}
               </span>
-              <span className="text-muted-foreground mt-1 text-[0.6rem] font-bold tracking-[0.3em] uppercase">
-                Souvenirs
-              </span>
+              {tagline ? (
+                <span className="text-muted-foreground mt-1 text-[0.6rem] font-bold tracking-[0.3em] uppercase">
+                  {tagline}
+                </span>
+              ) : null}
             </span>
           )}
         </Link>
 
         <HeaderNav
           navigation={navigation}
-          menuLabel="Abrir menú"
-          closeLabel="Cerrar menú"
+          navLabel={content.mainNav}
+          mobileNavLabel={content.mobileNav}
+          menuLabel={content.openMenu}
+          closeLabel={content.closeMenu}
         />
 
         <div className="flex items-center gap-1">
@@ -74,7 +83,7 @@ export function Header({
               href={facebookHref}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Facebook (se abre en una pestaña nueva)"
+              aria-label={`${content.socialLabels.facebook} ${content.newTab}`}
               className="text-accent-strong hover:bg-secondary inline-flex size-11 items-center justify-center rounded-full"
             >
               <FacebookIcon className="size-5" />
@@ -85,7 +94,7 @@ export function Header({
               href={instagramHref}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Instagram (se abre en una pestaña nueva)"
+              aria-label={`${content.socialLabels.instagram} ${content.newTab}`}
               className="text-accent-strong hover:bg-secondary inline-flex size-11 items-center justify-center rounded-full"
             >
               <InstagramIcon className="size-5" />

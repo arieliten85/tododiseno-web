@@ -8,6 +8,7 @@ import { defaultMetadata } from "@/config/seo.config";
 import { siteConfig } from "@/config/site.config";
 import { categories } from "@/content/categories.content";
 import { searchContent } from "@/content/search.content";
+import { sharedContent } from "@/content/shared.content";
 import { createSearchText } from "@/features/catalog/lib/filter-products";
 import { getProducts } from "@/features/catalog/lib/product-queries";
 import { footerContent } from "@/content/footer.content";
@@ -55,11 +56,12 @@ export default function RootLayout({
           href="#contenido"
           className="bg-surface text-foreground focus:ring-accent-strong sr-only z-50 rounded-md px-4 py-2 focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:ring-2"
         >
-          Saltar al contenido
+          {sharedContent.skipToContent}
         </a>
         <Header
           name={siteConfig.name}
           brand={siteConfig.brand}
+          tagline={siteConfig.tagline}
           logo={siteConfig.logo}
           navigation={layoutConfig.navigation}
           search={{
@@ -70,6 +72,7 @@ export default function RootLayout({
           }}
           instagramHref={instagram}
           facebookHref={facebook}
+          content={sharedContent.header}
         />
         <main id="contenido" className="flex-1">
           {children}
@@ -77,6 +80,7 @@ export default function RootLayout({
         <Footer
           name={siteConfig.name}
           brand={siteConfig.brand}
+          tagline={siteConfig.tagline}
           logo={siteConfig.logo}
           navigation={layoutConfig.footerNavigation}
           phone={siteConfig.contact.phoneDisplay}
@@ -99,9 +103,9 @@ export default function RootLayout({
         <WhatsAppFloat
           href={createWhatsAppUrl(
             siteConfig.contact.whatsapp,
-            "Hola Florencia! Quiero hacerte una consulta.",
+            sharedContent.whatsappFloat.message,
           )}
-          label="Escribinos por WhatsApp (se abre en una pestaña nueva)"
+          label={`${sharedContent.whatsappFloat.label} ${sharedContent.newTab}`}
         />
       </body>
     </html>

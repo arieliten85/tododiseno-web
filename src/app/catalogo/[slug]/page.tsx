@@ -8,8 +8,10 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { ValuesStrip } from "@/components/sections/values-strip";
 import { siteConfig } from "@/config/site.config";
 import { siteUrl } from "@/config/url.config";
+import { catalogPageContent } from "@/content/catalog-page.content";
 import { homeContent } from "@/content/home.content";
 import { productPageContent as content } from "@/content/product-page.content";
+import { sharedContent } from "@/content/shared.content";
 import { ProductCard } from "@/features/catalog/components/product-card";
 import {
   getCategory,
@@ -61,9 +63,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
     <>
       <Container className="pt-6">
         <Breadcrumb
+          label={sharedContent.breadcrumb.label}
           items={[
-            { label: "Inicio", href: "/" },
-            { label: "Catálogo", href: "/catalogo/" },
+            { label: sharedContent.breadcrumb.home, href: "/" },
+            { label: catalogPageContent.breadcrumb, href: "/catalogo/" },
             ...(category
               ? [
                   {
@@ -148,7 +151,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
               min={product.quantity.min}
               step={product.quantity.step}
               content={content.consult}
-              minimumLabel={`Cantidad mínima sugerida: ${product.quantity.min} ${product.quantity.unit}`}
             />
           </div>
         </div>
@@ -161,7 +163,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
               textTitle={content.details.textTitle}
               description={content.details.description}
               unitLabel={(quantity) =>
-                quantity === 1 ? "1 unidad" : `${quantity} unidades`
+                quantity === 1
+                  ? content.details.unitOne
+                  : content.details.unitMany.replace("{n}", String(quantity))
               }
             />
           </div>

@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 
 type PageHeroProps = {
   breadcrumb: BreadcrumbItem[];
+  breadcrumbLabel: string;
   eyebrow: string;
   title: string;
   description?: string;
@@ -14,6 +15,7 @@ type PageHeroProps = {
 /** Encabezado de página interna: ruta, etiqueta, h1 y bajada. */
 export function PageHero({
   breadcrumb,
+  breadcrumbLabel,
   eyebrow,
   title,
   description,
@@ -22,7 +24,7 @@ export function PageHero({
   return (
     <section className="pt-6 pb-10 sm:pb-14">
       <Container>
-        <Breadcrumb items={breadcrumb} />
+        <Breadcrumb label={breadcrumbLabel} items={breadcrumb} />
         <div className="mt-8">
           <p className="bg-secondary text-accent-strong mx-auto mb-5 w-fit rounded-full px-4 py-1.5 text-center text-[0.7rem] font-bold tracking-[0.2em] uppercase">
             {eyebrow}

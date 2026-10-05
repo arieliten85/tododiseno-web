@@ -16,11 +16,10 @@ import { HeartsOrnament } from "@/components/ui/ornament";
 import { WavyBand } from "@/components/ui/wavy-band";
 import { siteConfig } from "@/config/site.config";
 import { aboutContent as content } from "@/content/about.content";
+import { sharedContent } from "@/content/shared.content";
 
 export const metadata: Metadata = {
-  title: "Sobre mí",
-  description:
-    "Conocé a Florencia y su local en Lanús Oeste, donde diseña e imprime souvenirs, deco e impresos personalizados para cada celebración.",
+  ...content.metadata,
   alternates: { canonical: "/sobre-mi/" },
 };
 
@@ -37,9 +36,10 @@ export default function AboutPage() {
     <section className="pb-section-md pt-6">
       <Container>
         <Breadcrumb
+          label={sharedContent.breadcrumb.label}
           items={[
             {
-              label: "Inicio",
+              label: sharedContent.breadcrumb.home,
               href: "/",
               icon: <HomeIcon className="size-4" />,
             },

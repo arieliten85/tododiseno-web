@@ -4,6 +4,7 @@ import { siteUrl } from "./url.config";
 export const siteConfig = {
   brand: "Todo Diseño",
   name: "Todo Diseño Souvenirs",
+  tagline: "Souvenirs",
   logo: {
     src: "/brand/logo/logo.png",
     alt: "Todo Diseño Souvenirs",

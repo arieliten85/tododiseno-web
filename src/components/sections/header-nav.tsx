@@ -8,6 +8,9 @@ import { cn } from "@/lib/class-names";
 
 type HeaderNavProps = {
   navigation: Array<{ label: string; href: string }>;
+  /** Nombres accesibles de la navegación de escritorio y de la móvil. */
+  navLabel: string;
+  mobileNavLabel: string;
   menuLabel: string;
   closeLabel: string;
 };
@@ -20,6 +23,8 @@ function isActive(pathname: string, href: string) {
 /** Único bloque interactivo del header: marca la página activa y el menú móvil. */
 export function HeaderNav({
   navigation,
+  navLabel,
+  mobileNavLabel,
   menuLabel,
   closeLabel,
 }: HeaderNavProps) {
@@ -40,7 +45,7 @@ export function HeaderNav({
 
   return (
     <>
-      <nav aria-label="Principal" className="hidden items-center gap-8 md:flex">
+      <nav aria-label={navLabel} className="hidden items-center gap-8 md:flex">
         {navigation.map((item) => {
           const active = isActive(pathname, item.href);
           return (
@@ -81,7 +86,7 @@ export function HeaderNav({
         hidden={!open}
         className="border-border bg-background absolute inset-x-0 top-full border-b shadow-md md:hidden"
       >
-        <nav aria-label="Principal móvil" className="flex flex-col px-5 py-3">
+        <nav aria-label={mobileNavLabel} className="flex flex-col px-5 py-3">
           {navigation.map((item) => {
             const active = isActive(pathname, item.href);
             return (

@@ -3,6 +3,8 @@ type ConsultMessageInput = {
   quantity: number;
   unit: string;
   url?: string;
+  /** Textos del mensaje; la estructura y los emojis quedan acá. */
+  copy: { intro: string; quantity: string; closing: string };
 };
 
 /** Mensaje de WhatsApp autocompletado desde la página de producto. */
@@ -11,12 +13,13 @@ export function formatConsultMessage({
   quantity,
   unit,
   url,
+  copy,
 }: ConsultMessageInput) {
   return [
-    "Hola Florencia! Vi este producto en tu web:",
+    copy.intro,
     `🛍️ ${name}`,
-    `🔢 Cantidad: ${quantity} ${unit}`,
+    `🔢 ${copy.quantity}: ${quantity} ${unit}`,
     ...(url ? [`🔗 ${url}`] : []),
-    "Quiero coordinar los detalles (color, temática, personalización), ¿me pasás precio y tiempos de entrega? ¡Gracias!",
+    copy.closing,
   ].join("\n");
 }

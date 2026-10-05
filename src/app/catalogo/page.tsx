@@ -6,6 +6,7 @@ import { Container } from "@/components/ui/container";
 import { siteConfig } from "@/config/site.config";
 import { audiences, categories } from "@/content/categories.content";
 import { catalogPageContent as content } from "@/content/catalog-page.content";
+import { sharedContent } from "@/content/shared.content";
 import {
   CatalogBrowser,
   type CatalogBrowserItem,
@@ -22,9 +23,7 @@ import {
 import { createWhatsAppUrl } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {
-  title: "Catálogo de souvenirs, deco e impresos personalizados",
-  description:
-    "Explorá souvenirs, deco e impresos personalizados para comuniones, bautismos, cumpleaños temáticos, baby showers y Navidad. Todo a pedido, con envíos a todo el país.",
+  ...content.metadata,
   alternates: { canonical: "/catalogo/" },
 };
 
@@ -45,7 +44,7 @@ export default function CatalogPage() {
         href={getProductPath(product.slug)}
         name={product.visibleName}
         image={product.image}
-        actionLabel="Ver detalles"
+        actionLabel={content.cardAction}
         sprigSrc={siteConfig.decor.cardSprig}
         eager={index < 3}
       />
@@ -55,8 +54,9 @@ export default function CatalogPage() {
   return (
     <>
       <PageHero
+        breadcrumbLabel={sharedContent.breadcrumb.label}
         breadcrumb={[
-          { label: "Inicio", href: "/" },
+          { label: sharedContent.breadcrumb.home, href: "/" },
           { label: content.breadcrumb },
         ]}
         eyebrow={content.eyebrow}

@@ -38,8 +38,10 @@ export default function Home() {
       <Hero {...hero} />
 
       <CategoryGrid
-        {...categoriesIntro}
-        eyebrowLabel="Catálogo"
+        eyebrow={categoriesIntro.eyebrow}
+        title={categoriesIntro.title}
+        description={categoriesIntro.description}
+        eyebrowLabel={categoriesIntro.cardEyebrow}
         sprigSrc={siteConfig.decor.cardSprig}
         items={categories.map((category) => ({
           id: category.id,

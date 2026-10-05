@@ -1,6 +1,12 @@
 import type { ContactContent } from "./content.types";
+import { sharedContent } from "./shared.content";
 
 export const contactContent = {
+  metadata: {
+    title: "Contacto",
+    description:
+      "Escribinos por WhatsApp o visitá el local en Lanús Oeste. Retiro sin cargo y envíos a todo el país.",
+  },
   breadcrumb: "Contacto",
   eyebrow: "ESTAMOS EN LANÚS OESTE",
   title: "Hablemos de tu evento",
@@ -15,9 +21,7 @@ export const contactContent = {
     },
     reassurance: "Respuesta personalizada y asesoramiento en el día",
     labels: {
-      whatsapp: "WhatsApp",
-      instagram: "Instagram",
-      facebook: "Facebook",
+      ...sharedContent.socialLabels,
       email: "Mail",
       address: "Dirección",
       hours: "Horarios de atención",
@@ -42,4 +46,6 @@ export const contactContent = {
         "Embalaje reforzado. Enviamos por encomienda, correo o moto. Consultanos.",
     },
   ],
+  newTab: sharedContent.newTab,
+  rangeSeparator: sharedContent.rangeSeparator,
 } satisfies ContactContent;

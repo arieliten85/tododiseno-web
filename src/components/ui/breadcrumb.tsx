@@ -8,9 +8,16 @@ export type BreadcrumbItem = {
   icon?: ReactNode;
 };
 
-export function Breadcrumb({ items }: { items: BreadcrumbItem[] }) {
+export function Breadcrumb({
+  label,
+  items,
+}: {
+  /** Nombre accesible del landmark de navegación. */
+  label: string;
+  items: BreadcrumbItem[];
+}) {
   return (
-    <nav aria-label="Ruta de navegación" className="text-sm">
+    <nav aria-label={label} className="text-sm">
       <ol className="text-muted-foreground flex flex-wrap items-center gap-x-2 gap-y-1">
         {items.map((item, index) => {
           const isLast = index === items.length - 1;

@@ -9,6 +9,49 @@ export type ImageContent = {
   alt: string;
 };
 
+/** Title y description de una ruta (el layout agrega el nombre del sitio). */
+export type PageMetadata = {
+  title: string;
+  description: string;
+};
+
+export type SocialLabels = {
+  whatsapp: string;
+  instagram: string;
+  facebook: string;
+};
+
+export type HeaderContent = {
+  /** Se antepone el nombre del sitio: "<nombre> — ir al inicio". */
+  homeLink: string;
+  mainNav: string;
+  mobileNav: string;
+  openMenu: string;
+  closeMenu: string;
+  newTab: string;
+  socialLabels: SocialLabels;
+};
+
+export type SharedContent = {
+  /** Aviso para lectores de pantalla en enlaces que abren pestaña nueva. */
+  newTab: string;
+  skipToContent: string;
+  /** Une franjas horarias: "10:00 a 12:00 y 17:00 a 19:00". */
+  rangeSeparator: string;
+  socialLabels: SocialLabels;
+  breadcrumb: { label: string; home: string };
+  header: HeaderContent;
+  whatsappFloat: { label: string; message: string };
+};
+
+export type NotFoundContent = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  primaryAction: LinkContent;
+  secondaryAction: LinkContent;
+};
+
 export type TextCard = {
   title: string;
   description: string;
@@ -87,7 +130,7 @@ export type HomeContent = {
     action: LinkContent;
     image: ImageContent;
   };
-  categories: SectionIntro;
+  categories: SectionIntro & { cardEyebrow: string };
   featured: SectionIntro & { cardAction: string };
   values: Array<TextCard & { icon: "design" | "chat" | "pin" }>;
   testimonials: SectionIntro & {
@@ -107,7 +150,9 @@ export type HomeContent = {
 };
 
 export type CatalogPageContent = {
+  metadata: PageMetadata;
   breadcrumb: string;
+  cardAction: string;
   eyebrow: string;
   title: string;
   description: string;
@@ -155,17 +200,28 @@ export type ProductPageContent = {
     hint: string;
     badge: string;
     quantityLabel: string;
+    /** Plantilla con {min} y {unit}. */
+    minimum: string;
+    decrease: string;
+    increase: string;
     action: string;
+    newTab: string;
+    /** Mensaje de WhatsApp autocompletado. */
+    message: { intro: string; quantity: string; closing: string };
   };
   details: {
     listTitle: string;
     textTitle: string;
     description: string;
+    unitOne: string;
+    /** Plantilla con {n}. */
+    unitMany: string;
   };
   related: SectionIntro & { action: string };
 };
 
 export type AboutContent = {
+  metadata: PageMetadata;
   breadcrumb: string;
   eyebrow: string;
   title: string;
@@ -180,6 +236,7 @@ export type AboutContent = {
 };
 
 export type ContactContent = {
+  metadata: PageMetadata;
   breadcrumb: string;
   eyebrow: string;
   title: string;
@@ -189,10 +246,7 @@ export type ContactContent = {
     title: string;
     action: { label: string; message: string };
     reassurance: string;
-    labels: {
-      whatsapp: string;
-      instagram: string;
-      facebook: string;
+    labels: SocialLabels & {
       email: string;
       address: string;
       hours: string;
@@ -204,9 +258,12 @@ export type ContactContent = {
     directions: string;
   };
   info: Array<TextCard & { icon: "pickup" | "shipping" }>;
+  newTab: string;
+  rangeSeparator: string;
 };
 
 export type FooterContent = {
+  navigationLabel: string;
   navigationTitle: string;
   contactTitle: string;
   socialTitle: string;
@@ -215,8 +272,9 @@ export type FooterContent = {
   disclaimer: string;
   /** Texto previo al nombre del crédito, por ejemplo "Diseño y desarrollo web por". */
   credit: string;
-  /** Aviso para lectores de pantalla en enlaces que abren pestaña nueva. */
-  creditNewTab: string;
+  newTab: string;
+  rangeSeparator: string;
+  socialLabels: SocialLabels;
 };
 
 export type SearchContent = {

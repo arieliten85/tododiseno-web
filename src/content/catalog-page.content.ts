@@ -1,7 +1,13 @@
 import type { CatalogPageContent } from "./content.types";
 
 export const catalogPageContent = {
+  metadata: {
+    title: "Catálogo de souvenirs, deco e impresos personalizados",
+    description:
+      "Explorá souvenirs, deco e impresos personalizados para comuniones, bautismos, cumpleaños temáticos, baby showers y Navidad. Todo a pedido, con envíos a todo el país.",
+  },
   breadcrumb: "Catálogo",
+  cardAction: "Ver detalles",
   eyebrow: "CATÁLOGO · TODO DISEÑO",
   title: "Souvenirs y detalles personalizados para momentos especiales",
   description:

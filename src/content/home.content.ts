@@ -17,6 +17,7 @@ export const homeContent = {
     title: "Encontrá lo que buscás",
     description:
       "Diseñamos piezas adaptadas al estilo y la atmósfera de cada ocasión.",
+    cardEyebrow: "Catálogo",
   },
   featured: {
     eyebrow: "LOS MÁS ELEGIDOS",

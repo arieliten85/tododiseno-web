@@ -1,6 +1,11 @@
 import type { AboutContent } from "./content.types";
 
 export const aboutContent = {
+  metadata: {
+    title: "Sobre mí",
+    description:
+      "Conocé a Florencia y su local en Lanús Oeste, donde diseña e imprime souvenirs, deco e impresos personalizados para cada celebración.",
+  },
   breadcrumb: "Sobre mí",
   eyebrow: "EL LOCAL DE FLORENCIA",
   title: "Detrás de cada souvenir",

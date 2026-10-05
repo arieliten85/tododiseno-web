@@ -14,6 +14,8 @@ import { BuntingEdge } from "@/components/ui/ornaments";
 type FooterProps = {
   name: string;
   brand: string;
+  /** Bajada del logo de texto (solo sin imagen de logo). */
+  tagline?: string;
   logo?: { src?: string; alt: string };
   navigation: Array<{ label: string; href: string }>;
   phone?: string;
@@ -24,6 +26,7 @@ type FooterProps = {
   facebook?: { label: string; href: string };
   credit?: { name: string; url?: string };
   content: {
+    navigationLabel: string;
     navigationTitle: string;
     contactTitle: string;
     socialTitle: string;
@@ -31,13 +34,18 @@ type FooterProps = {
     legal: string;
     disclaimer: string;
     credit: string;
-    creditNewTab: string;
+    /** Aviso para lectores de pantalla en enlaces que abren pestaña nueva. */
+    newTab: string;
+    /** Une franjas horarias de un mismo día. */
+    rangeSeparator: string;
+    socialLabels: { whatsapp: string; instagram: string; facebook: string };
   };
 };
 
 export function Footer({
   name,
   brand,
+  tagline,
   logo,
   navigation,
   phone,
@@ -68,14 +76,16 @@ export function Footer({
             ) : (
               <p className="font-heading text-accent-strong text-2xl font-semibold">
                 {brand.toLowerCase()}
-                <span className="text-muted-foreground block text-[0.6rem] font-bold tracking-[0.3em] uppercase">
-                  Souvenirs
-                </span>
+                {tagline ? (
+                  <span className="text-muted-foreground block text-[0.6rem] font-bold tracking-[0.3em] uppercase">
+                    {tagline}
+                  </span>
+                ) : null}
               </p>
             )}
           </div>
 
-          <nav aria-label="Navegación del pie">
+          <nav aria-label={content.navigationLabel}>
             <p className="text-muted-foreground mb-4 text-xs font-bold tracking-[0.2em]">
               {content.navigationTitle}
             </p>
@@ -101,7 +111,9 @@ export function Footer({
               {phone ? (
                 <li className={itemClass}>
                   <PhoneIcon className={iconClass} />
-                  <span>WhatsApp: {phone}</span>
+                  <span>
+                    {content.socialLabels.whatsapp}: {phone}
+                  </span>
                 </li>
               ) : null}
               {email ? (
@@ -126,7 +138,7 @@ export function Footer({
                     <ul className="text-foreground/85 mt-1 space-y-0.5">
                       {hours.map((row) => (
                         <li key={row.days}>
-                          {row.days} {row.ranges.join(" y ")}
+                          {row.days} {row.ranges.join(content.rangeSeparator)}
                         </li>
                       ))}
                     </ul>
@@ -149,11 +161,8 @@ export function Footer({
                   className="flex items-center gap-3 text-sm hover:underline"
                 >
                   <InstagramIcon className="text-accent-strong size-4" />
-                  Instagram: {instagram.label}
-                  <span className="sr-only">
-                    {" "}
-                    (se abre en una pestaña nueva)
-                  </span>
+                  {content.socialLabels.instagram}: {instagram.label}
+                  <span className="sr-only"> {content.newTab}</span>
                 </a>
               ) : null}
               {facebook ? (
@@ -164,11 +173,8 @@ export function Footer({
                   className="flex items-center gap-3 text-sm hover:underline"
                 >
                   <FacebookIcon className="text-accent-strong size-4" />
-                  Facebook: {facebook.label}
-                  <span className="sr-only">
-                    {" "}
-                    (se abre en una pestaña nueva)
-                  </span>
+                  {content.socialLabels.facebook}: {facebook.label}
+                  <span className="sr-only"> {content.newTab}</span>
                 </a>
               ) : null}
             </div>
@@ -190,7 +196,7 @@ export function Footer({
                   className="text-foreground/70 hover:text-accent-strong font-semibold underline decoration-dotted underline-offset-4 transition-colors"
                 >
                   {credit.name}
-                  <span className="sr-only"> {content.creditNewTab}</span>
+                  <span className="sr-only"> {content.newTab}</span>
                 </a>
               ) : (
                 <span className="text-foreground/70 font-semibold">
