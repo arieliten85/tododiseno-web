@@ -14,7 +14,7 @@ body {
 }
 
 :focus-visible {
-  outline: 3px solid var(--accent);
+  outline: 3px solid var(--accent-strong);
   outline-offset: 3px;
 }
 

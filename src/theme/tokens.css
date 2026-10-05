@@ -5,6 +5,13 @@
 :root {
   --primary: #e8b4ae;
   --primary-foreground: #ffffff;
+  /*
+   * Relleno sólido con texto blanco encima (botones, paginación activa).
+   * primary queda para tintes, chips y adornos. Contraste con blanco:
+   * strong 4,72:1 y hover 5,44:1 (WCAG AA para texto normal).
+   */
+  --primary-strong: #a85f59;
+  --primary-strong-hover: #9c5650;
   --secondary: #fbe9e4;
   --secondary-foreground: #6b3f3a;
   --background: #ffffff;
@@ -28,6 +35,12 @@
   --band: #fcf1ec;
   --whatsapp: #25d366;
   --whatsapp-foreground: #ffffff;
+  /*
+   * Verde oscuro para botones de WhatsApp con texto o ícono blanco
+   * (4,70:1 con blanco). El verde oficial (#25d366, 1,98:1) no alcanza
+   * WCAG AA con blanco; se conserva en --whatsapp para tintes y adornos.
+   */
+  --whatsapp-strong: #118548;
   /* Fondo de los diálogos modales (se usa con opacidad). */
   --overlay: #000000;
 
@@ -53,6 +66,8 @@
 @theme inline {
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-primary-strong: var(--primary-strong);
+  --color-primary-strong-hover: var(--primary-strong-hover);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-background: var(--background);
@@ -74,6 +89,7 @@
   --color-band: var(--band);
   --color-whatsapp: var(--whatsapp);
   --color-whatsapp-foreground: var(--whatsapp-foreground);
+  --color-whatsapp-strong: var(--whatsapp-strong);
   --color-overlay: var(--overlay);
   --font-heading: var(--font-heading-family);
   --font-body: var(--font-body-family);

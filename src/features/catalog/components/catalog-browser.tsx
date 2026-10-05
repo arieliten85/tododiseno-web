@@ -320,7 +320,7 @@ export function CatalogBrowser({
           {content.filters.title}
         </span>
         {selectedCategories.size + selectedAudiences.size > 0 ? (
-          <span className="bg-primary text-primary-foreground inline-flex size-6 items-center justify-center rounded-full text-xs">
+          <span className="bg-primary-strong text-primary-foreground inline-flex size-6 items-center justify-center rounded-full text-xs">
             {selectedCategories.size + selectedAudiences.size}
           </span>
         ) : null}
@@ -420,7 +420,7 @@ export function CatalogBrowser({
           <button
             type="button"
             onClick={applyFilters}
-            className="bg-primary text-primary-foreground inline-flex min-h-11 flex-1 items-center justify-center rounded-full px-6 text-sm font-semibold"
+            className="bg-primary-strong text-primary-foreground inline-flex min-h-11 flex-1 items-center justify-center rounded-full px-6 text-sm font-semibold"
           >
             {draftTotal === 0
               ? content.filters.applyNone
@@ -524,7 +524,7 @@ export function CatalogBrowser({
             <button
               type="button"
               onClick={resetFilters}
-              className="bg-primary text-primary-foreground mt-5 inline-flex min-h-11 items-center rounded-full px-6 text-sm font-semibold"
+              className="bg-primary-strong text-primary-foreground mt-5 inline-flex min-h-11 items-center rounded-full px-6 text-sm font-semibold"
             >
               {content.results.clearFilters}
             </button>
@@ -549,7 +549,7 @@ export function CatalogBrowser({
                 className={cn(
                   "inline-flex size-10 items-center justify-center rounded-full text-sm font-semibold transition-colors",
                   number === pagination.page
-                    ? "bg-primary text-primary-foreground"
+                    ? "bg-primary-strong text-primary-foreground"
                     : "hover:bg-secondary",
                 )}
               >

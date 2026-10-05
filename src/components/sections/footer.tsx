@@ -189,7 +189,7 @@ export function Footer({
             © {new Date().getFullYear()} {name}. {content.legal}
           </p>
           {credit ? (
-            <p className="text-muted-foreground/80 pt-1 text-[0.7rem] tracking-wide">
+            <p className="text-muted-foreground pt-1 text-[0.7rem] tracking-wide">
               {content.credit}{" "}
               {credit.url ? (
                 <a

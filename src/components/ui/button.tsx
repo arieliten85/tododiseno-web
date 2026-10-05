@@ -9,12 +9,12 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          "bg-primary text-primary-foreground shadow-sm hover:-translate-y-0.5 hover:shadow-md",
+          "bg-primary-strong text-primary-foreground hover:bg-primary-strong-hover shadow-sm hover:-translate-y-0.5 hover:shadow-md",
         secondary: "bg-secondary text-secondary-foreground hover:bg-primary/40",
         outline:
           "border border-border bg-surface text-surface-foreground hover:bg-secondary",
         whatsapp:
-          "bg-whatsapp text-whatsapp-foreground shadow-sm hover:-translate-y-0.5 hover:shadow-md",
+          "bg-whatsapp-strong text-whatsapp-foreground shadow-sm hover:-translate-y-0.5 hover:shadow-md",
       },
       width: {
         auto: "",
