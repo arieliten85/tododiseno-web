@@ -10,6 +10,7 @@ import { seoConfig } from "@/config/seo.config";
 import { siteConfig } from "@/config/site.config";
 import { categories } from "@/content/categories.content";
 import { homeContent } from "@/content/home.content";
+import { sharedContent } from "@/content/shared.content";
 import { ProductCard } from "@/features/catalog/components/product-card";
 import {
   getFeaturedProducts,
@@ -94,6 +95,7 @@ export default function Home() {
         badge={cta.badge}
         image={cta.image}
         imageSide="left"
+        newTabLabel={sharedContent.newTab}
       />
     </>
   );

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { CloseIcon, MenuIcon } from "@/components/ui/icons";
 import { cn } from "@/lib/class-names";
 
@@ -33,11 +33,15 @@ export function HeaderNav({
   const [openPath, setOpenPath] = useState<string | null>(null);
   const open = openPath === pathname;
   const panelId = useId();
+  const toggleRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (!open) return;
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpenPath(null);
+      if (event.key !== "Escape") return;
+      setOpenPath(null);
+      // El panel se oculta: el foco vuelve al botón que lo abrió.
+      toggleRef.current?.focus();
     };
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
@@ -67,6 +71,7 @@ export function HeaderNav({
       </nav>
 
       <button
+        ref={toggleRef}
         type="button"
         className="text-foreground hover:bg-secondary inline-flex size-11 items-center justify-center rounded-full md:hidden"
         aria-expanded={open}

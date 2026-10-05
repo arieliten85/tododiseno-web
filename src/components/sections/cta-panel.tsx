@@ -18,6 +18,8 @@ type CtaPanelProps = {
   badge?: string;
   image: { src: string; alt: string };
   imageSide?: "left" | "right";
+  /** Aviso para lectores de pantalla en acciones externas (pestaña nueva). */
+  newTabLabel?: string;
 };
 
 /** Bloque de cierre: texto + botón de WhatsApp junto a una foto. */
@@ -32,6 +34,7 @@ export function CtaPanel({
   badge,
   image,
   imageSide = "right",
+  newTabLabel,
 }: CtaPanelProps) {
   return (
     <section className="py-section-md">
@@ -61,12 +64,20 @@ export function CtaPanel({
               </ul>
             ) : null}
             <div className="mt-7 flex flex-wrap gap-3">
-              <Button href={action.href} variant="whatsapp">
+              <Button
+                href={action.href}
+                variant="whatsapp"
+                newTabLabel={newTabLabel}
+              >
                 <WhatsAppIcon className="size-5" />
                 {action.label}
               </Button>
               {secondaryAction ? (
-                <Button href={secondaryAction.href} variant="outline">
+                <Button
+                  href={secondaryAction.href}
+                  variant="outline"
+                  newTabLabel={newTabLabel}
+                >
                   {secondaryAction.label}
                 </Button>
               ) : null}

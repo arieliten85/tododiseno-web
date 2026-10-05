@@ -96,6 +96,7 @@ export default function CatalogPage() {
         secondaryAction={content.cta.secondaryAction}
         reassurance={content.cta.reassurance}
         image={content.cta.image}
+        newTabLabel={sharedContent.newTab}
       />
     </>
   );

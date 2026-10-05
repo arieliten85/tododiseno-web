@@ -168,6 +168,7 @@ export default function ContactPage() {
                 content.card.action.message,
               )}
               variant="whatsapp"
+              newTabLabel={content.newTab}
               width="full"
               className="mt-6"
             >

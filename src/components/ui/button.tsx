@@ -29,6 +29,8 @@ type ButtonProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href"> &
   VariantProps<typeof buttonVariants> & {
     href: string;
     children: ReactNode;
+    /** Aviso para lectores de pantalla en enlaces externos (abren pestaña nueva). */
+    newTabLabel?: string;
   };
 
 /** Enlace con aspecto de botón. Usa next/link para rutas internas. */
@@ -38,6 +40,7 @@ export function Button({
   width,
   href,
   children,
+  newTabLabel,
   ...props
 }: ButtonProps) {
   const classes = cn(buttonVariants({ variant, width }), className);
@@ -60,6 +63,7 @@ export function Button({
       {...props}
     >
       {children}
+      {newTabLabel ? <span className="sr-only"> {newTabLabel}</span> : null}
     </a>
   );
 }
