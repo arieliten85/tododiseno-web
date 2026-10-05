@@ -127,22 +127,6 @@
     "blur": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAAAQAgCdASoQABAAA4BaJYgCdAEQ97YOBlSEAP7qe7c+XELBADpj/UfPyyXxE/ssvod18KamCRTeYIfgoZfT3IUgAAA=",
     "mtime": 1791216003478
   },
-  "/brand/decor/guirnalda-banderines.png": {
-    "width": 265,
-    "height": 37,
-    "variants": [
-      320,
-      480,
-      640,
-      960,
-      1280,
-      1600,
-      2000
-    ],
-    "stem": "decor/guirnalda-banderines",
-    "blur": "data:image/webp;base64,UklGRogAAABXRUJQVlA4WAoAAAAQAAAADwAAAQAAQUxQSCEAAAAAPGxgUmFFTElES1pMalZiAAgPIRo7N0FLOUA3JyMKEAAAVlA4IEAAAADwAQCdASoQAAIAA4BaJagCdG1/AgW4uwAA/vCoKPi/Eruv0cxMFT0TI8FBHb8WnS2lV5w9eJXlNiSgudu/tAAA",
-    "mtime": 1791216849417
-  },
   "/brand/decor/rama-con-flor.png": {
     "width": 52,
     "height": 57,
