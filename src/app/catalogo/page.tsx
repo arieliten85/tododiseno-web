@@ -46,7 +46,7 @@ export default function CatalogPage() {
         name={product.visibleName}
         image={product.image}
         actionLabel="Ver detalles"
-        priority={index < 3}
+        eager={index < 3}
       />
     ),
   }));

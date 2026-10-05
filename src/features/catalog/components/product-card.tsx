@@ -8,8 +8,8 @@ type ProductCardProps = {
   name: string;
   image: { src: string; alt: string };
   actionLabel: string;
-  /** Marca la primera imagen visible para cargarla con prioridad. */
-  priority?: boolean;
+  /** Carga la imagen sin esperar al scroll (primeras tarjetas visibles). */
+  eager?: boolean;
 };
 
 /** Tarjeta de producto del catálogo: foto, nombre y acceso al detalle. Sin precio. */
@@ -18,7 +18,7 @@ export function ProductCard({
   name,
   image,
   actionLabel,
-  priority,
+  eager,
 }: ProductCardProps) {
   return (
     <article className="group bg-surface border-border rounded-card relative flex h-full flex-col overflow-hidden border p-2.5 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md">
@@ -32,7 +32,7 @@ export function ProductCard({
           src={image.src}
           alt=""
           fill
-          priority={priority}
+          loading={eager ? "eager" : undefined}
           sizes="(min-width: 1024px) 300px, (min-width: 640px) 45vw, 92vw"
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />

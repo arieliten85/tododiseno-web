@@ -45,7 +45,7 @@ export function Header({
             <MediaImage
               src={logo.src}
               alt={logo.alt}
-              priority
+              loading="eager"
               sizes="160px"
               className="h-14 w-auto"
             />
