@@ -8,6 +8,9 @@ export const siteConfig = {
     src: "/brand/logo/logo.png",
     alt: "Todo Diseño Souvenirs",
   },
+  decor: {
+    cardSprig: "/brand/decor/rama-con-flor.png",
+  },
   locale: "es-AR",
   url: siteUrl,
   contact: {

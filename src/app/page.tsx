@@ -40,6 +40,7 @@ export default function Home() {
       <CategoryGrid
         {...categoriesIntro}
         eyebrowLabel="Catálogo"
+        sprigSrc={siteConfig.decor.cardSprig}
         items={categories.map((category) => ({
           id: category.id,
           label: category.label,
@@ -64,6 +65,7 @@ export default function Home() {
                   name={product.visibleName}
                   image={product.image}
                   actionLabel={featuredIntro.cardAction}
+                  sprigSrc={siteConfig.decor.cardSprig}
                 />
               </li>
             ))}

@@ -187,6 +187,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   name={item.visibleName}
                   image={item.image}
                   actionLabel={content.related.action}
+                  sprigSrc={siteConfig.decor.cardSprig}
                 />
               </li>
             ))}

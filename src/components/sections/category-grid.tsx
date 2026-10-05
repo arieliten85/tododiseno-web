@@ -10,6 +10,8 @@ type CategoryGridProps = {
   title: string;
   description?: string;
   eyebrowLabel: string;
+  /** Adorno de la esquina de cada card; sin ruta no se muestra. */
+  sprigSrc?: string;
   items: Array<{
     id: string;
     label: string;
@@ -23,6 +25,7 @@ export function CategoryGrid({
   title,
   description,
   eyebrowLabel,
+  sprigSrc,
   items,
 }: CategoryGridProps) {
   return (
@@ -49,7 +52,7 @@ export function CategoryGrid({
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-                <CardSprig />
+                {sprigSrc ? <CardSprig src={sprigSrc} /> : null}
                 <div className="bg-surface/95 absolute inset-x-3 bottom-3 flex items-center justify-between rounded-lg px-4 py-3 backdrop-blur">
                   <div>
                     <p className="text-muted-foreground text-[0.65rem] font-bold tracking-[0.2em] uppercase">

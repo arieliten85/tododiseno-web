@@ -46,6 +46,7 @@ export default function CatalogPage() {
         name={product.visibleName}
         image={product.image}
         actionLabel="Ver detalles"
+        sprigSrc={siteConfig.decor.cardSprig}
         eager={index < 3}
       />
     ),

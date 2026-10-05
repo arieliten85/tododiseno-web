@@ -95,7 +95,7 @@ export default function AboutPage() {
                   })}
                 </ul>
               </div>
-              <CardSprig />
+              <CardSprig src={siteConfig.decor.cardSprig} />
             </div>
 
             <p className="text-muted-foreground mt-5 flex items-center gap-2 text-sm">

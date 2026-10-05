@@ -44,6 +44,11 @@ export type SiteConfig = {
     src?: string;
     alt: string;
   };
+  /** Adornos de marca: rutas públicas bajo /brand/decor. */
+  decor: {
+    /** Ramita con flor de la esquina superior de las cards. */
+    cardSprig?: string;
+  };
   url?: string;
   locale: "es" | "es-AR" | "es-UY" | "es-CL" | "es-MX";
   contact: SiteContact;
