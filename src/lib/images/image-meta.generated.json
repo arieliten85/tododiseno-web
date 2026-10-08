@@ -480,8 +480,8 @@
     "mtime": 1790974536051
   },
   "/brand/testimonials/testimonio-01.jpg": {
-    "width": 900,
-    "height": 1200,
+    "width": 320,
+    "height": 350,
     "variants": [
       320,
       480,
@@ -492,12 +492,12 @@
       2000
     ],
     "stem": "testimonials/testimonio-01",
-    "blur": "data:image/webp;base64,UklGRkAAAABXRUJQVlA4IDQAAADwAgCdASoQABUAPu1iqU2ppaOiMAgBMB2JQBOmUACPAAD+7/U48Ys9ZHb820tBXjVD5gAA",
-    "mtime": 1790974536051
+    "blur": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAACwAwCdASoQABEAPu1iqk2ppaQiMAgBMB2JaQAAYfV2UsX8ZI3uwAD+7sQbG5AupOvXbyPBgdGqxBW8o+xKMvkFesy0oQAA",
+    "mtime": 1791471886014
   },
   "/brand/testimonials/testimonio-02.jpg": {
-    "width": 900,
-    "height": 1200,
+    "width": 320,
+    "height": 350,
     "variants": [
       320,
       480,
@@ -508,12 +508,12 @@
       2000
     ],
     "stem": "testimonials/testimonio-02",
-    "blur": "data:image/webp;base64,UklGRkAAAABXRUJQVlA4IDQAAADwAgCdASoQABUAPu1iqU2tJaQiMAgBoB2JZQC06C2xAAD+77G0MrKu4qljuBGE4ZOPXAAA",
-    "mtime": 1790974536052
+    "blur": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAAAQAwCdASoQABEAPu1iqU2ppaOiMAgBMB2JZwAAKvqgwAAA/uzESWq3sNh65betQpEgo+SSFO5MhSzS2NvbetcLW9g8LH6v70TNL6FRMX32FAAA",
+    "mtime": 1791471886951
   },
   "/brand/testimonials/testimonio-03.jpg": {
-    "width": 900,
-    "height": 1200,
+    "width": 320,
+    "height": 350,
     "variants": [
       320,
       480,
@@ -524,7 +524,7 @@
       2000
     ],
     "stem": "testimonials/testimonio-03",
-    "blur": "data:image/webp;base64,UklGRkAAAABXRUJQVlA4IDQAAABQAwCdASoQABUAPu1iqU2ppaOiMAgBMB2JZQCdAC0KkQAQAAD+7/U29fyWk7pRJT3wAAAA",
-    "mtime": 1790974536052
+    "blur": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAACwAwCdASoQABEAPu1iqU2ppaOiMAgBMB2JQBhQA9LXjOcKeOhOuAD+7NCw9WeyYDOCCDgppadyS90wM/T0ylLHnsaiYRIR5v5cESbMP5pNINnq7MCd9a2PBHJ4wa0orSiINdcoYWb7/lx+AAA=",
+    "mtime": 1791471891006
   }
 }

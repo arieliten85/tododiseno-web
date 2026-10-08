@@ -30,13 +30,13 @@ export function Testimonials({
               key={item.id}
               className="bg-surface rounded-card overflow-hidden shadow-md"
             >
-              <div className="relative aspect-[3/4]">
+              <div className="relative aspect-[32/35]">
                 <MediaImage
                   src={item.image.src}
                   alt={item.image.alt}
                   fill
                   sizes="(min-width: 640px) 30vw, 92vw"
-                  className="object-cover"
+                  className="object-contain"
                 />
               </div>
             </li>

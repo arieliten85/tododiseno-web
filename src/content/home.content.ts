@@ -55,21 +55,21 @@ export const homeContent = {
         id: "testimonio-01",
         image: {
           src: "/brand/testimonials/testimonio-01.jpg",
-          alt: "Captura de un mensaje de una clienta agradeciendo su pedido",
+          alt: "Captura de WhatsApp: una clienta celebra con entusiasmo la agenda personalizada y las frases de cada mesa",
         },
       },
       {
         id: "testimonio-02",
         image: {
           src: "/brand/testimonials/testimonio-02.jpg",
-          alt: "Captura de un mensaje de una clienta contenta con sus souvenirs",
+          alt: "Captura de WhatsApp: una clienta responde con alegría al ver su pedido terminado",
         },
       },
       {
         id: "testimonio-03",
         image: {
           src: "/brand/testimonials/testimonio-03.jpg",
-          alt: "Captura de una conversación de una clienta sobre su celebración",
+          alt: "Captura de Instagram: una clienta cuenta que entregó los cuadros y que la emocionaron",
         },
       },
     ],
