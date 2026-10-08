@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { CloseIcon, MenuIcon } from "@/components/ui/icons";
 import { cn } from "@/lib/class-names";
 
@@ -13,6 +13,10 @@ type HeaderNavProps = {
   mobileNavLabel: string;
   menuLabel: string;
   closeLabel: string;
+  /** Contenido del menú móvil bajo los enlaces (p. ej. redes sociales). */
+  mobileFooter?: ReactNode;
+  /** Acciones del header (búsqueda, redes en escritorio); su ubicación la define quien las pasa. */
+  actions?: ReactNode;
 };
 
 function isActive(pathname: string, href: string) {
@@ -27,6 +31,8 @@ export function HeaderNav({
   mobileNavLabel,
   menuLabel,
   closeLabel,
+  mobileFooter,
+  actions,
 }: HeaderNavProps) {
   const pathname = usePathname();
   // El menú queda abierto solo para la ruta en la que se abrió: al navegar se cierra solo.
@@ -70,10 +76,12 @@ export function HeaderNav({
         })}
       </nav>
 
+      {actions}
+
       <button
         ref={toggleRef}
         type="button"
-        className="text-foreground hover:bg-secondary inline-flex size-11 items-center justify-center rounded-full md:hidden"
+        className="text-foreground hover:bg-secondary col-start-3 row-start-1 -mr-3 inline-flex size-11 items-center justify-center justify-self-end rounded-full md:hidden"
         aria-expanded={open}
         aria-controls={panelId}
         aria-label={open ? closeLabel : menuLabel}
@@ -111,6 +119,7 @@ export function HeaderNav({
             );
           })}
         </nav>
+        {mobileFooter}
       </div>
     </>
   );
