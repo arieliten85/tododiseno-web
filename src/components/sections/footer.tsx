@@ -57,15 +57,15 @@ export function Footer({
   credit,
   content,
 }: FooterProps) {
-  const itemClass = "flex items-start gap-3";
+  const itemClass = "flex items-start justify-center gap-3 sm:justify-start";
   const iconClass = "text-accent-strong mt-0.5 size-4 shrink-0";
 
   return (
     <footer className="bg-muted relative mt-24 pt-14">
       <BuntingEdge className="pointer-events-none absolute inset-x-0 top-0 opacity-40" />
       <Container>
-        <div className="grid gap-10 pb-10 sm:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1.5fr_1fr]">
-          <div>
+        <div className="grid gap-10 pb-10 text-center sm:grid-cols-2 sm:text-left lg:grid-cols-[1.2fr_1fr_1.5fr_1fr]">
+          <div className="flex justify-center sm:justify-start">
             {logo?.src ? (
               <MediaImage
                 src={logo.src}
@@ -159,10 +159,10 @@ export function Footer({
                   href={instagram.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-sm hover:underline"
+                  className="flex items-center justify-center gap-3 text-sm hover:underline sm:justify-start"
                 >
                   <InstagramIcon className="text-accent-strong size-4" />
-                  {`${content.socialLabels.instagram}: `}
+                  <span className="sr-only">{`${content.socialLabels.instagram}: `}</span>
                   {instagram.label}
                   <span className="sr-only"> {content.newTab}</span>
                 </a>
@@ -172,10 +172,10 @@ export function Footer({
                   href={facebook.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-sm hover:underline"
+                  className="flex items-center justify-center gap-3 text-sm hover:underline sm:justify-start"
                 >
                   <FacebookIcon className="text-accent-strong size-4" />
-                  {`${content.socialLabels.facebook}: `}
+                  <span className="sr-only">{`${content.socialLabels.facebook}: `}</span>
                   {facebook.label}
                   <span className="sr-only"> {content.newTab}</span>
                 </a>
