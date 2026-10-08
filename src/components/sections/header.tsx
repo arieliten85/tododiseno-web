@@ -66,7 +66,7 @@ function SocialPills({
 }) {
   if (socials.length === 0) return null;
   return (
-    <ul className="border-border flex gap-3 border-t px-5 py-4">
+    <ul className="border-border flex justify-center gap-3 border-t px-5 py-4">
       {socials.map((social) => (
         <li key={social.id}>
           <a
