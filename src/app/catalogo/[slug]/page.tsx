@@ -82,6 +82,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <div className="mt-8 grid gap-10 lg:grid-cols-[1.1fr_1fr]">
           <ProductGallery
             label={product.visibleName}
+            labels={content.gallery}
             slides={images.map((image, index) => ({
               id: image.src,
               alt: image.alt,
@@ -102,6 +103,16 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   fill
                   sizes="120px"
                   className="object-cover"
+                />
+              ),
+              zoom: (
+                <MediaImage
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  loading="eager"
+                  sizes="100vw"
+                  className="object-contain"
                 />
               ),
             }))}

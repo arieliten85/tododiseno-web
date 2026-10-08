@@ -28,6 +28,12 @@ export const SearchIcon = (p: IconProps) => (
     <path d="m20 20-3.5-3.5" />
   </Icon>
 );
+export const ZoomInIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <circle cx="11" cy="11" r="7" />
+    <path d="m20 20-3.5-3.5M11 8v6M8 11h6" />
+  </Icon>
+);
 export const InstagramIcon = (p: IconProps) => (
   <Icon {...p}>
     <rect x="3" y="3" width="18" height="18" rx="5" />

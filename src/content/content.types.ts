@@ -194,6 +194,16 @@ export type CatalogPageContent = {
 
 export type ProductPageContent = {
   share: { label: string; copied: string };
+  gallery: {
+    /** Nombre accesible del botón que abre la imagen ampliada. */
+    open: string;
+    dialog: string;
+    close: string;
+    previous: string;
+    next: string;
+    /** Plantilla con {current} y {total}. */
+    counter: string;
+  };
   customizableNote: { label: string; text: string };
   consult: {
     title: string;

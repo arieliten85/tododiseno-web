@@ -3,6 +3,14 @@ import { sharedContent } from "./shared.content";
 
 export const productPageContent = {
   share: { label: "Compartir producto", copied: "Enlace copiado" },
+  gallery: {
+    open: "Ampliar imagen",
+    dialog: "Imágenes del producto",
+    close: "Cerrar imagen ampliada",
+    previous: "Imagen anterior",
+    next: "Imagen siguiente",
+    counter: "Imagen {current} de {total}",
+  },
   customizableNote: {
     label: "Producto personalizable",
     text: "Color, tamaño, texto y temática se coordinan a tu gusto por WhatsApp.",
