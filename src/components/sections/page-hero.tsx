@@ -12,7 +12,6 @@ type PageHeroProps = {
   ornament?: OrnamentVariant;
 };
 
-/** Encabezado de página interna: ruta, etiqueta, h1 y bajada. */
 export function PageHero({
   breadcrumb,
   breadcrumbLabel,

@@ -12,12 +12,6 @@ type HeroProps = {
   image: { src: string; alt: string };
 };
 
-/**
- * Hero de inicio: ocupa el alto de la pantalla menos el header (5rem) y la
- * foto va de fondo. En escritorio un velo crema la funde hacia la izquierda,
- * donde va el texto; en mobile el velo es parejo y el contenido va centrado.
- * La onda inferior toma el color de la sección siguiente (surface).
- */
 export function Hero({
   eyebrow,
   title,

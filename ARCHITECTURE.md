@@ -1,70 +1,31 @@
-# Todo Diseño architecture
+# Arquitectura
 
-Todo Diseño is a Next.js static site built from a reusable starter for small production websites. It is not a page builder, CMS, multi-tenant platform, marketplace, or backend application.
+Sitio estático de Todo Diseño Souvenirs (Next.js App Router, `output: export`). Catálogo sin precios; la consulta se cierra por WhatsApp. No hay backend, CMS ni base de datos.
 
-Core idea:
+Regla de fondo: la estructura y los componentes son código, la identidad del negocio es configuración.
 
-> La estructura y los componentes son código. La identidad del negocio es configuración.
+## Carpetas
 
-> Configuración controla intención. Componentes controlan implementación.
+- `src/app`: rutas (`/`, `/catalogo`, `/catalogo/[slug]`, `/contacto`, `/sobre-mi`), layout, metadata, sitemap, robots e imagen Open Graph. Solo compone.
+- `src/components/ui`: piezas genéricas (botón, slider, select, adornos SVG). No importan `features`, `content` ni `config`.
+- `src/components/sections`: header, footer, hero y demás bloques de página. Reciben textos por props.
+- `src/features`: lógica de dominio. `catalog` (filtros, búsqueda, paginado), `product` (galería, consulta por WhatsApp), `search` (buscador del header).
+- `src/config`: datos del negocio (contacto, horarios, redes, SEO, URL).
+- `src/content`: textos y catálogo (`products.content.ts`), tipados con `content.types.ts`.
+- `src/theme`: tokens CSS, fuentes y colores de la imagen OG.
+- `src/lib`: utilidades chicas (WhatsApp, SEO, loader de imágenes).
+- `public/brand`: imágenes de marca originales. `public/_img` lo genera `scripts/optimize-images.mjs` (variantes WebP) en `predev` y `prebuild`; no se edita a mano.
 
-## Directory responsibilities
+## Cómo fluyen los datos
 
-### `src/app`
+`app` lee `config` y `content`, y los pasa por props a `sections` y `features`. Las tarjetas de producto se renderizan en el servidor (HTML estático para SEO) y `catalog-browser` solo decide cuáles mostrar según la URL (`?q=`, `categoria`, `destinatario`).
 
-Owns routes, layouts, metadata, and route-level composition. It imports content/config/theme and passes data into sections. It should not contain reusable business logic.
+## Tareas comunes
 
-### `src/components/ui`
+- Nuevo producto: agregar el objeto en `src/content/products.content.ts` y la foto en `public/brand/products/<id>.jpg`.
+- Cambiar colores o tipografías: `src/theme/tokens.css` y `src/theme/fonts.ts`. Los componentes usan tokens semánticos (`primary`, `surface`, `foreground`), nunca colores de marca.
+- Cambiar teléfono, horarios o redes: `src/config/site.config.ts`.
 
-Business-agnostic primitives such as buttons, containers, and headings. UI primitives must not import `features`, `content`, or `config`.
+## Comandos
 
-### `src/components/sections`
-
-Reusable page sections such as hero, quality, FAQ, CTA, header, and footer. Sections receive content and configuration through props. They do not import global content directly.
-
-### `src/features`
-
-Domain-focused logic and interactive flows. A feature may contain its own components, model, schemas, and helpers. Shared generic UI should stay outside features.
-
-### `src/config`
-
-Business configuration: brand identity, site metadata, SEO defaults, locale, currency, contact, socials, and layout intent. Config expresses intention and must not store arbitrary Tailwind classes.
-
-### `src/content`
-
-Typed business copy and catalog-like content. Content is plain TypeScript using `satisfies`; components receive it through props.
-
-### `src/theme`
-
-Design tokens, CSS theme variables, and fonts. Components use semantic tokens like `primary`, `surface`, and `foreground`, never business-specific token names.
-
-### `src/lib`
-
-Small shared utilities with clear ownership, such as SEO helpers and class-name merging. Avoid large generic `utils.ts` files.
-
-### `public/brand`
-
-Stable brand assets for each client, grouped by purpose: logo, hero, products, quality, and social. Do not commit temporary Figma URLs as production assets.
-
-## Dependency direction
-
-- `ui` does not depend on `features`.
-- `ui` does not depend on `content`.
-- `ui` does not depend on `config`.
-- `sections` receive content by props.
-- `features` contain interactive and domain logic.
-- `app` only composes routes, layout, and metadata.
-- `config` contains business configuration.
-- `content` contains copy and catalog content.
-- `theme` contains tokens and fonts.
-
-## Client customization
-
-Future clients should mainly require changes in:
-
-- `src/config/**`
-- `src/content/**`
-- `src/theme/**`
-- `public/brand/**`
-
-Changing `src/app`, `src/features`, or `src/components` should only be necessary when the product behavior or reusable structure truly changes.
+`bun dev`, `bun run build` (exporta a `out/`), `bun run check` (formato, lint y tipos).

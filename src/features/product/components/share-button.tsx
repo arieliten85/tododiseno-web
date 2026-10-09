@@ -9,7 +9,6 @@ type ShareButtonProps = {
   copiedLabel: string;
 };
 
-/** Comparte con la hoja nativa del celular o, si no existe, copia el enlace. */
 export function ShareButton({ title, label, copiedLabel }: ShareButtonProps) {
   const [copied, setCopied] = useState(false);
 

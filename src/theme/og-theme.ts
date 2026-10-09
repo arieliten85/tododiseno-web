@@ -1,10 +1,4 @@
-/**
- * Colores de la imagen Open Graph. ImageResponse (next/og) no lee variables
- * CSS, así que los valores se repiten acá a mano en lugar de salir de
- * tokens.css. Hoy solo foreground coincide con su token (--foreground);
- * background y accent son tonos propios de la imagen y no siguen a
- * --background ni a --accent. Si cambia la marca, revisarlos acá también.
- */
+// next/og cant read css vars, so these are copied by hand from tokens.css (only foreground matches)
 export const ogTheme = {
   colors: {
     background: "#fdf8f3",

@@ -190,7 +190,6 @@ export const ScissorsIcon = (p: IconProps) => (
     <path d="M8.3 8.3 20 18M8.3 15.7 20 6" />
   </Icon>
 );
-/** Rosita del título "Mi compromiso" (recurso de Figma, vectorizado). */
 export const RoseIcon = (p: IconProps) => (
   <svg
     viewBox="0 0 17 20"

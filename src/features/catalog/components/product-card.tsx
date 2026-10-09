@@ -8,13 +8,10 @@ type ProductCardProps = {
   name: string;
   image: { src: string; alt: string };
   actionLabel: string;
-  /** Adorno de la esquina de la card; sin ruta no se muestra. */
   sprigSrc?: string;
-  /** Carga la imagen sin esperar al scroll (primeras tarjetas visibles). */
   eager?: boolean;
 };
 
-/** Tarjeta de producto del catálogo: foto, nombre y acceso al detalle. Sin precio. */
 export function ProductCard({
   href,
   name,

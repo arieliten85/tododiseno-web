@@ -7,7 +7,6 @@ type SectionHeadingProps = {
   description?: string;
   align?: "left" | "center";
   as?: "h1" | "h2";
-  /** Divisor bajo el título: florcita o corazón; `false` lo oculta. */
   ornament?: OrnamentVariant | false;
 };
 

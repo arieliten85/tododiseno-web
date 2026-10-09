@@ -5,17 +5,10 @@ type MediaImageProps = Omit<
   ImageProps,
   "src" | "width" | "height" | "placeholder" | "blurDataURL"
 > & {
-  /** Ruta pública de la imagen original, por ejemplo /brand/hero/mesa.jpg */
   src: string;
-  /** Con `fill` el contenedor define el tamaño; sin `fill` se usan las medidas reales. */
   fill?: boolean;
 };
 
-/**
- * Envuelve next/image con las medidas reales y el placeholder borroso que
- * calcula scripts/optimize-images.mjs. Server Component: el registro de
- * metadatos nunca viaja al navegador.
- */
 export function MediaImage({
   src,
   fill,

@@ -13,9 +13,7 @@ import { ArrowRightIcon } from "@/components/ui/icons";
 import { cn } from "@/lib/class-names";
 
 type SliderProps = {
-  /** Cada hijo es una diapositiva. */
   children: ReactNode;
-  /** Textos accesibles. `{n}` y `{total}` se reemplazan por los números. */
   labels: {
     region: string;
     previous: string;
@@ -23,7 +21,6 @@ type SliderProps = {
     goTo: string;
     slide: string;
   };
-  /** Ancho de cada diapositiva (clases de Tailwind, p. ej. `basis-[85%] lg:basis-1/3`). */
   itemClassName?: string;
   className?: string;
 };
@@ -50,10 +47,7 @@ function fill(template: string, values: Record<string, number>) {
   );
 }
 
-/**
- * Posiciones a las que puede llegar el scroll: cada diapositiva alcanzable
- * y, si sobra recorrido, el final de la pista.
- */
+// scroll stops: every slide + end of track
 function getSnapPoints(track: HTMLElement) {
   const inset = parseFloat(getComputedStyle(track).paddingLeft) || 0;
   const max = track.scrollWidth - track.clientWidth;
@@ -67,11 +61,6 @@ function getSnapPoints(track: HTMLElement) {
   return { points, max };
 }
 
-/**
- * Slider genérico: pista con scroll nativo y snap (se arrastra con el dedo o
- * el trackpad), flechas, puntos y teclado. No conoce el contenido que muestra.
- * Si todas las diapositivas entran en pantalla, oculta los controles.
- */
 export function Slider({
   children,
   labels,
@@ -152,7 +141,7 @@ export function Slider({
         tabIndex={0}
         onScroll={measure}
         onKeyDown={onKeyDown}
-        className="relative -mx-4 -my-10 flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain scroll-pl-4 px-4 py-10 [scrollbar-width:none] sm:gap-6 [&::-webkit-scrollbar]:hidden"
+        className="relative -mx-4 -my-10 flex snap-x snap-mandatory scroll-pl-4 [scrollbar-width:none] gap-4 overflow-x-auto overscroll-x-contain px-4 py-10 sm:gap-6 [&::-webkit-scrollbar]:hidden"
       >
         {slides.map((slide, i) => (
           <li

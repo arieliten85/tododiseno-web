@@ -4,12 +4,10 @@ export type LinkContent = {
 };
 
 export type ImageContent = {
-  /** Ruta pública bajo /brand, por ejemplo /brand/hero/mesa.jpg */
   src: string;
   alt: string;
 };
 
-/** Title y description de una ruta (el layout agrega el nombre del sitio). */
 export type PageMetadata = {
   title: string;
   description: string;
@@ -22,7 +20,6 @@ export type SocialLabels = {
 };
 
 export type HeaderContent = {
-  /** Se antepone el nombre del sitio: "<nombre> — ir al inicio". */
   homeLink: string;
   mainNav: string;
   mobileNav: string;
@@ -33,10 +30,8 @@ export type HeaderContent = {
 };
 
 export type SharedContent = {
-  /** Aviso para lectores de pantalla en enlaces que abren pestaña nueva. */
   newTab: string;
   skipToContent: string;
-  /** Une franjas horarias: "10:00 a 12:00 y 17:00 a 19:00". */
   rangeSeparator: string;
   socialLabels: SocialLabels;
   breadcrumb: { label: string; home: string };
@@ -88,29 +83,22 @@ export type Audience = {
 export type DetailItem = {
   item: string;
   quantity: number;
-  /** Medida concreta, solo si aplica. */
   size?: string;
-  /** Aclaración corta, solo si aplica. */
   note?: string;
 };
 
 export type Product = {
   id: string;
-  /**
-   * Slug genérico y sin nombres de personajes con licencia: es la URL pública.
-   * Ejemplo: "kit-tematico-cumpleanos-01".
-   */
+  /** es la URL pública, sin personajes con licencia */
   slug: string;
   category: CategoryId;
   audience: AudienceId;
-  /** Nombre que ve la clienta en pantalla (puede incluir el personaje). */
   visibleName: string;
-  /** Nombre genérico para <title>, <h1> real y SEO. */
   seoName: string;
   description: string;
   image: ImageContent;
   gallery?: ImageContent[];
-  /** 2+ ítems = lista "Qué incluye"; 1 ítem = párrafo "Detalle". Opcional. */
+  /** 2+ = "Qué incluye", 1 = "Detalle" */
   detailItems?: DetailItem[];
   customizable: boolean;
   quantity: {
@@ -118,7 +106,6 @@ export type Product = {
     min: number;
     step: number;
   };
-  /** Aparece en "Trabajos recientes" del inicio. */
   featured?: boolean;
 };
 
@@ -170,7 +157,6 @@ export type CatalogPageContent = {
     applyOne: string;
     applyMany: string;
     applyNone: string;
-    /** Texto del botón (deshabilitado) mientras no haya cambios para aplicar. */
     applyIdle: string;
     occasion: string;
     allOccasions: string;
@@ -204,13 +190,11 @@ export type CatalogPageContent = {
 export type ProductPageContent = {
   share: { label: string; copied: string };
   gallery: {
-    /** Nombre accesible del botón que abre la imagen ampliada. */
     open: string;
     dialog: string;
     close: string;
     previous: string;
     next: string;
-    /** Plantilla con {current} y {total}. */
     counter: string;
   };
   customizableNote: { label: string; text: string };
@@ -219,13 +203,11 @@ export type ProductPageContent = {
     hint: string;
     badge: string;
     quantityLabel: string;
-    /** Plantilla con {min} y {unit}. */
     minimum: string;
     decrease: string;
     increase: string;
     action: string;
     newTab: string;
-    /** Mensaje de WhatsApp autocompletado. */
     message: { intro: string; quantity: string; closing: string };
   };
   details: {
@@ -233,7 +215,6 @@ export type ProductPageContent = {
     textTitle: string;
     description: string;
     unitOne: string;
-    /** Plantilla con {n}. */
     unitMany: string;
   };
   related: SectionIntro & { action: string };
@@ -245,7 +226,6 @@ export type AboutContent = {
   eyebrow: string;
   title: string;
   tagline: string;
-  /** "Soy" + nombre resaltado (con corazón) + resto del texto. */
   intro: { before: string; name: string; after: string };
   commitment: {
     title: string;
@@ -289,7 +269,6 @@ export type FooterContent = {
   hoursLabel: string;
   legal: string;
   disclaimer: string;
-  /** Texto previo al nombre del crédito, por ejemplo "Diseño y desarrollo web por". */
   credit: string;
   newTab: string;
   rangeSeparator: string;

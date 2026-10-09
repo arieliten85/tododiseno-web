@@ -2,18 +2,12 @@
 
 import { useEffect } from "react";
 
-/** El elemento aparece cuando entra este tramo dentro de la pantalla. */
 const OBSERVER_OPTIONS: IntersectionObserverInit = {
   rootMargin: "0px 0px -8% 0px",
   threshold: 0.12,
 };
 
-/**
- * Activa las entradas `[data-reveal]` de la página actual al hacer scroll.
- * Sin JS (o para buscadores) el contenido queda siempre visible; lo que ya
- * está en pantalla se marca como revelado antes de activar, así no parpadea.
- * No renderiza nada; los estilos viven en `globals.css`.
- */
+// marks in-view [data-reveal] els as revealed first so nothing flashes
 export function ScrollReveal() {
   useEffect(() => {
     const root = document.documentElement;

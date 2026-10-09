@@ -1,15 +1,8 @@
-/*
- * Tokens semánticos. Los componentes usan solo estos nombres (primary, surface,
- * foreground…), nunca colores de marca. La identidad vive en este archivo.
- */
+/* tokens semánticos: los componentes nunca usan colores de marca directo */
 :root {
   --primary: #e8b4ae;
   --primary-foreground: #ffffff;
-  /*
-   * Relleno sólido con texto blanco encima (botones, paginación activa).
-   * primary queda para tintes, chips y adornos. Contraste con blanco:
-   * strong 4,72:1 y hover 5,44:1 (WCAG AA para texto normal).
-   */
+  /* relleno sólido con texto blanco; strong 4,72:1, hover 5,44:1 */
   --primary-strong: #a85f59;
   --primary-strong-hover: #9c5650;
   --secondary: #fbe9e4;
@@ -27,21 +20,15 @@
   --card: #ffffff;
   --card-foreground: #2e241e;
   --detail: #9ca986;
-  /* Crema rosado del hero y tinta de los adornos (según Figma). */
+  /* crema del hero y tinta de adornos */
   --veil: #fff7f3;
   --ornament: #7d5550;
-  /* Dorado suave: solo adornos (corazones, líneas finas). Fondo de bandas onduladas. */
   --gold: #d4a857;
   --band: #fcf1ec;
   --whatsapp: #25d366;
   --whatsapp-foreground: #ffffff;
-  /*
-   * Verde oscuro para botones de WhatsApp con texto o ícono blanco
-   * (4,70:1 con blanco). El verde oficial (#25d366, 1,98:1) no alcanza
-   * WCAG AA con blanco; se conserva en --whatsapp para tintes y adornos.
-   */
+  /* verde oscuro para texto blanco (4,70:1); el oficial #25d366 no llega a AA */
   --whatsapp-strong: #118548;
-  /* Fondo de los diálogos modales (se usa con opacidad). */
   --overlay: #000000;
 
   --radius-token-sm: 0.5rem;

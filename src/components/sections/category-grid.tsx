@@ -10,7 +10,6 @@ type CategoryGridProps = {
   title: string;
   description?: string;
   eyebrowLabel: string;
-  /** Adorno de la esquina de cada card; sin ruta no se muestra. */
   sprigSrc?: string;
   items: Array<{
     id: string;

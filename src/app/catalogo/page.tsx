@@ -66,7 +66,6 @@ export default function CatalogPage() {
       <Container>
         <Suspense
           fallback={
-            // HTML estático (SEO y primera pintura): primera página sin filtros.
             <ul className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
               {items.slice(0, PAGE_SIZE).map((item) => (
                 <li key={item.slug}>{item.card}</li>

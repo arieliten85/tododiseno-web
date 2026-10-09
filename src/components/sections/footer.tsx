@@ -14,7 +14,6 @@ import { BuntingEdge } from "@/components/ui/ornaments";
 type FooterProps = {
   name: string;
   brand: string;
-  /** Bajada del logo de texto (solo sin imagen de logo). */
   tagline?: string;
   logo?: { src?: string; alt: string };
   navigation: Array<{ label: string; href: string }>;
@@ -34,9 +33,7 @@ type FooterProps = {
     legal: string;
     disclaimer: string;
     credit: string;
-    /** Aviso para lectores de pantalla en enlaces que abren pestaña nueva. */
     newTab: string;
-    /** Une franjas horarias de un mismo día. */
     rangeSeparator: string;
     socialLabels: { whatsapp: string; instagram: string; facebook: string };
   };

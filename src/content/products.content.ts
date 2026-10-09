@@ -8,12 +8,7 @@ const photo = (id: string, alt: string) => ({
 const pieces = { unit: "unidades", min: 10, step: 5 } as const;
 const kit = { unit: "kits", min: 1, step: 1 } as const;
 
-/**
- * Catálogo. Para sumar un producto: agregá un objeto acá y dejá su foto en
- * public/brand/products/<id>.jpg (`bun dev` y `bun run build` optimizan solas).
- * Nunca se inventan cantidades ni medidas: sin dato real, se omite `detailItems`.
- * El slug es la URL pública: genérico y sin nombres de personajes con licencia.
- */
+// new product: add an object + public/brand/products/<id>.jpg. no invented quantities/sizes
 export const products = [
   {
     id: "kit-tematico-cumpleanos-01",

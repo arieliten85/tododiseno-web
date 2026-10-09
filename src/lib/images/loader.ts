@@ -1,12 +1,7 @@
 "use client";
 
-/**
- * Loader de next/image para exportación estática: no hay servidor que
- * redimensione, así que se sirven las variantes WebP que genera en build
- * scripts/optimize-images.mjs (/public/brand/x/y.jpg -> /_img/x/y-<ancho>.webp).
- * Mantener IMAGE_WIDTHS sincronizado con ese script. Lo que no vive en
- * /brand (por ejemplo un SVG) se devuelve tal cual.
- */
+// static export: no image server, so point at the webp variants from scripts/optimize-images.mjs
+// keep IMAGE_WIDTHS in sync with that script
 const IMAGE_WIDTHS = [320, 480, 640, 960, 1280, 1600, 2000];
 
 export default function imageLoader({

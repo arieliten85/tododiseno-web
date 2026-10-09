@@ -26,7 +26,7 @@ export function getCategory(id: CategoryId) {
   return categories.find((category) => category.id === id);
 }
 
-/** Productos de la misma categoría primero; si faltan, se completa con el resto. */
+// same category first, then the rest
 export function getRelatedProducts(product: Product, limit = 4): Product[] {
   const others = products.filter(
     (candidate) => candidate.slug !== product.slug,

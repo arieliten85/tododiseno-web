@@ -1,11 +1,6 @@
 import type { ReactNode } from "react";
 import { BandWaveBottom, BandWaveTop } from "@/components/ui/ornaments";
 
-/**
- * Franja de color con bordes ondulados arriba y abajo (el fondo "ondulado"
- * del diseño). El relleno central es opaco para que no se vea ninguna
- * costura entre las ondas y el cuerpo.
- */
 export function WavyBand({
   children,
   className,

@@ -3,14 +3,8 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { cn } from "@/lib/class-names";
 
-/** Píxeles de desplazamiento mínimos para cambiar de estado (evita parpadeos). */
 const TOLERANCE = 8;
 
-/**
- * `<header>` que se oculta al bajar y reaparece al subir (patrón "headroom").
- * Siempre visible arriba de todo, con un menú o búsqueda abiertos
- * (`aria-expanded="true"` adentro) y cuando recibe foco de teclado.
- */
 export function HideOnScrollHeader({
   className,
   children,
@@ -40,7 +34,7 @@ export function HideOnScrollHeader({
         y <= header.offsetHeight ||
         keyboardFocus ||
         [...header.querySelectorAll('[aria-expanded="true"]')].some(
-          // Lo que vive dentro de un <dialog> cerrado no cuenta como abierto.
+          // closed <dialog> doesnt count
           (el) => !el.closest("dialog:not([open])"),
         );
       if (pinned) {

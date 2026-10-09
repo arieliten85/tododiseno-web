@@ -18,18 +18,15 @@ type ConsultCardProps = {
     hint: string;
     badge: string;
     quantityLabel: string;
-    /** Plantilla con {min} y {unit}. */
     minimum: string;
     decrease: string;
     increase: string;
     action: string;
-    /** Aviso para lectores de pantalla: el enlace abre pestaña nueva. */
     newTab: string;
     message: { intro: string; quantity: string; closing: string };
   };
 };
 
-/** Único control de la página de producto: la cantidad. Lo demás se coordina por WhatsApp. */
 export function ConsultCard({
   productName,
   productUrl,

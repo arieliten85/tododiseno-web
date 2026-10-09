@@ -8,7 +8,6 @@ const socialLabels = {
   facebook: "Facebook",
 } satisfies SocialLabels;
 
-/** Textos que se repiten en varias pantallas: una sola fuente. */
 export const sharedContent = {
   newTab,
   skipToContent: "Saltar al contenido",

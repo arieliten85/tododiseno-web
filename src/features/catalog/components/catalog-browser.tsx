@@ -27,7 +27,6 @@ type CatalogBrowserProps = {
   content: CatalogPageContent;
 };
 
-/** Igualdad de conjuntos (orden indistinto). */
 function sameSet<T>(a: ReadonlySet<T>, b: ReadonlySet<T>) {
   return a.size === b.size && [...a].every((value) => b.has(value));
 }
@@ -75,7 +74,6 @@ type FilterGroupsProps = {
   idPrefix: string;
   categories: Array<{ id: CategoryId; label: string }>;
   audiences: Array<{ id: AudienceId; label: string }>;
-  /** Como mucho una ocasión y un destinatario a la vez. */
   selectedCategory: CategoryId | null;
   selectedAudience: AudienceId | null;
   categoryCounts: Partial<Record<CategoryId, number>>;
@@ -85,7 +83,6 @@ type FilterGroupsProps = {
   content: CatalogPageContent;
 };
 
-/** Grupos de filtros: se usan en la barra lateral (escritorio) y en el panel móvil. */
 function FilterGroups({
   idPrefix,
   categories,
@@ -168,24 +165,18 @@ function FilterGroups({
   );
 }
 
-/**
- * Filtros, buscador, orden y paginado del catálogo, todo en el navegador.
- * Las tarjetas llegan ya renderizadas desde el servidor (HTML estático y SEO);
- * acá solo se decide cuáles mostrar.
- */
 export function CatalogBrowser({
   items,
   categories,
   audiences,
   content,
 }: CatalogBrowserProps) {
-  // La búsqueda vive en la URL (?q=) y se hace desde el buscador del header.
+  // q comes from header search
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const query = searchParams.get("q") ?? "";
   const [sort, setSort] = useState<CatalogSort>("relevance");
-  // Móvil: el panel de filtros edita un borrador que se aplica con "Ver N productos".
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [draftCategories, setDraftCategories] = useState<
     ReadonlySet<CategoryId>
@@ -196,8 +187,7 @@ export function CatalogBrowser({
   const sheetRef = useRef<HTMLDialogElement>(null);
   const resultsRef = useRef<HTMLDivElement>(null);
 
-  // La URL es la única fuente de verdad de los filtros: ?q=&categoria=&destinatario=
-  // (se puede recargar, compartir y volver atrás sin perder lo elegido).
+  // url is the source of truth for filters
   const selectedCategories = useMemo<ReadonlySet<CategoryId>>(() => {
     const found = categories.find(
       (c) => c.id === searchParams.get("categoria"),
@@ -226,7 +216,6 @@ export function CatalogBrowser({
       for (const value of values) params.append(key, value);
     });
 
-  // La página vuelve a 1 cuando cambia cualquier filtro, la búsqueda o el orden.
   const pageKey = `${searchParams.toString()}|${sort}`;
   const [pageState, setPageState] = useState({ key: pageKey, page: 1 });
   const page = pageState.key === pageKey ? pageState.page : 1;
@@ -242,7 +231,6 @@ export function CatalogBrowser({
     [items, query, selectedCategories, selectedAudiences, sort],
   );
 
-  // Cantidad fija por opción (solo depende de la búsqueda): no cambia al elegir otras.
   const optionCounts = useMemo(
     () =>
       facetCounts(items, {
@@ -263,8 +251,7 @@ export function CatalogBrowser({
     [items, query, draftCategories, draftAudiences, sort],
   );
 
-  // El botón solo aplica si el borrador difiere de lo ya aplicado y da resultados:
-  // con los filtros por defecto ("Todas" / "Todos") no hay nada que aplicar.
+  // nothing to apply if draft == applied or no results
   const draftChanged =
     !sameSet(draftCategories, selectedCategories) ||
     !sameSet(draftAudiences, selectedAudiences);
@@ -416,7 +403,6 @@ export function CatalogBrowser({
             <button
               type="button"
               onClick={() => {
-                // Limpiar es inmediato: vacía el borrador y la URL, así no queda estado viejo.
                 setDraftCategories(new Set());
                 setDraftAudiences(new Set());
                 updateUrl((params) => {

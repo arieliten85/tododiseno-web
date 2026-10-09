@@ -4,7 +4,6 @@ import { useEffect, useId, useRef, useState } from "react";
 import { cn } from "@/lib/class-names";
 
 type SelectMenuProps<T extends string> = {
-  /** Texto accesible del control (ej.: "Ordenar por"). */
   label: string;
   value: T;
   options: ReadonlyArray<{ id: T; label: string }>;
@@ -12,11 +11,6 @@ type SelectMenuProps<T extends string> = {
   className?: string;
 };
 
-/**
- * Selector desplegable propio (patrón listbox de WAI-ARIA). Reemplaza al
- * <select> nativo, cuyo menú el navegador dibuja donde quiere (fuera del
- * diseño en móvil o con zoom); acá la lista siempre queda pegada al botón.
- */
 export function SelectMenu<T extends string>({
   label,
   value,

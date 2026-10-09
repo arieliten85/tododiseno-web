@@ -3,7 +3,6 @@ import { HeartIcon } from "./icons";
 
 export type OrnamentVariant = "flower" | "heart";
 
-/** Florcita del diseño: cinco pétalos rosados con el centro dorado. */
 export function FlowerMark({ className }: { className?: string }) {
   return (
     <svg
@@ -24,11 +23,6 @@ export function FlowerMark({ className }: { className?: string }) {
   );
 }
 
-/**
- * Divisor de títulos: dos líneas finas con un detalle al centro. La variante
- * "flower" lleva la florcita con líneas continuas; "heart", un corazón con
- * líneas punteadas. Se alternan entre secciones para dar ritmo.
- */
 export function Ornament({
   className,
   variant = "flower",
@@ -56,7 +50,6 @@ export function Ornament({
   );
 }
 
-/** Líneas finas con corazón dorado, florcita y corazón dorado al centro. */
 export function HeartsOrnament({ className }: { className?: string }) {
   return (
     <div

@@ -29,11 +29,7 @@ body {
   }
 }
 
-/*
- * Velo del hero: funde la foto con el crema para que el texto se lea siempre.
- * Mobile: velo parejo sobre toda la foto, con el texto centrado.
- * Escritorio: la foto es el fondo y el velo es opaco a la izquierda (texto).
- */
+/* hero veil: parejo en mobile, opaco a la izquierda en escritorio */
 .hero-veil {
   background: linear-gradient(
     to bottom,
@@ -58,10 +54,7 @@ body {
   }
 }
 
-/*
- * Movimiento: curva suave y cálida, sin rebotes. Todo vive dentro de
- * `no-preference` para respetar a quien pide menos movimiento.
- */
+/* solo con no-preference de movimiento */
 :root {
   --ease-warm: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -79,7 +72,6 @@ body {
   }
 }
 
-/* Al bajar, la foto del hero se acerca y se desliza apenas (parallax). */
 @keyframes hero-drift {
   to {
     transform: translateY(12%) scale(1.2);
@@ -87,7 +79,6 @@ body {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  /* Entrada del hero al cargar, escalonada con `--enter-delay`. */
   .hero-enter {
     animation: rise-in 1100ms var(--ease-warm) both;
     animation-delay: var(--enter-delay, 0ms);
@@ -105,10 +96,7 @@ body {
     }
   }
 
-  /*
-   * Aparición al hacer scroll. Solo se oculta cuando `ScrollReveal` marcó
-   * `<html data-reveal-ready>`; sin JS el contenido queda visible.
-   */
+  /* solo activo si ScrollReveal puso data-reveal-ready */
   :root[data-reveal-ready] [data-reveal] {
     transition:
       opacity 1100ms var(--ease-warm),
@@ -127,7 +115,7 @@ body {
     scale: 0.88;
   }
 
-  /* Hijos de una grilla: entran uno tras otro (tope de 4 pasos). */
+  /* stagger de grillas, hasta 4 */
   [data-reveal-stagger] > :nth-child(2) {
     --reveal-delay: 150ms;
   }

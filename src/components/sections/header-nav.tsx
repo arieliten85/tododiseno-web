@@ -8,16 +8,12 @@ import { cn } from "@/lib/class-names";
 
 type HeaderNavProps = {
   navigation: Array<{ label: string; href: string }>;
-  /** Nombres accesibles de la navegación de escritorio y de la móvil. */
   navLabel: string;
   mobileNavLabel: string;
   menuLabel: string;
   closeLabel: string;
-  /** Contenido del menú móvil bajo los enlaces (p. ej. redes sociales). */
   mobileFooter?: ReactNode;
-  /** Acciones del header (búsqueda, redes en escritorio); su ubicación la define quien las pasa. */
   actions?: ReactNode;
-  /** Detalle decorativo junto a la página activa del menú móvil (p. ej. una flor). */
   activeMark?: ReactNode;
 };
 
@@ -26,7 +22,6 @@ function isActive(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
-/** Único bloque interactivo del header: marca la página activa y el menú móvil. */
 export function HeaderNav({
   navigation,
   navLabel,
@@ -38,7 +33,7 @@ export function HeaderNav({
   activeMark,
 }: HeaderNavProps) {
   const pathname = usePathname();
-  // El menú queda abierto solo para la ruta en la que se abrió: al navegar se cierra solo.
+  // same, menu closes when route changes
   const [openPath, setOpenPath] = useState<string | null>(null);
   const open = openPath === pathname;
   const panelId = useId();
@@ -49,7 +44,6 @@ export function HeaderNav({
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key !== "Escape") return;
       setOpenPath(null);
-      // El panel se oculta: el foco vuelve al botón que lo abrió.
       toggleRef.current?.focus();
     };
     window.addEventListener("keydown", onKeyDown);

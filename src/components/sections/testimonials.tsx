@@ -12,7 +12,6 @@ type TestimonialsProps = {
   slider: ComponentProps<typeof Slider>["labels"];
 };
 
-/** Capturas reales de mensajes de clientas (sin texto inventado). */
 export function Testimonials({
   eyebrow,
   title,

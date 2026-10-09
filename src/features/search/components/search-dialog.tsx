@@ -37,13 +37,6 @@ type Option = {
 const MAX_PRODUCTS = 6;
 const MIN_CHARS = 2;
 
-/**
- * Único buscador del sitio. Un botón en el header abre un panel modal
- * (pantalla completa en el celular, panel arriba en escritorio) con
- * sugerencias en vivo. Enter o "Ver todos" lleva al catálogo con ?q=.
- * Patrón combobox/listbox de WAI-ARIA sobre <dialog> nativo: Escape, foco
- * atrapado y fondo inerte vienen del navegador.
- */
 export function SearchDialog({
   items,
   categories,
@@ -54,7 +47,7 @@ export function SearchDialog({
   const pathname = usePathname();
   const dialogRef = useRef<HTMLDialogElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  // Abierto solo para la ruta en que se abrió: al navegar se cierra solo.
+  // closes itself on navigation
   const [openPath, setOpenPath] = useState<string | null>(null);
   const open = openPath === pathname;
   const [query, setQuery] = useState("");
@@ -231,7 +224,6 @@ export function SearchDialog({
           setActiveIndex(-1);
         }}
         onClick={(event) => {
-          // Un clic sobre el fondo (el propio <dialog>) lo cierra.
           if (event.target === dialogRef.current) close();
         }}
         className={cn(

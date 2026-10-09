@@ -19,11 +19,9 @@ type CtaPanelProps = {
   badge?: string;
   image: { src: string; alt: string };
   imageSide?: "left" | "right";
-  /** Aviso para lectores de pantalla en acciones externas (pestaña nueva). */
   newTabLabel?: string;
 };
 
-/** Bloque de cierre: texto + botón de WhatsApp junto a una foto. */
 export function CtaPanel({
   eyebrow,
   title,

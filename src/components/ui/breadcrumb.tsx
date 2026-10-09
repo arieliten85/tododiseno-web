@@ -4,7 +4,6 @@ import type { ReactNode } from "react";
 export type BreadcrumbItem = {
   label: string;
   href?: string;
-  /** Ícono decorativo antes de la etiqueta (por ejemplo, la casita de Inicio). */
   icon?: ReactNode;
 };
 
@@ -12,7 +11,6 @@ export function Breadcrumb({
   label,
   items,
 }: {
-  /** Nombre accesible del landmark de navegación. */
   label: string;
   items: BreadcrumbItem[];
 }) {

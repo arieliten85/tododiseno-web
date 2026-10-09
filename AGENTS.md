@@ -44,6 +44,15 @@ Componentes controlan implementación.
 - Do not use temporary Figma URLs in production.
 - Run lint, typecheck, and build before finishing structural changes.
 
+## Code style
+
+- Comment sparingly: only non-obvious behavior, short and informal. No comment on code that already reads clearly.
+- No JSDoc on obvious types, fields, or components.
+- Do not narrate the process in comments or docs (Figma, "before/now", "added for X").
+- Write comments and docs in the same language as the rest of the repo (Spanish).
+- Keep SVG path data compact: no redundant `.0` decimals.
+- Do not write generic docs ("reusable starter", boilerplate); describe this project.
+
 ## Customization boundary
 
 Future client customization should mainly happen in:

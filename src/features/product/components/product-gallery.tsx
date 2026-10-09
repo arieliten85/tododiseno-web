@@ -7,11 +7,8 @@ import { cn } from "@/lib/class-names";
 type GallerySlide = {
   id: string;
   alt: string;
-  /** Imagen grande ya renderizada en el servidor. */
   main: ReactNode;
-  /** Miniatura ya renderizada en el servidor. */
   thumb: ReactNode;
-  /** Imagen para la vista ampliada, ya renderizada en el servidor. */
   zoom: ReactNode;
 };
 
@@ -21,19 +18,12 @@ type GalleryLabels = {
   close: string;
   previous: string;
   next: string;
-  /** Plantilla con {current} y {total}. */
   counter: string;
 };
 
 const roundButton =
   "bg-surface/90 text-foreground hover:bg-surface inline-flex size-11 items-center justify-center rounded-full shadow-md transition-colors";
 
-/**
- * Galería: foto principal, miniaturas y vista ampliada. La ampliación usa un
- * <dialog> nativo (modal): Escape, foco atrapado, fondo inerte y retorno del
- * foco al botón de origen los resuelve el navegador. Flechas del teclado y
- * botones recorren las imágenes. Las imágenes llegan prerenderizadas.
- */
 export function ProductGallery({
   slides,
   label,
@@ -117,7 +107,6 @@ export function ProductGallery({
         onClose={() => setOpen(false)}
         onKeyDown={onKeyDown}
         onClick={(event) => {
-          // Un clic fuera de la imagen y de los botones cierra la vista.
           if (event.target === event.currentTarget) setOpen(false);
         }}
         className="bg-overlay/95 m-0 hidden h-dvh max-h-none w-dvw max-w-none flex-col overscroll-contain p-0 pb-4 backdrop:bg-transparent open:flex sm:pb-6"
@@ -142,7 +131,6 @@ export function ProductGallery({
         <div
           className="relative min-h-0 flex-1"
           onClick={(event) => {
-            // La imagen ocupa todo el escenario: cualquier clic fuera de los botones cierra.
             if (!(event.target as HTMLElement).closest("button")) {
               setOpen(false);
             }

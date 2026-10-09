@@ -29,7 +29,6 @@ export function normalizeText(value: string) {
     .trim();
 }
 
-/** Palabras de la búsqueda, sin tildes ni mayúsculas. Todas deben aparecer. */
 export function tokenize(query: string) {
   return normalizeText(query).split(/\s+/).filter(Boolean);
 }
@@ -38,10 +37,6 @@ function matchesTokens(text: string, tokens: readonly string[]) {
   return tokens.every((token) => text.includes(token));
 }
 
-/**
- * Productos que coinciden con la búsqueda, los más pertinentes primero:
- * nombre que empieza con lo escrito, luego palabra del nombre, luego el resto.
- */
 export function suggestEntries<T extends CatalogEntry>(
   entries: readonly T[],
   query: string,
@@ -96,12 +91,7 @@ export function filterEntries<T extends CatalogEntry>(
   );
 }
 
-/**
- * Cuántos productos hay por opción de filtro, dado lo que ya está elegido.
- * Cada grupo se cuenta sin aplicar su propia selección (así se puede sumar una
- * segunda opción del mismo grupo) pero sí la búsqueda y el otro grupo; una
- * opción en 0 es un camino sin salida y se muestra deshabilitada.
- */
+// counts ignore the group's own selection so you can add a 2nd option; 0 = dead end
 export function facetCounts(
   entries: readonly CatalogEntry[],
   selection: {

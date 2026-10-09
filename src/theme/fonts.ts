@@ -1,7 +1,6 @@
 import localFont from "next/font/local";
 
-// Fuentes autoalojadas (variables, subconjunto latino): el build no depende de
-// Google Fonts y no hay pedidos externos desde el navegador.
+// self-hosted, no google requests
 export const headingFont = localFont({
   src: "./fonts/playfair-display-latin-wght-normal.woff2",
   variable: "--font-heading-family",

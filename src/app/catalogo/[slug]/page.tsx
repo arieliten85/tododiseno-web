@@ -39,7 +39,7 @@ export async function generateMetadata({
   if (!product) return {};
 
   return {
-    // Título y h1 reales usan el nombre genérico: nunca el personaje con licencia.
+    // generic name here, never the licensed character
     title: product.seoName,
     description: product.description,
     alternates: { canonical: getProductPath(product.slug) },

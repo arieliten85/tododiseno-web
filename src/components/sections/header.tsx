@@ -13,7 +13,6 @@ import { HeaderNav } from "./header-nav";
 type HeaderProps = {
   name: string;
   brand: string;
-  /** Bajada del logo de texto (solo sin imagen de logo). */
   tagline?: string;
   logo?: { src?: string; alt: string };
   navigation: Array<{ label: string; href: string }>;
@@ -24,7 +23,6 @@ type HeaderProps = {
     catalogPath: string;
   };
   instagramHref?: string;
-  /** Imagen decorativa que marca la página activa en el menú móvil. */
   activeMarkSrc?: string;
   facebookHref?: string;
   content: HeaderContent;
@@ -37,7 +35,6 @@ type Social = {
   Icon: typeof FacebookIcon;
 };
 
-/** Iconos de redes del header de escritorio. */
 function SocialIconLinks({
   socials,
   newTab,
@@ -59,7 +56,6 @@ function SocialIconLinks({
   ));
 }
 
-/** Redes dentro del menú móvil. */
 function SocialPills({
   socials,
   newTab,
