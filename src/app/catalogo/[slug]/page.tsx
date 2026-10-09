@@ -5,11 +5,9 @@ import { Container } from "@/components/ui/container";
 import { PencilIcon } from "@/components/ui/icons";
 import { MediaImage } from "@/components/ui/media-image";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { ValuesStrip } from "@/components/sections/values-strip";
 import { siteConfig } from "@/config/site.config";
 import { siteUrl } from "@/config/url.config";
 import { catalogPageContent } from "@/content/catalog-page.content";
-import { homeContent } from "@/content/home.content";
 import { productPageContent as content } from "@/content/product-page.content";
 import { sharedContent } from "@/content/shared.content";
 import { ProductCard } from "@/features/catalog/components/product-card";
@@ -121,7 +119,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <div className="space-y-6">
             <div className="flex items-center justify-between gap-4">
               {category ? (
-                <span className="bg-secondary text-accent-strong rounded-full px-4 py-1.5 text-xs font-bold">
+                <span className="bg-secondary text-accent-strong rounded-full px-4 py-2 text-xs font-bold whitespace-nowrap">
                   {category.label}
                 </span>
               ) : null}
@@ -182,10 +180,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </div>
         ) : null}
       </Container>
-
-      <div className="mt-16">
-        <ValuesStrip items={homeContent.values} />
-      </div>
 
       <section className="py-section-md">
         <Container>

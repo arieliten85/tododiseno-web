@@ -31,19 +31,20 @@ export function ShareButton({ title, label, copiedLabel }: ShareButtonProps) {
     <button
       type="button"
       onClick={share}
-      className="text-muted-foreground hover:text-foreground inline-flex min-h-11 items-center gap-2 text-[0.7rem] font-bold tracking-[0.15em] uppercase"
+      className="group text-muted-foreground hover:text-foreground relative inline-flex shrink-0 items-center gap-3 text-[0.7rem] font-bold tracking-[0.15em] whitespace-nowrap uppercase"
     >
-      <span className="bg-surface border-border inline-flex size-9 items-center justify-center rounded-full border shadow-sm">
-        <ShareIcon className="size-4" />
+      <span className="bg-surface border-border group-hover:bg-secondary inline-flex size-11 items-center justify-center rounded-full border shadow-sm transition-colors">
+        <ShareIcon className="size-[1.125rem]" />
       </span>
-      {label}
+      {/* En mobile queda solo el ícono; el texto sigue disponible para lectores de pantalla. */}
+      <span className="sr-only sm:not-sr-only">{label}</span>
       <span role="status" aria-live="polite" className="sr-only">
         {copied ? copiedLabel : ""}
       </span>
       {copied ? (
         <span
           aria-hidden="true"
-          className="text-accent-strong tracking-normal normal-case"
+          className="bg-foreground text-background absolute top-full right-0 mt-2 rounded-full px-3 py-1.5 text-xs font-semibold tracking-normal normal-case shadow-md"
         >
           {copiedLabel}
         </span>
