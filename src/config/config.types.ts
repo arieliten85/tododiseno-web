@@ -24,6 +24,8 @@ export type BusinessHours = {
 export type BusinessInfo = {
   legalName?: string;
   address?: string;
+  /** Dirección abreviada (sin ciudad/provincia) para espacios chicos como el footer. */
+  addressShort?: string;
   /** Zona usada en textos cortos, por ejemplo "Lanús Oeste". */
   area?: string;
   hours: BusinessHours[];

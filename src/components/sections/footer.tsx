@@ -57,7 +57,7 @@ export function Footer({
   credit,
   content,
 }: FooterProps) {
-  const itemClass = "flex items-start justify-center gap-3 sm:justify-start";
+  const itemClass = "flex items-start gap-3";
   const iconClass = "text-accent-strong mt-0.5 size-4 shrink-0";
 
   return (
@@ -107,7 +107,7 @@ export function Footer({
             <p className="text-muted-foreground mb-4 text-xs font-bold tracking-[0.2em]">
               {content.contactTitle}
             </p>
-            <ul className="space-y-3 text-sm">
+            <ul className="mx-auto w-full max-w-[19.5rem] space-y-3 text-left text-sm sm:mx-0 sm:max-w-none">
               {phone ? (
                 <li className={itemClass}>
                   <PhoneIcon className={iconClass} />
@@ -154,32 +154,34 @@ export function Footer({
               <p className="text-muted-foreground mb-4 text-xs font-bold tracking-[0.2em]">
                 {content.socialTitle}
               </p>
-              {instagram ? (
-                <a
-                  href={instagram.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-3 text-sm hover:underline sm:justify-start"
-                >
-                  <InstagramIcon className="text-accent-strong size-4" />
-                  <span className="sr-only">{`${content.socialLabels.instagram}: `}</span>
-                  {instagram.label}
-                  <span className="sr-only"> {content.newTab}</span>
-                </a>
-              ) : null}
-              {facebook ? (
-                <a
-                  href={facebook.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-3 text-sm hover:underline sm:justify-start"
-                >
-                  <FacebookIcon className="text-accent-strong size-4" />
-                  <span className="sr-only">{`${content.socialLabels.facebook}: `}</span>
-                  {facebook.label}
-                  <span className="sr-only"> {content.newTab}</span>
-                </a>
-              ) : null}
+              <div className="mx-auto w-full max-w-[19.5rem] space-y-3 text-left sm:mx-0 sm:max-w-none">
+                {instagram ? (
+                  <a
+                    href={instagram.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 text-sm hover:underline"
+                  >
+                    <InstagramIcon className="text-accent-strong size-4" />
+                    <span className="sr-only">{`${content.socialLabels.instagram}: `}</span>
+                    {instagram.label}
+                    <span className="sr-only"> {content.newTab}</span>
+                  </a>
+                ) : null}
+                {facebook ? (
+                  <a
+                    href={facebook.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 text-sm hover:underline"
+                  >
+                    <FacebookIcon className="text-accent-strong size-4" />
+                    <span className="sr-only">{`${content.socialLabels.facebook}: `}</span>
+                    {facebook.label}
+                    <span className="sr-only"> {content.newTab}</span>
+                  </a>
+                ) : null}
+              </div>
             </div>
           ) : null}
         </div>

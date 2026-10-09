@@ -86,7 +86,9 @@ export default function RootLayout({
           navigation={layoutConfig.footerNavigation}
           phone={siteConfig.contact.phoneDisplay}
           email={siteConfig.contact.email}
-          address={siteConfig.business.address}
+          address={
+            siteConfig.business.addressShort ?? siteConfig.business.address
+          }
           hours={siteConfig.business.hours}
           instagram={
             instagram && siteConfig.contact.instagramHandle

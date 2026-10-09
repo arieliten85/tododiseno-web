@@ -27,6 +27,7 @@ export const siteConfig = {
   },
   business: {
     address: "25 de Mayo 445, Lanús Oeste, Buenos Aires",
+    addressShort: "25 de Mayo 445, Lanús Oeste",
     area: "Lanús Oeste",
     mapQuery: "25 de Mayo 445, Lanús Oeste, Buenos Aires",
     hours: [

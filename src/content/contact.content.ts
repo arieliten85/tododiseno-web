@@ -29,7 +29,7 @@ export const contactContent = {
   },
   map: {
     title: "Mapa del local en Lanús Oeste",
-    note: "Lanús Oeste, Buenos Aires",
+    note: "Lanús Oeste",
     directions: "Cómo llegar",
   },
   info: [
