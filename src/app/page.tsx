@@ -5,6 +5,7 @@ import { Hero } from "@/components/sections/hero";
 import { Testimonials } from "@/components/sections/testimonials";
 import { ValuesStrip } from "@/components/sections/values-strip";
 import { Container } from "@/components/ui/container";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { seoConfig } from "@/config/seo.config";
 import { siteConfig } from "@/config/site.config";
@@ -60,9 +61,12 @@ export default function Home() {
             title={featuredIntro.title}
             description={featuredIntro.description}
           />
-          <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <ul
+            data-reveal-stagger
+            className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
+          >
             {featured.map((product) => (
-              <li key={product.slug}>
+              <li key={product.slug} data-reveal>
                 <ProductCard
                   href={getProductPath(product.slug)}
                   name={product.visibleName}
@@ -97,6 +101,8 @@ export default function Home() {
         imageSide="left"
         newTabLabel={sharedContent.newTab}
       />
+
+      <ScrollReveal />
     </>
   );
 }

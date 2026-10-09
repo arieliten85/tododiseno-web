@@ -29,30 +29,32 @@ export function Hero({
     <section className="bg-veil relative isolate flex min-h-[calc(100svh-5rem)] items-center overflow-hidden [--hero-wave:clamp(1.5rem,4.15vw,4rem)]">
       <Container className="relative z-10 pt-12 pb-[calc(3rem+var(--hero-wave))] text-center lg:pt-16 lg:pb-[calc(4rem+var(--hero-wave))] lg:text-left">
         <div className="mx-auto max-w-[37.5rem] lg:mx-0">
-          <p className="text-accent-strong mb-3 text-xs font-semibold tracking-[0.1em] uppercase">
+          <p className="hero-enter text-accent-strong mb-3 text-xs font-semibold tracking-[0.1em] uppercase">
             {eyebrow}
           </p>
-          <h1 className="font-heading text-foreground text-[2.25rem] leading-[1.12] font-bold text-balance sm:text-[2.75rem] xl:text-5xl xl:leading-[1.1] xl:text-wrap">
+          <h1 className="hero-enter font-heading text-foreground text-[2.25rem] leading-[1.12] font-bold text-balance [--enter-delay:180ms] sm:text-[2.75rem] xl:text-5xl xl:leading-[1.1] xl:text-wrap">
             {title}
           </h1>
-          <p className="text-foreground/75 mx-auto mt-5 max-w-[30rem] text-base leading-7 text-pretty sm:text-lg sm:leading-[1.75] lg:mx-0">
+          <p className="hero-enter text-foreground/75 mx-auto mt-5 max-w-[30rem] text-base leading-7 text-pretty [--enter-delay:360ms] sm:text-lg sm:leading-[1.75] lg:mx-0">
             {description}
           </p>
-          <Button href={action.href} className="mt-9 min-h-12 px-8">
-            {action.label}
-            <ArrowRightIcon className="size-4" />
-          </Button>
+          <div className="hero-enter mt-9 [--enter-delay:540ms]">
+            <Button href={action.href} className="min-h-12 px-8">
+              {action.label}
+              <ArrowRightIcon className="size-4" />
+            </Button>
+          </div>
         </div>
       </Container>
 
-      <div className="absolute inset-0 -z-10">
+      <div className="hero-parallax absolute inset-0 -z-10">
         <MediaImage
           src={image.src}
           alt={image.alt}
           fill
           preload
           sizes="100vw"
-          className="object-cover object-[78%_center] lg:object-[right_70%]"
+          className="hero-image-enter object-cover object-[78%_center] lg:object-[right_70%]"
         />
         <div className="hero-veil absolute inset-0" />
       </div>

@@ -15,12 +15,13 @@ export function ValuesStrip({ items }: ValuesStripProps) {
   return (
     <section className="bg-surface border-border border-y py-12">
       <Container>
-        <ul className="grid gap-8 sm:grid-cols-3">
+        <ul data-reveal-stagger className="grid gap-8 sm:grid-cols-3">
           {items.map((item) => {
             const Icon = icons[item.icon];
             return (
               <li
                 key={item.title}
+                data-reveal
                 className="flex flex-col items-center text-center"
               >
                 <span className="bg-secondary text-accent-strong mb-4 inline-flex size-12 items-center justify-center rounded-full">

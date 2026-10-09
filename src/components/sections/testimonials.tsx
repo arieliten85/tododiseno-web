@@ -24,10 +24,11 @@ export function Testimonials({
           title={title}
           description={description}
         />
-        <ul className="mt-12 grid gap-6 sm:grid-cols-3">
+        <ul data-reveal-stagger className="mt-12 grid gap-6 sm:grid-cols-3">
           {items.map((item) => (
             <li
               key={item.id}
+              data-reveal
               className="bg-surface rounded-card overflow-hidden shadow-md"
             >
               <div className="relative aspect-[32/35]">

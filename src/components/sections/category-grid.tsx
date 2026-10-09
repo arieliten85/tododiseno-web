@@ -36,9 +36,12 @@ export function CategoryGrid({
           title={title}
           description={description}
         />
-        <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <ul
+          data-reveal-stagger
+          className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+        >
           {items.map((item) => (
-            <li key={item.id}>
+            <li key={item.id} data-reveal>
               <Link
                 href={item.href}
                 className="group border-border bg-surface rounded-card relative block overflow-hidden border shadow-sm transition-shadow hover:shadow-md"

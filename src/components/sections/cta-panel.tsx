@@ -39,7 +39,10 @@ export function CtaPanel({
   return (
     <section className="py-section-md">
       <Container>
-        <div className="bg-secondary border-border rounded-card grid items-center gap-8 border p-6 shadow-md sm:p-10 lg:grid-cols-2">
+        <div
+          data-reveal="zoom"
+          className="bg-secondary border-border rounded-card grid items-center gap-8 border p-6 shadow-md sm:p-10 lg:grid-cols-2"
+        >
           <div className={imageSide === "left" ? "lg:order-2" : undefined}>
             <p className="bg-surface text-accent-strong mb-4 inline-flex items-center gap-2 rounded-full px-3 py-1 text-[0.65rem] font-bold tracking-[0.2em] uppercase">
               <HeartIcon className="size-3" />

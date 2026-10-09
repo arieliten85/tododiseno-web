@@ -23,6 +23,7 @@ export function SectionHeading({
 
   return (
     <div
+      data-reveal
       className={cn("max-w-content-medium", centered && "mx-auto text-center")}
     >
       {eyebrow ? (
