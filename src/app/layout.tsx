@@ -71,6 +71,7 @@ export default function RootLayout({
             catalogPath: "/catalogo/",
           }}
           instagramHref={instagram}
+          activeMarkSrc={siteConfig.decor.cardSprig}
           facebookHref={facebook}
           content={sharedContent.header}
         />

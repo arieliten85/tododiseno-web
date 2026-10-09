@@ -23,6 +23,8 @@ type HeaderProps = {
     catalogPath: string;
   };
   instagramHref?: string;
+  /** Imagen decorativa que marca la página activa en el menú móvil. */
+  activeMarkSrc?: string;
   facebookHref?: string;
   content: HeaderContent;
 };
@@ -93,6 +95,7 @@ export function Header({
   navigation,
   search,
   instagramHref,
+  activeMarkSrc,
   facebookHref,
   content,
 }: HeaderProps) {
@@ -150,6 +153,17 @@ export function Header({
           mobileNavLabel={content.mobileNav}
           menuLabel={content.openMenu}
           closeLabel={content.closeMenu}
+          activeMark={
+            activeMarkSrc ? (
+              <MediaImage
+                src={activeMarkSrc}
+                alt=""
+                aria-hidden="true"
+                sizes="24px"
+                className="mt-0.5 w-5 shrink-0"
+              />
+            ) : null
+          }
           actions={
             <div className="col-start-1 row-start-1 -ml-3 flex items-center gap-1 justify-self-start md:ml-0 md:justify-self-auto">
               <SearchDialog {...search} />
