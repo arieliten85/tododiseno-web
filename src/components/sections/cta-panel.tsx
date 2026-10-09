@@ -6,6 +6,7 @@ import {
   WhatsAppIcon,
 } from "@/components/ui/icons";
 import { MediaImage } from "@/components/ui/media-image";
+import { cn } from "@/lib/class-names";
 
 type CtaPanelProps = {
   eyebrow: string;
@@ -43,19 +44,24 @@ export function CtaPanel({
           data-reveal="zoom"
           className="bg-secondary border-border rounded-card grid items-center gap-8 border p-6 shadow-md sm:p-10 lg:grid-cols-2"
         >
-          <div className={imageSide === "left" ? "lg:order-2" : undefined}>
+          <div
+            className={cn(
+              "text-center lg:text-left",
+              imageSide === "left" && "lg:order-2",
+            )}
+          >
             <p className="bg-surface text-accent-strong mb-4 inline-flex items-center gap-2 rounded-full px-3 py-1 text-[0.65rem] font-bold tracking-[0.2em] uppercase">
               <HeartIcon className="size-3" />
               {eyebrow}
             </p>
-            <h2 className="font-heading text-3xl leading-tight font-semibold text-balance sm:text-4xl">
+            <h2 className="font-heading text-4xl leading-tight font-semibold text-balance lg:text-5xl">
               {title}
             </h2>
             <p className="text-foreground/80 mt-4 leading-7 text-pretty">
               {description}
             </p>
             {chips && chips.length > 0 ? (
-              <ul className="mt-5 flex flex-wrap gap-2">
+              <ul className="mt-6 flex flex-wrap justify-center gap-2 lg:justify-start">
                 {chips.map((chip) => (
                   <li
                     key={chip}
@@ -66,7 +72,7 @@ export function CtaPanel({
                 ))}
               </ul>
             ) : null}
-            <div className="mt-7 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-wrap justify-center gap-3 lg:justify-start">
               <Button
                 href={action.href}
                 variant="whatsapp"
@@ -86,7 +92,7 @@ export function CtaPanel({
               ) : null}
             </div>
             {reassurance ? (
-              <p className="text-muted-foreground mt-5 flex items-center gap-2 text-sm">
+              <p className="text-muted-foreground mt-5 flex items-center justify-center gap-2 text-sm lg:justify-start">
                 <CheckCircleIcon className="text-detail size-4" />
                 {reassurance}
               </p>

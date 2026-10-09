@@ -135,6 +135,13 @@ export type HomeContent = {
   values: Array<TextCard & { icon: "design" | "chat" | "pin" }>;
   testimonials: SectionIntro & {
     items: Array<{ id: string; image: ImageContent }>;
+    slider: {
+      region: string;
+      previous: string;
+      next: string;
+      goTo: string;
+      slide: string;
+    };
   };
   cta: {
     eyebrow: string;

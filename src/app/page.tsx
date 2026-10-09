@@ -98,7 +98,6 @@ export default function Home() {
         reassurance={cta.reassurance}
         badge={cta.badge}
         image={cta.image}
-        imageSide="left"
         newTabLabel={sharedContent.newTab}
       />
 

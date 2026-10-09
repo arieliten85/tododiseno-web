@@ -73,6 +73,13 @@ export const homeContent = {
         },
       },
     ],
+    slider: {
+      region: "Testimonios de clientas",
+      previous: "Testimonio anterior",
+      next: "Testimonio siguiente",
+      goTo: "Ir al testimonio {n}",
+      slide: "Testimonio {n} de {total}",
+    },
   },
   cta: {
     eyebrow: "PEDIDOS PERSONALIZADOS",
