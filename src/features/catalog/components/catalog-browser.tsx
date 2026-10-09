@@ -27,6 +27,11 @@ type CatalogBrowserProps = {
   content: CatalogPageContent;
 };
 
+/** Igualdad de conjuntos (orden indistinto). */
+function sameSet<T>(a: ReadonlySet<T>, b: ReadonlySet<T>) {
+  return a.size === b.size && [...a].every((value) => b.has(value));
+}
+
 function toggle<T>(current: ReadonlySet<T>, value: T) {
   const next = new Set(current);
   if (next.has(value)) next.delete(value);
@@ -258,6 +263,13 @@ export function CatalogBrowser({
     [items, query, draftCategories, draftAudiences, sort],
   );
 
+  // El botón solo aplica si el borrador difiere de lo ya aplicado y da resultados:
+  // con los filtros por defecto ("Todas" / "Todos") no hay nada que aplicar.
+  const draftChanged =
+    !sameSet(draftCategories, selectedCategories) ||
+    !sameSet(draftAudiences, selectedAudiences);
+  const canApply = draftChanged && draftTotal > 0;
+
   useEffect(() => {
     const dialog = sheetRef.current;
     if (!dialog) return;
@@ -420,13 +432,16 @@ export function CatalogBrowser({
           <button
             type="button"
             onClick={applyFilters}
-            className="bg-primary-strong text-primary-foreground inline-flex min-h-11 flex-1 items-center justify-center rounded-full px-6 text-sm font-semibold"
+            disabled={!canApply}
+            className="bg-primary-strong text-primary-foreground disabled:bg-muted disabled:text-muted-foreground inline-flex min-h-11 flex-1 items-center justify-center rounded-full px-6 text-sm font-semibold transition-colors disabled:cursor-not-allowed"
           >
-            {draftTotal === 0
-              ? content.filters.applyNone
-              : draftTotal === 1
-                ? content.filters.applyOne
-                : `${content.filters.applyMany.replace("{n}", String(draftTotal))}`}
+            {!draftChanged
+              ? content.filters.applyIdle
+              : draftTotal === 0
+                ? content.filters.applyNone
+                : draftTotal === 1
+                  ? content.filters.applyOne
+                  : `${content.filters.applyMany.replace("{n}", String(draftTotal))}`}
           </button>
         </div>
       </dialog>

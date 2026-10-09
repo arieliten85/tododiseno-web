@@ -19,6 +19,7 @@ export const catalogPageContent = {
     applyOne: "Ver 1 producto",
     applyMany: "Ver {n} productos",
     applyNone: "Sin resultados",
+    applyIdle: "Filtrar",
     occasion: "Ocasión",
     allOccasions: "Todas las ocasiones",
     allAudiences: "Todos",

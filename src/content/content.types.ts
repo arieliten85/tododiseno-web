@@ -163,6 +163,8 @@ export type CatalogPageContent = {
     applyOne: string;
     applyMany: string;
     applyNone: string;
+    /** Texto del botón (deshabilitado) mientras no haya cambios para aplicar. */
+    applyIdle: string;
     occasion: string;
     allOccasions: string;
     allAudiences: string;
