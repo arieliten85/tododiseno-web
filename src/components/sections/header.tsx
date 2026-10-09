@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FacebookIcon, InstagramIcon } from "@/components/ui/icons";
 import { Container } from "@/components/ui/container";
+import { HideOnScrollHeader } from "@/components/ui/hide-on-scroll-header";
 import { MediaImage } from "@/components/ui/media-image";
 import type { HeaderContent, SearchContent } from "@/content/content.types";
 import {
@@ -118,7 +119,7 @@ export function Header({
   );
 
   return (
-    <header className="bg-background/95 border-border sticky top-0 z-40 border-b shadow-sm backdrop-blur">
+    <HideOnScrollHeader className="bg-background/95 border-border sticky top-0 z-40 border-b shadow-sm backdrop-blur">
       <Container className="relative grid min-h-20 grid-cols-[1fr_auto_1fr] items-center gap-4 md:flex md:justify-between md:gap-6">
         <Link
           href="/"
@@ -175,6 +176,6 @@ export function Header({
           }
         />
       </Container>
-    </header>
+    </HideOnScrollHeader>
   );
 }
