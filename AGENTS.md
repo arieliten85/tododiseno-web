@@ -16,6 +16,20 @@ La identidad del negocio es configuración.
 Configuración controla intención.
 Componentes controlan implementación.
 
+## Business rules
+
+@docs/reglas-negocio.md
+
+- Modelo y carga de productos: `docs/modelo-productos.md` — leerlo antes de tocar `src/content/**`.
+
+## Excepción: panel admin
+
+`/admin` es una herramienta de captura de productos para Florencia (uso desde celular).
+Usa Supabase como almacenamiento; las fotos (hasta 4, comprimidas en el navegador) van
+a Supabase Storage y sus URLs se guardan en el producto. Es la única excepción a la
+regla "no backend". No alimenta el sitio directamente: los productos se pasan a
+TypeScript a mano cuando hay un lote listo.
+
 ## Permanent rules
 
 - Use Bun as the only package manager.
