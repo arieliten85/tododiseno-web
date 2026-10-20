@@ -13,7 +13,8 @@ export const productPageContent = {
   },
   customizableNote: {
     label: "Producto personalizable",
-    text: "Color, tamaño, texto y temática se coordinan a tu gusto por WhatsApp.",
+    text: "Adaptamos el diseño a tu gusto. Contactanos por WhatsApp para coordinar los detalles y preparar tu pedido a medida.",
+    optionsTitle: "Opciones a elegir",
   },
   consult: {
     title: "Consultá este producto",
@@ -40,6 +41,7 @@ export const productPageContent = {
     unitOne: "1 unidad",
     unitMany: "{n} unidades",
   },
+  specs: { title: "Características" },
   related: {
     title: "También te puede interesar",
     description:

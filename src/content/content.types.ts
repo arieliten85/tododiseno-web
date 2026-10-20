@@ -1,3 +1,5 @@
+import type { SpecLabel, ProductType } from "./spec-labels.content";
+
 export type LinkContent = {
   label: string;
   href: string;
@@ -87,10 +89,19 @@ export type DetailItem = {
   note?: string;
 };
 
+/** Una fila de la grilla "Características" (ej. Papel: texturado o brillante). */
+export type SpecItem = {
+  /** Sale del vocabulario de `spec-labels.content.ts`. */
+  label: SpecLabel;
+  value: string;
+};
+
 export type Product = {
   id: string;
   /** es la URL pública, sin personajes con licencia */
   slug: string;
+  /** Drives template selection and conditional UI logic. */
+  productType: ProductType;
   category: CategoryId;
   audience: AudienceId;
   visibleName: string;
@@ -100,6 +111,14 @@ export type Product = {
   gallery?: ImageContent[];
   /** 2+ = "Qué incluye", 1 = "Detalle" */
   detailItems?: DetailItem[];
+  /** Grilla "Características" (papel, terminación, material, medida...). */
+  specs?: SpecItem[];
+  /**
+   * Propiedades adicionales libres que Florencia agrega al cargar un producto.
+   * El label es texto libre (no está en el vocabulario de spec-labels).
+   * Se muestran en la misma grilla que specs.
+   */
+  extraSpecs?: { label: string; value: string }[];
   customizable: boolean;
   quantity: {
     unit: string;
@@ -197,7 +216,7 @@ export type ProductPageContent = {
     next: string;
     counter: string;
   };
-  customizableNote: { label: string; text: string };
+  customizableNote: { label: string; text: string; optionsTitle: string };
   consult: {
     title: string;
     hint: string;
@@ -217,6 +236,7 @@ export type ProductPageContent = {
     unitOne: string;
     unitMany: string;
   };
+  specs: { title: string };
   related: SectionIntro & { action: string };
 };
 

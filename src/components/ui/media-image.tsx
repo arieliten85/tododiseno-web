@@ -1,5 +1,11 @@
+"use client";
+
 import Image, { type ImageProps } from "next/image";
+import { useState } from "react";
 import { getImageMeta } from "@/lib/images/image-meta";
+
+// Imagen que se muestra cuando el archivo del producto no existe todavía.
+const FALLBACK_SRC = "/brand/decor/placeholder-product.svg";
 
 type MediaImageProps = Omit<
   ImageProps,
@@ -10,16 +16,19 @@ type MediaImageProps = Omit<
 };
 
 export function MediaImage({
-  src,
+  src: initialSrc,
   fill,
   alt,
   sizes,
   ...props
 }: MediaImageProps) {
+  const [src, setSrc] = useState(initialSrc);
   const meta = getImageMeta(src);
   const placeholder = meta
     ? ({ placeholder: "blur", blurDataURL: meta.blur } as const)
     : {};
+
+  const handleError = () => setSrc(FALLBACK_SRC);
 
   if (fill) {
     return (
@@ -28,6 +37,7 @@ export function MediaImage({
         alt={alt}
         fill
         sizes={sizes ?? "100vw"}
+        onError={handleError}
         {...placeholder}
         {...props}
       />
@@ -41,6 +51,7 @@ export function MediaImage({
       width={meta?.width ?? 1200}
       height={meta?.height ?? 900}
       sizes={sizes}
+      onError={handleError}
       {...placeholder}
       {...props}
     />

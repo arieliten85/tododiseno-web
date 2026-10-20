@@ -13,7 +13,7 @@
     ],
     "stem": "about/florencia-en-el-local",
     "blur": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAADwAwCdASoQABQAPu1iqU2ppaOiMAgBMB2JZQC06YxOltfD3I+JcE0AAPyL9aohz8Ec4BKmEEckFD30AuWGGaAPjUvsqmZV1aTmz9CdFNbMrb/hAm74gGh9TyF+434STXwY8VTTcEFtHjId40tPU6FdgQhDohY9gP/SicQaBhtv5KV8P+I+/pwA",
-    "mtime": 1791216173925
+    "mtime": 1791569273195
   },
   "/brand/about/mesa-de-cumpleanos.jpg": {
     "width": 539,
@@ -29,7 +29,7 @@
     ],
     "stem": "about/mesa-de-cumpleanos",
     "blur": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAADQAQCdASoQAAsAA4BaJbACdADyAafn0AD+9hPKqRcRp+6HJ9ytwpw85oHGbcSjFlqHAN0pCN5tKMY8CkpL6tiiY2dI7FLcSi16k3hS5coNXQbkfEUr7WpcbC8ZdC1NsQ8/MfpxgNRSK9AMGhqeAIEogAA=",
-    "mtime": 1791216174613
+    "mtime": 1791569273195
   },
   "/brand/categories/baby-shower.jpg": {
     "width": 360,
@@ -45,7 +45,7 @@
     ],
     "stem": "categories/baby-shower",
     "blur": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAAAwAgCdASoQABAAA4BaJYwCdAELY9W90stL4AD+tZGSv0Aoa4Gmu7f0mU72ymmGdx2g1sLcr1A/vqvr4nWoqjHSx3bCdENJIethZZDAAAA=",
-    "mtime": 1791216000686
+    "mtime": 1791569273195
   },
   "/brand/categories/bautismo.jpg": {
     "width": 360,
@@ -61,7 +61,7 @@
     ],
     "stem": "categories/bautismo",
     "blur": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAwAgCdASoQABAAA4BaJYgCdAEfw7SH0z7AAAD2Z/z2FO+yFzjFB8wVCXpmE5Tiw8IuCgCHtDDgSogWZqgOfNptzzhNOe6N93ZdbGma2CoGcUJBWd0tknc3T+TLKAAA",
-    "mtime": 1791216001128
+    "mtime": 1791569273195
   },
   "/brand/categories/comuniones.jpg": {
     "width": 360,
@@ -77,7 +77,7 @@
     ],
     "stem": "categories/comuniones",
     "blur": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAABQAgCdASoQABAAA4BaJYgCdAEDH55fzSGKigAA/utTVVdA3JvKd5H79bx7QnM2dG2tVcU/uDbcUl+6svAP90h7oBd5sHkoEAA=",
-    "mtime": 1791216001537
+    "mtime": 1791569273195
   },
   "/brand/categories/cumpleanos-tematicos.jpg": {
     "width": 360,
@@ -93,7 +93,7 @@
     ],
     "stem": "categories/cumpleanos-tematicos",
     "blur": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAAAwAgCdASoQABAAA4BaJbACdH8AGBsp+9n0zAD+78KJ/c2GYgA6zm7vDaMd7vURgLKp6xNbWDqmZJPCGxZIrwczFBRbaBAqlWOQuoAA",
-    "mtime": 1791216002051
+    "mtime": 1791569273196
   },
   "/brand/categories/navidad.jpg": {
     "width": 360,
@@ -109,7 +109,7 @@
     ],
     "stem": "categories/navidad",
     "blur": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAAAwAgCdASoQABAAA4BaJZgCdAYxZlblexR9QAD+4KFKVxiOJLcH6/skNsfuDR+qPMsYdBH7yvDiHLINhl7gBludHJFo5YsbU7IIE4+FlrMwBIAfv/kA1audtD3QpHPPGmiY9GmRN9Y0UAlWAAA=",
-    "mtime": 1791216002764
+    "mtime": 1791569273196
   },
   "/brand/categories/otros-eventos.jpg": {
     "width": 360,
@@ -125,7 +125,7 @@
     ],
     "stem": "categories/otros-eventos",
     "blur": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAAAQAgCdASoQABAAA4BaJYgCdAEQ97YOBlSEAP7qe7c+XELBADpj/UfPyyXxE/ssvod18KamCRTeYIfgoZfT3IUgAAA=",
-    "mtime": 1791216003478
+    "mtime": 1791569273196
   },
   "/brand/decor/rama-con-flor.png": {
     "width": 52,
@@ -141,7 +141,7 @@
     ],
     "stem": "decor/rama-con-flor",
     "blur": "data:image/webp;base64,UklGRioBAABXRUJQVlA4WAoAAAAQAAAADwAAEQAAQUxQSJsAAAABgFpt2/Lmeb83zImjARLJNEAcwwQZIDKaHJYnqGtlJ+gEDIq5ro77Y3CCiJgATGUU7xtgzFB6lt6r0xgt6fv3W2pPMaAjfUvf0mAKwXktfUqv/imMgiT9SddWPYH4bmlvbb8IoSGYj26SEJjK6H9IOzAz6wjkN93NEAhT6fjKB8JURuvwPAyeIhA5MGBWgWgOgmYAQITZSWCVAQBWUDggaAAAANADAJ0BKhAAEgA+7WKpTamlo6IwCAEwHYlsAKwBiyzfssmGb5OwiAD+i6sBC7M5Sy+04tEeTxUVLg5vH7wo0K1cWriRu8eXF6KVo1o6uKFHV+wkGtbrLimpVBBIxqgwR6Z/4VL76AAA",
-    "mtime": 1791216591920
+    "mtime": 1791569273196
   },
   "/brand/hero/mesa-de-souvenirs.jpg": {
     "width": 1280,
@@ -157,7 +157,7 @@
     ],
     "stem": "hero/mesa-de-souvenirs",
     "blur": "data:image/webp;base64,UklGRkAAAABXRUJQVlA4IDQAAADQAQCdASoQAAcAA4BaJQBOgCGyJKIoAAD+8JLt9d3Zh/q6vcjQeYV7LlHNZc34IvUbD8AA",
-    "mtime": 1791214962767
+    "mtime": 1791569273196
   },
   "/brand/logo/logo.png": {
     "width": 544,
@@ -173,7 +173,7 @@
     ],
     "stem": "logo/logo",
     "blur": "data:image/webp;base64,UklGRjYBAABXRUJQVlA4WAoAAAAQAAAADwAACAAAQUxQSJEAAAAAAAAAAAACACBZFAABAAAAAAAAAAEEAwA2cAcABAEAAAACAwIAAARa5ddXBQAAAgMCAAAAEV3J//7+/8teEwAAAHdpmOb//v3+/Pf+/+Scane0/9ft3snw5KHA3r6t2f+0hv+7w8O12al+gGd9lmzojF/y1rCfjop+d4GLnbzG7mABEg8ACh0eGCYeKAsDFxQAAFZQOCB+AAAAsAIAnQEqEAAJAAOAWiWwAnR/A6W4Gye71V3VfngAAOJCcu0YkvenGIDBZs79PtdyYeoSeLMueewvZpSXjVla2W/soEk4ug5iDXntAUfUNhsc6IGAQp9yq/ZY6/8X0au9tgumX7fl5/83x0tavLF1z/oZT/U3Zj/jsn+gAAAA",
-    "mtime": 1790974536050
+    "mtime": 1791569273197
   },
   "/brand/products/antifaces-tematicos-01.jpg": {
     "width": 1200,
@@ -189,7 +189,7 @@
     ],
     "stem": "products/antifaces-tematicos-01",
     "blur": "data:image/webp;base64,UklGRiwAAABXRUJQVlA4ICAAAABwAQCdASoQAAwABIBaJYwCdAFAAAD+8QfGAg+QgZkAAA==",
-    "mtime": 1790974536050
+    "mtime": 1791569273197
   },
   "/brand/products/banderin-tematico-01.jpg": {
     "width": 1200,
@@ -205,7 +205,7 @@
     ],
     "stem": "products/banderin-tematico-01",
     "blur": "data:image/webp;base64,UklGRjAAAABXRUJQVlA4ICQAAABwAQCdASoQAAwABIBaJZACdAFAAAD+8YlFqEr3LVJkbJ3iAAA=",
-    "mtime": 1790974536051
+    "mtime": 1791569273197
   },
   "/brand/products/cajas-personalizadas-01.jpg": {
     "width": 1200,
@@ -221,7 +221,7 @@
     ],
     "stem": "products/cajas-personalizadas-01",
     "blur": "data:image/webp;base64,UklGRiwAAABXRUJQVlA4ICAAAABQAQCdASoQAAwABIBaJQBOgCgAAP7xB8YCOpuBN2VQAA==",
-    "mtime": 1790974536051
+    "mtime": 1791569273197
   },
   "/brand/products/cajas-pochocleras-01.jpg": {
     "width": 1200,
@@ -237,7 +237,7 @@
     ],
     "stem": "products/cajas-pochocleras-01",
     "blur": "data:image/webp;base64,UklGRi4AAABXRUJQVlA4ICIAAABQAQCdASoQAAwABIBaJQBOgCgAAP7xiUWoR5P1dbuYQAAA",
-    "mtime": 1790974536051
+    "mtime": 1791569273197
   },
   "/brand/products/centro-de-mesa-01.jpg": {
     "width": 1200,
@@ -253,7 +253,7 @@
     ],
     "stem": "products/centro-de-mesa-01",
     "blur": "data:image/webp;base64,UklGRioAAABXRUJQVlA4IB4AAABQAQCdASoQAAwABIBaJYwABAAAAP7xF4u3DundgAA=",
-    "mtime": 1790974536051
+    "mtime": 1791569273197
   },
   "/brand/products/centro-de-mesa-02.jpg": {
     "width": 1200,
@@ -269,7 +269,23 @@
     ],
     "stem": "products/centro-de-mesa-02",
     "blur": "data:image/webp;base64,UklGRi4AAABXRUJQVlA4ICIAAABwAQCdASoQAAwAA4BaJYwCsAGIQAD+8NPUsxexU4FwAAAA",
-    "mtime": 1790974536051
+    "mtime": 1791569273197
+  },
+  "/brand/products/estampita-comunion-01.jpg": {
+    "width": 1200,
+    "height": 900,
+    "variants": [
+      320,
+      480,
+      640,
+      960,
+      1280,
+      1600,
+      2000
+    ],
+    "stem": "products/estampita-comunion-01",
+    "blur": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADQAQCdASoQAAwAA4BaJZgCdAEMLqcGgAD+106n8Orh4kkj2W2gIe6iAOSmmKLucoOOlDmS9oy6d3qPZunp8Lx5y3w37umSGHi6fd3udIajQQ5B7kOdt6gA",
+    "mtime": 1792433587486
   },
   "/brand/products/estampitas-confirmacion-01.jpg": {
     "width": 1200,
@@ -285,7 +301,7 @@
     ],
     "stem": "products/estampitas-confirmacion-01",
     "blur": "data:image/webp;base64,UklGRiwAAABXRUJQVlA4ICAAAABwAQCdASoQAAwABIBaJYwCdAFAAAD+8QfGAg+QgZkAAA==",
-    "mtime": 1790974536051
+    "mtime": 1791569273197
   },
   "/brand/products/kit-tematico-cumpleanos-01-2.jpg": {
     "width": 1200,
@@ -301,7 +317,7 @@
     ],
     "stem": "products/kit-tematico-cumpleanos-01-2",
     "blur": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADwAQCdASoQAAwAA4BaJQBOgCLWNzzyeygA/uZMsAN+JYCwzrvIn3vT08Nm43zZKRlM6pM5RQCBVfTntP6x/YkB6zmvm/AFnQ9AGbdtUD45Rqa3fOsiZP5AeQRvISIAAAA=",
-    "mtime": 1791470772692
+    "mtime": 1791569273197
   },
   "/brand/products/kit-tematico-cumpleanos-01-3.jpg": {
     "width": 1200,
@@ -317,7 +333,7 @@
     ],
     "stem": "products/kit-tematico-cumpleanos-01-3",
     "blur": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAADwAQCdASoQAAwAA4BaJbACdACp7ebSy1AA/mAHTb5/cKLsbcNt2xk5u5k8nIrBUZDifPnVaxJ/WARYP8G3NsHaNwJtbIa5qfaqgufJqsX3HfrC9RDoffLAAAA=",
-    "mtime": 1791470773302
+    "mtime": 1791569273198
   },
   "/brand/products/kit-tematico-cumpleanos-01-4.jpg": {
     "width": 1200,
@@ -333,7 +349,7 @@
     ],
     "stem": "products/kit-tematico-cumpleanos-01-4",
     "blur": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAABQAgCdASoQAAwAA4BaJZQCdAYubgJbDMqbDsAA/uGrOYK/l9mENtgmdrryt1uWO+wOoh14BFZcfz7lhtn65mCQ+zB+mtkvb6XlkiPimAdyT+g/4wbO+47+iqiNBv6dLoONN2IZ+tM/LnAAAAA=",
-    "mtime": 1791470773762
+    "mtime": 1791569273198
   },
   "/brand/products/kit-tematico-cumpleanos-01.jpg": {
     "width": 1200,
@@ -349,7 +365,7 @@
     ],
     "stem": "products/kit-tematico-cumpleanos-01",
     "blur": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAABQAgCdASoQAAwAA4BaJQBOgMYO6dxXTvNVVCAA/vJoYIY6cK20rhYuuy/8cJO9sZbAarMsB9mM9FBkH5qtB3nv6/firqI8cJcEejTATe6gKz0518gIs4wpgIF+Lf34g2V8bTdwexAAAA==",
-    "mtime": 1791470772177
+    "mtime": 1791569273199
   },
   "/brand/products/pochocleras-tematicas-01.jpg": {
     "width": 1200,
@@ -365,7 +381,7 @@
     ],
     "stem": "products/pochocleras-tematicas-01",
     "blur": "data:image/webp;base64,UklGRi4AAABXRUJQVlA4ICIAAABwAQCdASoQAAwAA4BaJYwCsAGIQAD+8NPUsxexU4FwAAAA",
-    "mtime": 1790974536051
+    "mtime": 1791569273199
   },
   "/brand/products/souvenir-comunion-01.jpg": {
     "width": 1200,
@@ -381,7 +397,7 @@
     ],
     "stem": "products/souvenir-comunion-01",
     "blur": "data:image/webp;base64,UklGRiwAAABXRUJQVlA4ICAAAABwAQCdASoQAAwABIBaJYwCdAFAAAD+8QfGAg+QgZkAAA==",
-    "mtime": 1790974536051
+    "mtime": 1791569273199
   },
   "/brand/products/souvenirs-tematicos-01.jpg": {
     "width": 1200,
@@ -397,7 +413,7 @@
     ],
     "stem": "products/souvenirs-tematicos-01",
     "blur": "data:image/webp;base64,UklGRjAAAABXRUJQVlA4ICQAAABwAQCdASoQAAwABIBaJZACdAFAAAD+8YlFqEr3LVJkbJ3iAAA=",
-    "mtime": 1790974536051
+    "mtime": 1791569273199
   },
   "/brand/products/stickers-baby-shower-01.jpg": {
     "width": 1200,
@@ -413,7 +429,7 @@
     ],
     "stem": "products/stickers-baby-shower-01",
     "blur": "data:image/webp;base64,UklGRiwAAABXRUJQVlA4ICAAAABQAQCdASoQAAwABIBaJQBOgCgAAP7xB8YCOpuBN2VQAA==",
-    "mtime": 1790974536051
+    "mtime": 1791569273199
   },
   "/brand/products/tarjeta-invitacion-comunion-01.jpg": {
     "width": 1200,
@@ -429,7 +445,7 @@
     ],
     "stem": "products/tarjeta-invitacion-comunion-01",
     "blur": "data:image/webp;base64,UklGRi4AAABXRUJQVlA4ICIAAABQAQCdASoQAAwABIBaJQBOgCgAAP7xiUWoR5P1dbuYQAAA",
-    "mtime": 1790974536051
+    "mtime": 1791569273200
   },
   "/brand/products/toppers-cupcakes-01.jpg": {
     "width": 1200,
@@ -445,7 +461,7 @@
     ],
     "stem": "products/toppers-cupcakes-01",
     "blur": "data:image/webp;base64,UklGRioAAABXRUJQVlA4IB4AAABQAQCdASoQAAwABIBaJYwABAAAAP7xF4u3DundgAA=",
-    "mtime": 1790974536051
+    "mtime": 1791569273200
   },
   "/brand/products/toppers-tematicos-01.jpg": {
     "width": 1200,
@@ -461,7 +477,7 @@
     ],
     "stem": "products/toppers-tematicos-01",
     "blur": "data:image/webp;base64,UklGRi4AAABXRUJQVlA4ICIAAABwAQCdASoQAAwAA4BaJYwCsAGIQAD+8NPUsxexU4FwAAAA",
-    "mtime": 1790974536051
+    "mtime": 1791569273200
   },
   "/brand/products/toppers-tortas-01.jpg": {
     "width": 1200,
@@ -477,7 +493,7 @@
     ],
     "stem": "products/toppers-tortas-01",
     "blur": "data:image/webp;base64,UklGRiwAAABXRUJQVlA4ICAAAABwAQCdASoQAAwABIBaJYwCdAFAAAD+8QfGAg+QgZkAAA==",
-    "mtime": 1790974536051
+    "mtime": 1791569273200
   },
   "/brand/testimonials/testimonio-01.jpg": {
     "width": 320,
@@ -493,7 +509,7 @@
     ],
     "stem": "testimonials/testimonio-01",
     "blur": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAACwAwCdASoQABEAPu1iqk2ppaQiMAgBMB2JaQAAYfV2UsX8ZI3uwAD+7sQbG5AupOvXbyPBgdGqxBW8o+xKMvkFesy0oQAA",
-    "mtime": 1791471886014
+    "mtime": 1791569273200
   },
   "/brand/testimonials/testimonio-02.jpg": {
     "width": 320,
@@ -509,7 +525,7 @@
     ],
     "stem": "testimonials/testimonio-02",
     "blur": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAAAQAwCdASoQABEAPu1iqU2ppaOiMAgBMB2JZwAAKvqgwAAA/uzESWq3sNh65betQpEgo+SSFO5MhSzS2NvbetcLW9g8LH6v70TNL6FRMX32FAAA",
-    "mtime": 1791471886951
+    "mtime": 1791569273200
   },
   "/brand/testimonials/testimonio-03.jpg": {
     "width": 320,
@@ -525,6 +541,6 @@
     ],
     "stem": "testimonials/testimonio-03",
     "blur": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAACwAwCdASoQABEAPu1iqU2ppaOiMAgBMB2JQBhQA9LXjOcKeOhOuAD+7NCw9WeyYDOCCDgppadyS90wM/T0ylLHnsaiYRIR5v5cESbMP5pNINnq7MCd9a2PBHJ4wa0orSiINdcoYWb7/lx+AAA=",
-    "mtime": 1791471891006
+    "mtime": 1791569273200
   }
 }

@@ -21,6 +21,7 @@ import {
 import { ConsultCard } from "@/features/product/components/consult-card";
 import { DetailItems } from "@/features/product/components/detail-items";
 import { ProductGallery } from "@/features/product/components/product-gallery";
+import { ProductSpecs } from "@/features/product/components/product-specs";
 import { ShareButton } from "@/features/product/components/share-button";
 
 type ProductPageProps = { params: Promise<{ slug: string }> };
@@ -141,15 +142,18 @@ export default async function ProductPage({ params }: ProductPageProps) {
             </div>
 
             {product.customizable ? (
-              <p className="bg-secondary text-foreground/90 flex gap-3 rounded-lg p-4 text-sm leading-6">
-                <PencilIcon className="text-accent-strong mt-0.5 size-4 shrink-0" />
-                <span>
-                  <strong className="text-accent-strong font-semibold">
-                    {content.customizableNote.label}
-                  </strong>{" "}
-                  — {content.customizableNote.text}
-                </span>
-              </p>
+              <div className="bg-secondary rounded-lg p-4">
+                <p className="text-foreground/90 flex gap-3 text-sm leading-6">
+                  <PencilIcon className="text-accent-strong mt-0.5 size-4 shrink-0" />
+                  <span>
+                    <strong className="text-accent-strong font-semibold">
+                      {content.customizableNote.label}
+                    </strong>{" "}
+                    — {content.customizableNote.text}
+                  </span>
+                </p>
+
+              </div>
             ) : null}
 
             <ConsultCard
@@ -179,6 +183,15 @@ export default async function ProductPage({ params }: ProductPageProps) {
             />
           </div>
         ) : null}
+
+        {(() => {
+          const allSpecs = [...(product.specs ?? []), ...(product.extraSpecs ?? [])];
+          return allSpecs.length > 0 ? (
+            <div className="mt-14">
+              <ProductSpecs title={content.specs.title} items={allSpecs} />
+            </div>
+          ) : null;
+        })()}
       </Container>
 
       <section className="py-section-md">
