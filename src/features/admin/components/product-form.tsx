@@ -38,6 +38,31 @@ type FormSpec = AdminSpec & { custom?: boolean };
 
 const CUSTOM_OPTION = "__custom";
 
+const PAPEL_OPTIONS = [
+  "Fotográfico mate",
+  "Fotográfico brillante",
+  "Fotográfico mate adhesivo",
+  "Fotográfico brillante adhesivo",
+  "Texturizado",
+  "Kraft",
+  "Cartulina",
+] as const;
+
+const TERMINACION_OPTIONS = [
+  "Recta",
+  "Redondeada",
+  "Troquelada",
+  "Perforada",
+  "Laminado mate",
+  "Laminado brillante",
+] as const;
+
+function specOptionsFor(label: string): readonly string[] | null {
+  if (label === "Papel") return PAPEL_OPTIONS;
+  if (label === "Terminación") return TERMINACION_OPTIONS;
+  return null;
+}
+
 const isCustomSpec = (spec: FormSpec) =>
   spec.custom ??
   (spec.label !== "" && !specLabels.some((l) => l === spec.label));
@@ -623,20 +648,36 @@ export function ProductForm({ product, onDone, onCancel }: Props) {
               </select>
             )}
             <div className="relative">
-              <input
-                aria-label={`Valor de ${spec.label || "la característica"}`}
-                placeholder={specPlaceholder(spec.label)}
-                value={spec.value}
-                onChange={(e) => updateSpec(index, { value: e.target.value })}
-                className={`${inputClass} ${unitFor(spec.label) ? "pr-9" : ""}`}
-              />
-              {unitFor(spec.label) && (
-                <span
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-base text-[#6b7280]"
+              {specOptionsFor(spec.label) ? (
+                <select
+                  aria-label={`Valor de ${spec.label}`}
+                  value={spec.value}
+                  onChange={(e) => updateSpec(index, { value: e.target.value })}
+                  className={inputClass}
                 >
-                  {unitFor(spec.label)}
-                </span>
+                  <option value="" disabled>Elegir…</option>
+                  {specOptionsFor(spec.label)!.map((opt) => (
+                    <option key={opt} value={opt}>{opt}</option>
+                  ))}
+                </select>
+              ) : (
+                <>
+                  <input
+                    aria-label={`Valor de ${spec.label || "la característica"}`}
+                    placeholder={specPlaceholder(spec.label)}
+                    value={spec.value}
+                    onChange={(e) => updateSpec(index, { value: e.target.value })}
+                    className={`${inputClass} ${unitFor(spec.label) ? "pr-9" : ""}`}
+                  />
+                  {unitFor(spec.label) && (
+                    <span
+                      aria-hidden="true"
+                      className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-base text-[#6b7280]"
+                    >
+                      {unitFor(spec.label)}
+                    </span>
+                  )}
+                </>
               )}
             </div>
             <button
