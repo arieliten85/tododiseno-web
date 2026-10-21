@@ -583,23 +583,22 @@ export function ProductForm({ product, onDone, onCancel }: Props) {
               ¿Qué se puede personalizar?
               <input
                 type="text"
-                placeholder="Ej: color, tamaño, texto y temática"
+                placeholder="Ej: Los textos, colores y tamaños se pueden adaptar a tu pedido."
                 value={form.customizable_details}
                 onChange={(e) => patch({ customizable_details: e.target.value })}
                 className="mt-1 block w-full rounded-md border border-[#d1d5db] bg-white px-3 py-2 text-sm text-[#111827] shadow-sm placeholder:text-[#9ca3af] focus:border-[#3b82f6] focus:outline-none focus:ring-2 focus:ring-[#3b82f6]/30"
               />
             </label>
-            <div className="rounded-md border border-[#e5e7eb] bg-[#f9fafb] px-4 py-3 text-sm text-[#374151]">
+            <div className="rounded-md border border-[#e5e7eb] bg-[#f9fafb] px-4 py-3 text-sm text-[#374151] flex flex-col gap-1">
+              <p className="font-semibold">Producto personalizable</p>
               <p>
-                <span className="font-semibold">Producto personalizable</span>
-                {" — "}
                 {form.customizable_details.trim() ? (
                   form.customizable_details.trim()
                 ) : (
-                  <span className="italic text-[#9ca3af]">color, tamaño, texto…</span>
+                  <span className="italic text-[#9ca3af]">Describí qué se puede personalizar…</span>
                 )}
-                {" se coordinan a tu gusto por WhatsApp."}
               </p>
+              <p className="text-[#6b7280]">Coordinamos los detalles a tu gusto por WhatsApp.</p>
             </div>
           </div>
         )}
