@@ -528,15 +528,18 @@ export function ProductForm({ product, onDone, onCancel }: Props) {
                 className="mt-1 block w-full rounded-md border border-[#d1d5db] bg-white px-3 py-2 text-sm text-[#111827] shadow-sm placeholder:text-[#9ca3af] focus:border-[#3b82f6] focus:outline-none focus:ring-2 focus:ring-[#3b82f6]/30"
               />
             </label>
-            {form.customizable_details.trim() && (
-              <div className="rounded-md border border-[#e5e7eb] bg-[#f9fafb] px-4 py-3 text-sm text-[#374151]">
-                <p className="font-medium text-[#111827] mb-0.5">Vista previa:</p>
-                <p>
-                  <span className="font-semibold">Producto personalizable</span>
-                  {" — "}{form.customizable_details.trim()}{" se coordinan a tu gusto por WhatsApp."}
-                </p>
-              </div>
-            )}
+            <div className="rounded-md border border-[#e5e7eb] bg-[#f9fafb] px-4 py-3 text-sm text-[#374151]">
+              <p>
+                <span className="font-semibold">Producto personalizable</span>
+                {" — "}
+                {form.customizable_details.trim() ? (
+                  form.customizable_details.trim()
+                ) : (
+                  <span className="italic text-[#9ca3af]">color, tamaño, texto…</span>
+                )}
+                {" se coordinan a tu gusto por WhatsApp."}
+              </p>
+            </div>
           </div>
         )}
       </div>
