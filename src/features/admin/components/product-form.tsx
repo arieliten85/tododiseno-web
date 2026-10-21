@@ -582,12 +582,12 @@ export function ProductForm({ product, onDone, onCancel }: Props) {
           <div className="flex flex-col gap-2">
             <label className="text-sm font-medium text-[#374151]">
               ¿Qué se puede personalizar?
-              <input
-                type="text"
+              <textarea
+                rows={2}
                 placeholder="Ej: Los textos, colores y tamaños se pueden adaptar a tu pedido."
                 value={form.customizable_details}
                 onChange={(e) => patch({ customizable_details: e.target.value })}
-                className="mt-1 block w-full rounded-md border border-[#d1d5db] bg-white px-3 py-2 text-sm text-[#111827] shadow-sm placeholder:text-[#9ca3af] focus:border-[#3b82f6] focus:outline-none focus:ring-2 focus:ring-[#3b82f6]/30"
+                className="mt-1 block w-full rounded-md border border-[#d1d5db] bg-white px-3 py-2 text-sm text-[#111827] shadow-sm placeholder:text-[#9ca3af] focus:border-[#3b82f6] focus:outline-none focus:ring-2 focus:ring-[#3b82f6]/30 resize-none"
               />
             </label>
             <div className="bg-secondary rounded-lg p-4">
