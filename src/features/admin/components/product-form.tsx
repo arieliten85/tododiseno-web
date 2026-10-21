@@ -74,6 +74,7 @@ type FormState = {
   product_type: ProductType | "";
   category: CategoryId | "";
   audience: AudienceId;
+  codigo: string;
   visible_name: string;
   seo_name: string;
   description: string;
@@ -101,6 +102,7 @@ function initialState(product: AdminProduct | null): FormState {
       product_type: "",
       category: "",
       audience: "unisex",
+      codigo: "",
       visible_name: "",
       seo_name: "",
       description: "",
@@ -118,6 +120,7 @@ function initialState(product: AdminProduct | null): FormState {
     product_type: product.product_type,
     category: product.category,
     audience: product.audience,
+    codigo: product.codigo ?? "",
     visible_name: product.visible_name,
     seo_name: product.seo_name,
     description: product.description,
@@ -294,6 +297,7 @@ export function ProductForm({ product, onDone, onCancel }: Props) {
       product_type: form.product_type,
       category: form.category,
       audience: form.audience,
+      codigo: form.codigo.trim() || null,
       visible_name: form.visible_name.trim(),
       seo_name: form.seo_name.trim() || form.visible_name.trim(),
       description: form.description.trim(),
@@ -385,18 +389,32 @@ export function ProductForm({ product, onDone, onCancel }: Props) {
         </label>
       </div>
 
-      <label className={labelClass}>
-        Nombre del producto *
-        <input
-          value={form.visible_name}
-          onChange={(e) => patch({ visible_name: e.target.value })}
-          className={inputClass}
-        />
-        <p className="text-xs font-normal text-[#6b7280]">
-          Sin personajes. Ej: &quot;Tarjeta de comunión&quot;, no &quot;Tarjeta
-          Mickey&quot;.
-        </p>
-      </label>
+      <div className="grid gap-4 sm:grid-cols-[1fr_auto]">
+        <label className={labelClass}>
+          Nombre del producto *
+          <input
+            value={form.visible_name}
+            onChange={(e) => patch({ visible_name: e.target.value })}
+            className={inputClass}
+          />
+          <p className="text-xs font-normal text-[#6b7280]">
+            Sin personajes. Ej: &quot;Tarjeta de comunión&quot;, no &quot;Tarjeta
+            Mickey&quot;.
+          </p>
+        </label>
+        <label className={labelClass}>
+          Código
+          <input
+            placeholder="Ej: AC 9"
+            value={form.codigo}
+            onChange={(e) => patch({ codigo: e.target.value })}
+            className={inputClass}
+          />
+          <p className="text-xs font-normal text-[#6b7280]">
+            Tu código interno.
+          </p>
+        </label>
+      </div>
       <label className={labelClass}>
         Descripción corta *
         <textarea

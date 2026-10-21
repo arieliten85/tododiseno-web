@@ -47,9 +47,12 @@ export function ProductDetail({ product, onEdit, onBack }: Props) {
       </div>
 
       <dl>
-        <Row label="Código">
+        <Row label="Referencia interna">
           <code className="font-mono text-sm">{productCode(product.id)}</code>
         </Row>
+        {product.codigo && (
+          <Row label="Código">{product.codigo}</Row>
+        )}
         <Row label="Tipo">{productTypeLabels[product.product_type]}</Row>
         <Row label="Categoría">{category?.label ?? product.category}</Row>
         <Row label="Género">{audience?.label ?? product.audience}</Row>
