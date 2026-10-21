@@ -136,6 +136,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <h2 className="font-heading text-foreground text-3xl leading-tight font-semibold text-balance sm:text-4xl">
                 {product.visibleName}
               </h2>
+              {product.codigo ? (
+                <p className="text-muted-foreground mt-1.5 text-xs">
+                  Ref.{" "}<span className="font-semibold tracking-wide uppercase">{product.codigo}</span>
+                </p>
+              ) : null}
               <p className="text-muted-foreground mt-4 leading-7 text-pretty">
                 {product.description}
               </p>
@@ -195,12 +200,19 @@ export default async function ProductPage({ params }: ProductPageProps) {
             </div>
           ) : null;
         })()}
+
       {product.notas ? (
-        <Container className="mt-6">
-          <p className="text-muted-foreground text-sm leading-relaxed whitespace-pre-line border-t border-border pt-6">
+        <section aria-labelledby="notas-title" className="mt-14">
+          <h2
+            id="notas-title"
+            className="font-heading text-2xl font-semibold sm:text-3xl"
+          >
+            {content.notes.title}
+          </h2>
+          <p className="text-muted-foreground mt-4 text-sm leading-relaxed whitespace-pre-line">
             {product.notas}
           </p>
-        </Container>
+        </section>
       ) : null}
 
       </Container>

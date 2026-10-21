@@ -240,6 +240,7 @@ export type ProductPageContent = {
     unitMany: string;
   };
   specs: { title: string };
+  notes: { title: string };
   related: SectionIntro & { action: string };
 };
 

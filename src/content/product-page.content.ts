@@ -42,6 +42,7 @@ export const productPageContent = {
     unitMany: "{n} unidades",
   },
   specs: { title: "Características" },
+  notes: { title: "Notas" },
   related: {
     title: "También te puede interesar",
     description:
