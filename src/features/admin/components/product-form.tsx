@@ -10,6 +10,7 @@ import {
   type ProductType,
   type SpecLabel,
 } from "@/content/spec-labels.content";
+import { PencilIcon } from "@/components/ui/icons";
 import { getSupabase } from "@/lib/supabase";
 import {
   IMAGES_BUCKET,
@@ -589,16 +590,20 @@ export function ProductForm({ product, onDone, onCancel }: Props) {
                 className="mt-1 block w-full rounded-md border border-[#d1d5db] bg-white px-3 py-2 text-sm text-[#111827] shadow-sm placeholder:text-[#9ca3af] focus:border-[#3b82f6] focus:outline-none focus:ring-2 focus:ring-[#3b82f6]/30"
               />
             </label>
-            <div className="rounded-md border border-[#e5e7eb] bg-[#f9fafb] px-4 py-3 text-sm text-[#374151] flex flex-col gap-1">
-              <p className="font-semibold">Producto personalizable</p>
-              <p>
-                {form.customizable_details.trim() ? (
-                  form.customizable_details.trim()
-                ) : (
-                  <span className="italic text-[#9ca3af]">Describí qué se puede personalizar…</span>
-                )}
+            <div className="bg-secondary rounded-lg p-4">
+              <p className="text-foreground/90 flex gap-3 text-sm leading-6">
+                <PencilIcon className="text-accent-strong mt-0.5 size-4 shrink-0" />
+                <span>
+                  <strong className="text-accent-strong font-semibold">Producto personalizable</strong>
+                  {" — "}
+                  {form.customizable_details.trim() ? (
+                    form.customizable_details.trim()
+                  ) : (
+                    <span className="italic opacity-50">Describí qué se puede personalizar…</span>
+                  )}
+                  {" Coordinamos los detalles a tu gusto por WhatsApp."}
+                </span>
               </p>
-              <p className="text-[#6b7280]">Coordinamos los detalles a tu gusto por WhatsApp.</p>
             </div>
           </div>
         )}
