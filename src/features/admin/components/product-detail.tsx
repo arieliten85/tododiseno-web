@@ -59,6 +59,9 @@ export function ProductDetail({ product, onEdit, onBack }: Props) {
         {product.description && (
           <Row label="Descripción">{product.description}</Row>
         )}
+        {product.notas && (
+          <Row label="Notas">{product.notas}</Row>
+        )}
         {product.image_urls && product.image_urls.length > 0 && (
           <Row label="Fotos">
             <ul className="grid grid-cols-2 gap-2 sm:grid-cols-4">

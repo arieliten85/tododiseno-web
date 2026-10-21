@@ -141,6 +141,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </p>
             </div>
 
+            {product.notas ? (
+              <p className="text-muted-foreground text-sm leading-6 text-pretty">
+                {product.notas}
+              </p>
+            ) : null}
+
             {product.customizable ? (
               <div className="bg-secondary rounded-lg p-4">
                 <p className="text-foreground/90 flex gap-3 text-sm leading-6">

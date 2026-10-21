@@ -119,6 +119,7 @@ export type Product = {
    * Se muestran en la misma grilla que specs.
    */
   extraSpecs?: { label: string; value: string }[];
+  notas?: string;
   customizable: boolean;
   quantity: {
     unit: string;

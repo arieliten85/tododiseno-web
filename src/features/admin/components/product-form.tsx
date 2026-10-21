@@ -78,6 +78,7 @@ type FormState = {
   visible_name: string;
   seo_name: string;
   description: string;
+  notas: string;
   image_urls: string[];
   customizable: boolean;
   customizable_details: string;
@@ -106,6 +107,7 @@ function initialState(product: AdminProduct | null): FormState {
       visible_name: "",
       seo_name: "",
       description: "",
+      notas: "",
       image_urls: [],
       customizable: true,
       customizable_details: "",
@@ -124,6 +126,7 @@ function initialState(product: AdminProduct | null): FormState {
     visible_name: product.visible_name,
     seo_name: product.seo_name,
     description: product.description,
+    notas: product.notas ?? "",
     image_urls: product.image_urls ?? [],
     customizable: product.customizable,
     customizable_details: product.customizable_details ?? "",
@@ -301,6 +304,7 @@ export function ProductForm({ product, onDone, onCancel }: Props) {
       visible_name: form.visible_name.trim(),
       seo_name: form.seo_name.trim() || form.visible_name.trim(),
       description: form.description.trim(),
+      notas: form.notas.trim() || null,
       image_urls: imageUrls,
       customizable: form.customizable,
       customizable_details: form.customizable ? (form.customizable_details.trim() || null) : null,
@@ -423,6 +427,19 @@ export function ProductForm({ product, onDone, onCancel }: Props) {
           onChange={(e) => patch({ description: e.target.value })}
           className={`${inputClass} py-2`}
         />
+      </label>
+      <label className={labelClass}>
+        Notas
+        <textarea
+          rows={3}
+          placeholder="Ej: Con 30 unidades va la caja de regalo. Ver catálogo para más diseños."
+          value={form.notas}
+          onChange={(e) => patch({ notas: e.target.value })}
+          className={`${inputClass} py-2`}
+        />
+        <p className="text-xs font-normal text-[#6b7280]">
+          Opcional — promociones, aclaraciones o info extra.
+        </p>
       </label>
 
       <fieldset className="flex flex-col gap-3">
