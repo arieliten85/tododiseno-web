@@ -137,8 +137,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 {product.visibleName}
               </h2>
               {product.codigo ? (
-                <p className="text-muted-foreground mt-1.5 text-xs">
-                  Ref.{" "}<span className="font-semibold tracking-wide uppercase">{product.codigo}</span>
+                <p className="mt-2.5">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-secondary px-3 py-1 text-xs font-semibold text-accent-strong tracking-wide">
+                    Ref. {product.codigo}
+                  </span>
                 </p>
               ) : null}
               <p className="text-muted-foreground mt-4 leading-7 text-pretty">
