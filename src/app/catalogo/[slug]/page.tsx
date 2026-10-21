@@ -141,12 +141,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </p>
             </div>
 
-            {product.notas ? (
-              <p className="text-muted-foreground text-sm leading-6 text-pretty whitespace-pre-line">
-                {product.notas}
-              </p>
-            ) : null}
-
             {product.customizable ? (
               <div className="bg-secondary rounded-lg p-4">
                 <p className="text-foreground/90 flex gap-3 text-sm leading-6">
@@ -201,6 +195,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
             </div>
           ) : null;
         })()}
+      {product.notas ? (
+        <Container className="mt-6">
+          <p className="text-muted-foreground text-sm leading-relaxed whitespace-pre-line border-t border-border pt-6">
+            {product.notas}
+          </p>
+        </Container>
+      ) : null}
+
       </Container>
 
       <section className="py-section-md">

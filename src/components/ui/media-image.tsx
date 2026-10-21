@@ -1,7 +1,7 @@
 "use client";
 
 import Image, { type ImageProps } from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getImageMeta } from "@/lib/images/image-meta";
 
 // Imagen que se muestra cuando el archivo del producto no existe todavía.
@@ -23,6 +23,7 @@ export function MediaImage({
   ...props
 }: MediaImageProps) {
   const [src, setSrc] = useState(initialSrc);
+  useEffect(() => { setSrc(initialSrc); }, [initialSrc]);
   const meta = getImageMeta(src);
   const placeholder = meta
     ? ({ placeholder: "blur", blurDataURL: meta.blur } as const)
