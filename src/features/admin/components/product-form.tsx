@@ -158,6 +158,7 @@ function validate(form: FormState, newPhotoCount: number): string | null {
   if (!form.category) return "Elegí la categoría.";
   if (!form.visible_name.trim()) return "Falta el nombre del producto.";
   if (!form.description.trim()) return "Falta la descripción.";
+  if (form.customizable && !form.customizable_details.trim()) return "Completá qué se puede personalizar.";
   if (form.image_urls.length + newPhotoCount === 0)
     return "Agregá al menos una foto.";
   const incomplete = form.specs.find(
