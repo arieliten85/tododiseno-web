@@ -95,6 +95,12 @@ export const CheckCircleIcon = (p: IconProps) => (
     <path d="m8 12.5 2.8 2.8L16 9.5" />
   </Icon>
 );
+export const NoteIcon = (p: IconProps) => (
+  <Icon {...p}>
+    <path d="M7 3h7l5 5v13H7Z" />
+    <path d="M14 3v5h5M10 13h6M10 17h4" />
+  </Icon>
+);
 export const ShareIcon = (p: IconProps) => (
   <Icon {...p}>
     <circle cx="6" cy="12" r="2.5" />

@@ -211,6 +211,7 @@ export type CatalogPageContent = {
 
 export type ProductPageContent = {
   share: { label: string; copied: string };
+  codeLabel: string;
   gallery: {
     open: string;
     dialog: string;
@@ -222,7 +223,6 @@ export type ProductPageContent = {
   customizableNote: { label: string; text: string; optionsTitle: string };
   consult: {
     title: string;
-    hint: string;
     badge: string;
     quantityLabel: string;
     minimum: string;
@@ -240,7 +240,7 @@ export type ProductPageContent = {
     unitMany: string;
   };
   specs: { title: string };
-  notes: { title: string };
+  notes: { title: string; closing: string };
   related: SectionIntro & { action: string };
 };
 

@@ -3,6 +3,7 @@ import { sharedContent } from "./shared.content";
 
 export const productPageContent = {
   share: { label: "Compartir producto", copied: "Enlace copiado" },
+  codeLabel: "Código",
   gallery: {
     open: "Ampliar imagen",
     dialog: "Imágenes del producto",
@@ -18,7 +19,6 @@ export const productPageContent = {
   },
   consult: {
     title: "Consultá este producto",
-    hint: "Seleccioná cantidad estimada",
     badge: "Respuesta rápida",
     quantityLabel: "Cantidad",
     minimum: "Cantidad mínima sugerida: {min} {unit}",
@@ -42,7 +42,7 @@ export const productPageContent = {
     unitMany: "{n} unidades",
   },
   specs: { title: "Características" },
-  notes: { title: "Notas" },
+  notes: { title: "Notas", closing: "¡Hacemos que tu evento sea único!" },
   related: {
     title: "También te puede interesar",
     description:

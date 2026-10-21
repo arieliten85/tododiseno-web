@@ -15,7 +15,6 @@ type ConsultCardProps = {
   step: number;
   content: {
     title: string;
-    hint: string;
     badge: string;
     quantityLabel: string;
     minimum: string;
@@ -61,16 +60,13 @@ export function ConsultCard({
       aria-labelledby={`${quantityId}-title`}
       className="bg-surface border-border rounded-card border p-6 shadow-sm"
     >
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <h2
-            id={`${quantityId}-title`}
-            className="font-heading text-xl font-semibold"
-          >
-            {content.title}
-          </h2>
-          <p className="text-muted-foreground mt-1 text-sm">{content.hint}</p>
-        </div>
+      <div className="flex items-center justify-between gap-4">
+        <h2
+          id={`${quantityId}-title`}
+          className="font-heading text-xl font-semibold"
+        >
+          {content.title}
+        </h2>
         <span className="text-muted-foreground inline-flex items-center gap-1.5 text-xs">
           {content.badge}
         </span>

@@ -25,6 +25,8 @@
   --ornament: #7d5550;
   --gold: #d4a857;
   --band: #fcf1ec;
+  /* beige neutro de bloques informativos (notas del producto) */
+  --paper: #fcf9f6;
   --whatsapp: #25d366;
   --whatsapp-foreground: #ffffff;
   /* verde oscuro para texto blanco (4,70:1); el oficial #25d366 no llega a AA */
@@ -74,6 +76,7 @@
   --color-ornament: var(--ornament);
   --color-gold: var(--gold);
   --color-band: var(--band);
+  --color-paper: var(--paper);
   --color-whatsapp: var(--whatsapp);
   --color-whatsapp-foreground: var(--whatsapp-foreground);
   --color-whatsapp-strong: var(--whatsapp-strong);

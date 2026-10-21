@@ -21,6 +21,7 @@ import {
 import { ConsultCard } from "@/features/product/components/consult-card";
 import { DetailItems } from "@/features/product/components/detail-items";
 import { ProductGallery } from "@/features/product/components/product-gallery";
+import { ProductNotes } from "@/features/product/components/product-notes";
 import { ProductSpecs } from "@/features/product/components/product-specs";
 import { ShareButton } from "@/features/product/components/share-button";
 
@@ -54,6 +55,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const category = getCategory(product.category);
   const related = getRelatedProducts(product);
   const images = [product.image, ...(product.gallery ?? [])];
+  const allSpecs = [...(product.specs ?? []), ...(product.extraSpecs ?? [])];
+  const notes =
+    product.notas
+      ?.split("\n")
+      .map((line) => line.trim())
+      .filter(Boolean) ?? [];
   const productUrl = siteUrl
     ? new URL(getProductPath(product.slug), siteUrl).toString()
     : undefined;
@@ -78,7 +85,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
           ]}
         />
 
-        <div className="mt-8 grid gap-10 lg:grid-cols-[1.1fr_1fr]">
+        <div className="mt-8 grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-start">
           <ProductGallery
             label={product.visibleName}
             labels={content.gallery}
@@ -117,13 +124,20 @@ export default async function ProductPage({ params }: ProductPageProps) {
             }))}
           />
 
-          <div className="space-y-6">
+          <div className="space-y-5">
             <div className="flex items-center justify-between gap-4">
-              {category ? (
-                <span className="bg-secondary text-accent-strong rounded-full px-4 py-2 text-xs font-bold whitespace-nowrap">
-                  {category.label}
-                </span>
-              ) : null}
+              <div className="flex flex-wrap items-center gap-2">
+                {category ? (
+                  <span className="bg-secondary text-accent-strong rounded-full px-4 py-2 text-xs font-bold whitespace-nowrap">
+                    {category.label}
+                  </span>
+                ) : null}
+                {product.codigo ? (
+                  <span className="border-border text-muted-foreground rounded-full border px-4 py-[calc(0.5rem-1px)] text-xs font-semibold tracking-wide whitespace-nowrap">
+                    {content.codeLabel} {product.codigo}
+                  </span>
+                ) : null}
+              </div>
               <ShareButton
                 title={product.seoName}
                 label={content.share.label}
@@ -136,13 +150,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <h2 className="font-heading text-foreground text-3xl leading-tight font-semibold text-balance sm:text-4xl">
                 {product.visibleName}
               </h2>
-              {product.codigo ? (
-                <p className="mt-2.5">
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-secondary px-3 py-1 text-xs font-semibold text-accent-strong tracking-wide">
-                    Ref. {product.codigo}
-                  </span>
-                </p>
-              ) : null}
               <p className="text-muted-foreground mt-4 leading-7 text-pretty">
                 {product.description}
               </p>
@@ -178,6 +185,32 @@ export default async function ProductPage({ params }: ProductPageProps) {
           </div>
         </div>
 
+        {/* Mismas columnas que galería + compra. En desktop hay dos filas
+            (títulos / cajas): Características las comparte vía subgrid y Notas
+            ocupa solo la de cajas, así mide lo mismo que la tabla. */}
+        {allSpecs.length > 0 || notes.length > 0 ? (
+          <div className="mt-10 grid gap-8 lg:grid-cols-[1.1fr_1fr] lg:grid-rows-[auto_auto] lg:gap-x-10 lg:gap-y-4">
+            {allSpecs.length > 0 ? (
+              <ProductSpecs
+                title={content.specs.title}
+                items={allSpecs}
+                className="lg:row-span-2 lg:grid lg:grid-rows-subgrid lg:[&>dl]:mt-0"
+              />
+            ) : null}
+            {notes.length > 0 ? (
+              <div
+                className={`flex ${allSpecs.length > 0 ? "lg:col-start-2 lg:row-start-2" : ""}`}
+              >
+                <ProductNotes
+                  title={content.notes.title}
+                  closing={content.notes.closing}
+                  items={notes}
+                />
+              </div>
+            ) : null}
+          </div>
+        ) : null}
+
         {product.detailItems && product.detailItems.length > 0 ? (
           <div className="mt-14">
             <DetailItems
@@ -193,30 +226,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
             />
           </div>
         ) : null}
-
-        {(() => {
-          const allSpecs = [...(product.specs ?? []), ...(product.extraSpecs ?? [])];
-          return allSpecs.length > 0 ? (
-            <div className="mt-14">
-              <ProductSpecs title={content.specs.title} items={allSpecs} />
-            </div>
-          ) : null;
-        })()}
-
-      {product.notas ? (
-        <section aria-labelledby="notas-title" className="mt-14">
-          <h2
-            id="notas-title"
-            className="font-heading text-2xl font-semibold sm:text-3xl"
-          >
-            {content.notes.title}
-          </h2>
-          <p className="text-muted-foreground mt-4 text-sm leading-relaxed whitespace-pre-line">
-            {product.notas}
-          </p>
-        </section>
-      ) : null}
-
       </Container>
 
       <section className="py-section-md">
