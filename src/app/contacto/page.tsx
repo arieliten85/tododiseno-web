@@ -49,7 +49,7 @@ export default function ContactPage() {
         ornament="heart"
       />
       <Container className="pb-section-md">
-        <div className="grid gap-8 lg:grid-cols-[26rem_1fr]">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[26rem_1fr]">
           <section
             aria-labelledby="datos-title"
             className="bg-surface border-border rounded-card border p-6 shadow-md"
@@ -125,7 +125,7 @@ export default function ContactPage() {
                 </span>
                 <div className="min-w-0">
                   <dt className={labelClass}>{content.card.labels.email}</dt>
-                  <dd className="font-semibold break-words">
+                  <dd className="font-semibold [overflow-wrap:anywhere]">
                     <a
                       href={`mailto:${contact.email}`}
                       className="underline-offset-4 hover:underline"
