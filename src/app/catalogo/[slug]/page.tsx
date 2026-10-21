@@ -142,7 +142,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             </div>
 
             {product.notas ? (
-              <p className="text-muted-foreground text-sm leading-6 text-pretty">
+              <p className="text-muted-foreground text-sm leading-6 text-pretty whitespace-pre-line">
                 {product.notas}
               </p>
             ) : null}
@@ -154,11 +154,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   <span>
                     <strong className="text-accent-strong font-semibold">
                       {content.customizableNote.label}
-                    </strong>{" "}
-                    — {content.customizableNote.text}
+                    </strong>
+                    {" — "}
+                    {product.customizable_details?.trim()
+                      ? product.customizable_details.trim()
+                      : content.customizableNote.text}
+                    {" Coordiná los detalles a tu gusto por WhatsApp."}
                   </span>
                 </p>
-
               </div>
             ) : null}
 

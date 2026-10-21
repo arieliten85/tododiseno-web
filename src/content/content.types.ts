@@ -120,6 +120,8 @@ export type Product = {
    */
   extraSpecs?: { label: string; value: string }[];
   notas?: string;
+  customizable_details?: string;
+  codigo?: string;
   customizable: boolean;
   quantity: {
     unit: string;

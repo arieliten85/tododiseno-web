@@ -10,6 +10,49 @@ const kit = { unit: "kits", min: 1, step: 1 } as const;
 
 // new product: add an object + public/brand/products/<id>.jpg. no invented quantities/sizes
 export const products = [
+
+  // ── TEST · estampita comunión (datos reales de Florencia) ───────────────
+  {
+    id: "tarjeta-comunion-314f",
+    slug: "tarjeta-comunion-314f",
+    productType: "print",
+    category: "comuniones",
+    audience: "unisex",
+    visibleName: "Estampita Comunión",
+    seoName: "Estampita de Comunión personalizada",
+    codigo: "AC9",
+    description:
+      "Estampitas de Comunión personalizadas, con diseños delicados y detalles especiales para acompañar este momento tan importante.",
+    notas:
+      "El catálogo completo para ver más diseños disponibles.\nLlevando 30 estampitas llevás la caja contenedora de regalo.",
+    image: {
+      src: "https://snwjaaahigaivjyepcrc.supabase.co/storage/v1/object/public/product-images/tarjeta-comunion-314f/1792528260800-0.jpg",
+      alt: "Estampita de Comunión personalizada",
+    },
+    gallery: [
+      {
+        src: "https://snwjaaahigaivjyepcrc.supabase.co/storage/v1/object/public/product-images/tarjeta-comunion-314f/1792528264030-1.jpg",
+        alt: "Estampita de Comunión — detalle",
+      },
+      {
+        src: "https://snwjaaahigaivjyepcrc.supabase.co/storage/v1/object/public/product-images/tarjeta-comunion-314f/1792528265299-2.jpg",
+        alt: "Estampita de Comunión — presentación",
+      },
+    ],
+    specs: [
+      { label: "Medida", value: "12x7cm" },
+      { label: "Papel", value: "Fotográfico mate" },
+      { label: "Gramaje", value: "250 g" },
+      { label: "Presentación", value: "Individual" },
+      { label: "Terminación", value: "Redondeada" },
+    ],
+    customizable: true,
+    customizable_details:
+      "Los textos, frases y colores de cada modelo se pueden adaptar o modificar a tu gusto. Las terminaciones pueden ser rectas o redondeadas.",
+    quantity: { unit: "unidades", min: 15, step: 5 },
+    featured: false,
+  },
+
   // ── DEMO print · comuniones ─────────────────────────────────────────────
   {
     id: "estampita-comunion-demo",
