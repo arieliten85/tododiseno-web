@@ -23,6 +23,7 @@ export type AdminProduct = {
   image_urls: string[] | null;
   image_alt: string | null;
   customizable: boolean;
+  customizable_details: string | null;
   quantity_unit: string;
   quantity_min: number;
   quantity_step: number;

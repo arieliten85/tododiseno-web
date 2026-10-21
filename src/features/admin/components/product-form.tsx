@@ -79,6 +79,7 @@ type FormState = {
   description: string;
   image_urls: string[];
   customizable: boolean;
+  customizable_details: string;
   quantity_min: string;
   featured: boolean;
   published: boolean;
@@ -105,6 +106,7 @@ function initialState(product: AdminProduct | null): FormState {
       description: "",
       image_urls: [],
       customizable: true,
+      customizable_details: "",
       quantity_min: "1",
       featured: false,
       published: true,
@@ -121,6 +123,7 @@ function initialState(product: AdminProduct | null): FormState {
     description: product.description,
     image_urls: product.image_urls ?? [],
     customizable: product.customizable,
+    customizable_details: product.customizable_details ?? "",
     quantity_min: String(product.quantity_min),
     featured: product.featured,
     published: product.published,
@@ -295,6 +298,7 @@ export function ProductForm({ product, onDone, onCancel }: Props) {
       description: form.description.trim(),
       image_urls: imageUrls,
       customizable: form.customizable,
+      customizable_details: form.customizable ? (form.customizable_details.trim() || null) : null,
       // En edición se respeta la unidad ya guardada.
       quantity_unit:
         product?.quantity_unit ??
@@ -482,34 +486,59 @@ export function ProductForm({ product, onDone, onCancel }: Props) {
         />
       </label>
 
-      <div className="flex flex-wrap gap-x-6 gap-y-3 text-base">
-        <label className="flex min-h-11 items-center gap-2">
-          <input
-            type="checkbox"
-            checked={form.customizable}
-            onChange={(e) => patch({ customizable: e.target.checked })}
-            className="size-5"
-          />
-          ¿Personalizable?
-        </label>
-        <label className="flex min-h-11 items-center gap-2">
-          <input
-            type="checkbox"
-            checked={form.featured}
-            onChange={(e) => patch({ featured: e.target.checked })}
-            className="size-5"
-          />
-          ¿Destacado?
-        </label>
-        <label className="flex min-h-11 items-center gap-2">
-          <input
-            type="checkbox"
-            checked={form.published}
-            onChange={(e) => patch({ published: e.target.checked })}
-            className="size-5"
-          />
-          ¿Publicado?
-        </label>
+      <div className="flex flex-col gap-3">
+        <div className="flex flex-wrap gap-x-6 gap-y-3 text-base">
+          <label className="flex min-h-11 items-center gap-2">
+            <input
+              type="checkbox"
+              checked={form.customizable}
+              onChange={(e) => patch({ customizable: e.target.checked, customizable_details: e.target.checked ? form.customizable_details : "" })}
+              className="size-5"
+            />
+            ¿Personalizable?
+          </label>
+          <label className="flex min-h-11 items-center gap-2">
+            <input
+              type="checkbox"
+              checked={form.featured}
+              onChange={(e) => patch({ featured: e.target.checked })}
+              className="size-5"
+            />
+            ¿Destacado?
+          </label>
+          <label className="flex min-h-11 items-center gap-2">
+            <input
+              type="checkbox"
+              checked={form.published}
+              onChange={(e) => patch({ published: e.target.checked })}
+              className="size-5"
+            />
+            ¿Publicado?
+          </label>
+        </div>
+        {form.customizable && (
+          <div className="flex flex-col gap-2">
+            <label className="text-sm font-medium text-[#374151]">
+              ¿Qué se puede personalizar?
+              <input
+                type="text"
+                placeholder="Ej: color, tamaño, texto y temática"
+                value={form.customizable_details}
+                onChange={(e) => patch({ customizable_details: e.target.value })}
+                className="mt-1 block w-full rounded-md border border-[#d1d5db] bg-white px-3 py-2 text-sm text-[#111827] shadow-sm placeholder:text-[#9ca3af] focus:border-[#3b82f6] focus:outline-none focus:ring-2 focus:ring-[#3b82f6]/30"
+              />
+            </label>
+            {form.customizable_details.trim() && (
+              <div className="rounded-md border border-[#e5e7eb] bg-[#f9fafb] px-4 py-3 text-sm text-[#374151]">
+                <p className="font-medium text-[#111827] mb-0.5">Vista previa:</p>
+                <p>
+                  <span className="font-semibold">Producto personalizable</span>
+                  {" — "}{form.customizable_details.trim()}{" se coordinan a tu gusto por WhatsApp."}
+                </p>
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       <fieldset className="flex flex-col gap-3">
