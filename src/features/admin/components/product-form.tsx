@@ -601,7 +601,7 @@ export function ProductForm({ product, onDone, onCancel }: Props) {
                   ) : (
                     <span className="italic opacity-50">Describí qué se puede personalizar…</span>
                   )}
-                  {" Coordinamos los detalles a tu gusto por WhatsApp."}
+                  {" Coordiná los detalles a tu gusto por WhatsApp."}
                 </span>
               </p>
             </div>
