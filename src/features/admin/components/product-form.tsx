@@ -47,6 +47,7 @@ const PAPEL_OPTIONS = [
   "Texturizado",
   "Kraft",
   "Cartulina",
+  "Ilustración",
 ] as const;
 
 const TERMINACION_OPTIONS = [
