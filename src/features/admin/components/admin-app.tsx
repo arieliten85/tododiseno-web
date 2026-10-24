@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { AdminProduct } from "../admin.types";
 import { successClass } from "../admin-styles";
 import { ProductDetail } from "./product-detail";
@@ -17,6 +17,11 @@ export function AdminApp() {
   const [saved, setSaved] = useState(false);
   // Viven acá para que no se pierdan al abrir un producto y volver.
   const [filters, setFilters] = useState<ListFilters>(emptyFilters);
+
+  // Cada pantalla arranca desde arriba, no donde quedó el scroll de la anterior.
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, [view]);
 
   return (
     <div className="flex flex-col gap-4">
