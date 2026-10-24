@@ -57,6 +57,7 @@ const TERMINACION_OPTIONS = [
   "Perforada",
   "Laminado mate",
   "Laminado brillante",
+  "Anillado",
 ] as const;
 
 function specOptionsFor(label: string): readonly string[] | null {
