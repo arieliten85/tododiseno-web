@@ -13,6 +13,8 @@ type MediaImageProps = Omit<
 > & {
   src: string;
   fill?: boolean;
+  /** Shimmer mientras carga una foto sin blur propio (solo con fill). */
+  skeleton?: boolean;
 };
 
 export function MediaImage({
@@ -20,10 +22,17 @@ export function MediaImage({
   fill,
   alt,
   sizes,
+  skeleton,
+  className,
+  onLoad,
   ...props
 }: MediaImageProps) {
   const [src, setSrc] = useState(initialSrc);
-  useEffect(() => { setSrc(initialSrc); }, [initialSrc]);
+  const [loaded, setLoaded] = useState(false);
+  useEffect(() => {
+    setSrc(initialSrc);
+    setLoaded(false);
+  }, [initialSrc]);
   const meta = getImageMeta(src);
   const placeholder = meta
     ? ({ placeholder: "blur", blurDataURL: meta.blur } as const)
@@ -32,16 +41,36 @@ export function MediaImage({
   const handleError = () => setSrc(FALLBACK_SRC);
 
   if (fill) {
-    return (
+    const showSkeleton = skeleton && !meta;
+    const image = (
       <Image
         src={src}
         alt={alt}
         fill
         sizes={sizes ?? "100vw"}
         onError={handleError}
+        onLoad={(event) => {
+          setLoaded(true);
+          onLoad?.(event);
+        }}
+        className={
+          showSkeleton
+            ? `${className ?? ""} ${loaded ? "image-fade-in" : "opacity-0"}`
+            : className
+        }
         {...placeholder}
         {...props}
       />
+    );
+    if (!showSkeleton) return image;
+
+    return (
+      <>
+        {loaded ? null : (
+          <span aria-hidden="true" className="image-skeleton absolute inset-0" />
+        )}
+        {image}
+      </>
     );
   }
 
@@ -53,6 +82,8 @@ export function MediaImage({
       height={meta?.height ?? 900}
       sizes={sizes}
       onError={handleError}
+      onLoad={onLoad}
+      className={className}
       {...placeholder}
       {...props}
     />

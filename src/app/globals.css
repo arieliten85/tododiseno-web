@@ -59,6 +59,37 @@ body {
   --ease-warm: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* placeholder de fotos mientras cargan (MediaImage skeleton) */
+.image-skeleton {
+  background: linear-gradient(
+      100deg,
+      var(--muted) 35%,
+      var(--surface) 50%,
+      var(--muted) 65%
+    )
+    0 0 / 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+
+.image-fade-in {
+  animation: fade-in 250ms ease-out;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
 @keyframes rise-in {
   from {
     opacity: 0;

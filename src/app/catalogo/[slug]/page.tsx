@@ -99,6 +99,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   fill
                   preload={index === 0}
                   sizes="(min-width: 1024px) 600px, 92vw"
+                  skeleton
                   className="object-cover"
                 />
               ),
@@ -108,6 +109,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   alt=""
                   fill
                   sizes="120px"
+                  skeleton
                   className="object-cover"
                 />
               ),

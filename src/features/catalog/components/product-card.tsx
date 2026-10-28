@@ -34,6 +34,7 @@ export function ProductCard({
           fill
           loading={eager ? "eager" : undefined}
           sizes="(min-width: 1024px) 300px, (min-width: 640px) 45vw, 92vw"
+          skeleton
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
       </Link>

@@ -9,6 +9,12 @@ type ProductSpecsProps = {
   className?: string;
 };
 
+// La medida siempre se muestra en cm, aunque se haya cargado sin unidad.
+function formatValue({ label, value }: AnySpec) {
+  if (label !== "Medida" || /cm\s*$/i.test(value)) return value;
+  return `${value.trim()} cm`;
+}
+
 /** Grilla de características (papel, terminación, material...): etiqueta + valor. */
 export function ProductSpecs({ title, items, className }: ProductSpecsProps) {
   return (
@@ -29,7 +35,7 @@ export function ProductSpecs({ title, items, className }: ProductSpecsProps) {
               {spec.label}
             </dt>
             <dd className="text-foreground/90 px-4 py-2.5 text-sm sm:px-6">
-              {spec.value}
+              {formatValue(spec)}
             </dd>
           </div>
         ))}
